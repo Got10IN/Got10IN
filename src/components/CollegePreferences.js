@@ -19,26 +19,27 @@ function CollegePreferences() {
   };
 
   return (
-    <div>
+    <div className="container py-5">
       <h2>My College Ranking</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Major: </label>
+      <form onSubmit={handleSubmit} className="mt-4">
+        <div className="form-group">
+          <label>Major:</label>
           <input
             type="text"
+            className="form-control"
             value={major}
             onChange={(e) => setMajor(e.target.value)}
           />
         </div>
-        <div>
-          <label>Preference: </label>
-          <select value={preference} onChange={(e) => setPreference(e.target.value)}>
+        <div className="form-group">
+          <label>Preference:</label>
+          <select className="form-control" value={preference} onChange={(e) => setPreference(e.target.value)}>
             <option value="">Select...</option>
             <option value="public">Public</option>
             <option value="private">Private</option>
           </select>
         </div>
-        <button type="submit">Get College Recommendations</button>
+        <button type="submit" className="btn btn-primary">Get College Recommendations</button>
       </form>
     </div>
   );

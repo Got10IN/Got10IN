@@ -1,18 +1,35 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Header() {
-  return (
-    <header>
-      <div>
-        <Link to="/">Logo</Link>
-        <Link to="/">Home</Link>
-        <Link to="/college-ranking">My College Ranking</Link>
-        <Link to="/find-mentor">Find a Mentor</Link>
-        <Link to="/about-us">About Us</Link>
-        <Link to="/login-signup">Login/Signup</Link>
-      </div>
-    </header>
-  );
+    return (
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+            <div className="container">
+                <Link to="/">
+                    <img src="/logo.png" alt="Your Logo" className="navbar-brand logo-header" />
+                </Link>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul className="navbar-nav">
+                        <li className="nav-item active">
+                          <Link to="/" className="nav-link">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/my-college-ranking" className="nav-link">My College Ranking</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/find-mentor" className="nav-link">Find a Mentor</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className="ml-auto">
+                    <Link to="/login-signup" className="btn btn-primary">Login/Signup</Link>
+                </div>
+            </div>
+        </nav>
+    );
 }
 
 export default Header;
