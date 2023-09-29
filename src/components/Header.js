@@ -29,10 +29,10 @@ function Header() {
                     <li className={`nav-item ${isActive('/my-college-ranking') ? 'active' : ''}`}>
                         <Link to="/my-college-ranking" className="nav-link">My College Ranking</Link>
                     </li>
-                    <li className={`nav-item ${isActive('/') ? 'active' : ''}`}>
+                    <li className={`nav-item ${isActive('/find-mentor') ? 'active' : ''}`}>
                         <Link to="/find-mentor" className="nav-link special-link">Find a Mentor</Link>
                     </li>
-                    <li className={`nav-item ${isActive('/my-college-ranking') ? 'active' : ''}`}>
+                    <li className={`nav-item ${isActive('/about-us') ? 'active' : ''}`}>
                         <Link to="/about-us" className="nav-link">About Us</Link>
                     </li>
                     </ul>
