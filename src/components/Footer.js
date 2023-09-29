@@ -1,5 +1,4 @@
 import React from 'react';
-import footerImage from '../public/Footer.png';  // Import the image
 
 function Footer() {
     const imgStyle = {
@@ -12,10 +11,9 @@ function Footer() {
   
     return (
       <footer>
-          <img src={footerImage} alt="Footer" style={imgStyle} />  // Use the imported image as the source
+          <img src={process.env.PUBLIC_URL + '/Footer.png'} alt="Footer" style={imgStyle} />
       </footer>
     );
 }
 
 export default Footer;
-
