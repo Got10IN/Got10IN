@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import './header.css';
 
 function Header() {
     const headerStyle = {
-      paddingLeft: '150px',  // 左侧 padding
-      paddingRight: '150px', // 右侧 padding
+      paddingLeft: '150px',
+      paddingRight: '150px',
     };
 
     const location = useLocation();
     const isActive = (path) => location.pathname === path;
+
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('isLoggedIn'));
+
+    useEffect(() => {
+        if (localStorage.getItem('isLoggedIn')) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        localStorage.removeItem('isLoggedIn');
+    };
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={headerStyle}>
@@ -38,7 +51,11 @@ function Header() {
                     </ul>
                 </div>
                 <div className="ml-auto">
-                    <Link to="/login-signup" className="custom-button">Login/Signup</Link>
+                    {isLoggedIn ? (
+                        <button onClick={handleLogout} className="custom-button">Logout</button>
+                    ) : (
+                        <Link to="/login-signup" className="custom-button">Login/Signup</Link>
+                    )}
                 </div>
             </div>
         </nav>

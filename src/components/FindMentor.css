@@ -1,0 +1,38 @@
+.mentor-fullscreen-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+    width: 100%;
+    background-color: white;
+}
+
+.mentor-center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.image-blue {
+    /* Add any specific styles for the image if needed */
+}
+
+.text-body-right {
+    /* Add any specific styles for the text body if needed */
+}
+
+.medium-text-blue {
+    /* Add any specific styles for the medium text if needed */
+}
+
+.MentorWords {
+    /* Add any specific styles for the MentorWords image if needed */
+}
+
+.subscribe-button {
+    /* Add any specific styles for the subscribe button if needed */
+}
