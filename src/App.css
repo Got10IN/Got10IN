@@ -1,3 +1,8 @@
+.App {
+  display: flex;
+  flex-direction: column; /* 垂直排列 */
+  align-items: center; /* 水平居中对齐 */
+}
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #00366D;

@@ -1,3 +1,17 @@
+.navbar {
+    width: 100%; /* 宽度占满整个屏幕 */
+    padding-left: 100px; /* 左侧 padding */
+    padding-right: 100px; /* 右侧 padding */
+    background-color: #00366D; 
+  }
+.logo-header {
+    margin-right: auto; /* 将 Logo 推到左侧 */
+  }
+  
+  .ml-auto {
+    margin-left: auto; /* 将 Login/Signup 推到右侧 */
+}
+
 .custom-button {
     background-color: rgba(255, 255, 255, 0.1); 
     font-size: 14px;
@@ -15,3 +29,6 @@
   .custom-button:hover {
     background-color: rgba(255, 255, 255, 0.4); 
   }
+
+
+

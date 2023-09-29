@@ -1,128 +1,55 @@
-// function Home() {
-//   return (
-//     <div className="home">
-//       {/* First Section */}
-//       <div className="section1 d-flex align-items-center justify-content-center">
-//           <div className="left-section">
-//               <h2>Section 1</h2>
-//               <p>Content for section 1...</p>
-//               <div className="email-input">
-//                   <input type="email" className="form-control" placeholder="Enter your email" />
-//                   <button className="btn btn-primary ml-2">Subscribe</button>
-//               </div>
-//           </div>
-//           <div className="right-section">
-//               <img src="/logo.png" alt="Big Logo" className="big-logo" />
-//               <p>Your AI-powered college application assistant is here to help.</p>
-//           </div>
-//       </div>
-//       {/* Second Section */}
-//       <div className="section2 d-flex align-items-center justify-content-center">
-//           <div className="left-section">
-//               <img src="/logo.png" alt="Big Logo" className="big-logo" />
-//               <p>Your AI-powered college application assistant is here to help.</p>
-
-//       </div>
-
-//       {/* Third Section */}
-//       <div className="section3 d-flex align-items-center justify-content-center">
-//           <div className="left-section">
-//               <h2>Section 3</h2>
-//               <p>Content for section 3...</p>
-//               <div className="email-input">
-//                   <input type="email" className="form-control" placeholder="Enter your email" />
-//                   <button className="btn btn-primary ml-2">Subscribe</button>
-//               </div>
-//           </div>
-//           <div className="right-section">
-//               <img src="/logo.png" alt="Big Logo" className="big-logo" />
-//               <p>Your AI-powered college application assistant is here to help.</p>
-//           </div>
-//       </div>
-
-//       {/* Fourth Section */}
-//       <div className="section4 d-flex align-items-center justify-content-center">
-//           <div className="left-section">
-//               <img src="/logo.png" alt="Big Logo" className="big-logo" />
-//               <p>Your AI-powered college application assistant is here to help.</p>
-//           </div>
-//           <div className="right-section">
-//               <h2>Section 4</h2>
-//               <p>Content for section 4...</p>
-//               <div className="email-input">
-//                   <input type="email" className="form-control" placeholder="Enter your email" />
-//                   <button className="btn btn-primary ml-2">Subscribe</button>
-//               </div>
-//           </div>
-//       </div>
-//       {/* Fifth Section */}
-//       <div className="section5 d-flex align-items-center justify-content-center">
-//           <div className="left-section">
-//               <h2>Section 5</h2>
-//               <p>Content for section 5...</p>
-//               <div className="email-input">
-//                   <input type="email" className="form-control" placeholder="Enter your email" />
-//                   <button className="btn btn-primary ml-2">Subscribe</button>
-//               </div>
-//           </div>
-//           <div className="right-section">
-//               <img src="/logo.png" alt="Big Logo" className="big-logo" />
-//               <p>Your AI-powered college application assistant is here to help.</p>
-//           </div>
-//       </div>
-//     </div>
-//     </div>
-//   );
-// }
-
-
-// export default Home;
 import './Home.css';
 
 function Home() {
     return (
       <div className="home">
-        <div class="container">
+        <div class="container-body">
           <div class="text">   
               <p class="small-text-yellow">Are you</p>
-              <p class="medium-text">overwhelmed by those crazy<br></br>ranks of national colleges?</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                <input type="email" className="form-control" placeholder="Enter your email" />
+              <img src="/word1.png" alt="Word1" className="word" style={{ width: '500px', height: 'auto' ,marginLeft:'-25px'}}/>
+              {/* <p class="medium-text">overwhelmed by those crazy<br></br>ranks of national colleges?</p> */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop:'40px',paddingBottom:'100px'}}>
+                <input type="email" className="form-control" placeholder="Enter your email" style={{ borderRadius: '50px',width:'300px',height:'40px'}}/>
                 <button className="subscribe-button">Subscribe</button>
               </div>
           </div>
-          <div class="text">
-              <img src="/logo.png" alt="Logo" className="logo" />
+          <div class="text2">
+              <img src="/logo.png" alt="Logo" className="logo" style={{ width: '400px', height: 'auto' }}/>
               <p class="small-text-white">Your AI empowered college application assistant is here to help!</p>
+              <img src="/Rocket.png" alt="Rocket" className="logo" style={{ width: '400px', height: 'auto',marginTop:'-20px'}}/>
           </div>
         </div>  
-  
-        <div className="section" id="section2">
-          <h2>Section 2</h2>
-          <img src="/logo.png" alt="Logo" className="logo" />
+        <div class="container-white" >
+              <p class="medium-text-blue" style={{marginLeft:'150px'}}>Explore our features</p>
+              <div class="container-small">
+                <img src="/Rectangle-blue.png" alt="Logo" className="image-blue"/>
+                <div class="text-body">   
+                  <p class="medium-text-blue">We provide you with a<br></br>personalized college ranking</p>
+                  <img src="/Word1-1.png" alt="Word1-1" className="Word1-1" style={{ width: '400px', height: 'auto' }}/>
+                  <button className="subscribe-button" style={{marginTop:'50px'}}>Try My College Rank</button>
+                </div>
+              </div>
+              <div class="container-small">
+                <div class="text-body">   
+                  <p class="medium-text-blue">We get you the best peer & <br></br>professional mentors around the <br></br>clock</p>
+                  <img src="/Word1-2.png" alt="Word1-2" className="Word1-2" style={{ width: '400px', height: 'auto' }}/>
+                  <button className="subscribe-button" style={{marginTop:'50px'}}>Join wishlist</button>
+                </div>
+                <img src="/Rectangle-blue.png" alt="Logo" className="image-blue"/>
+              </div>
+              <div class="container-small">
+                <img src="/Rectangle-blue.png" alt="Logo" className="image-blue" />
+                <div class="text-body">   
+                  <p class="medium-text-blue">We help you plan your university<br></br>application</p>
+                  <img src="/Word1-3.png" alt="Word1-3" className="Word1-3" style={{ width: '400px', height: 'auto' }}/>
+                  <button className="subscribe-button" style={{marginTop:'50px'}}>Join wishlist</button>
+                </div>
+              </div>
+              <p class="medium-text-blue" style={{marginLeft:'150px'}}>Our students say</p>
+              <div class="container-small">
+                <img src="/StudentSay.png" alt="StudentSay" className="StudentSay" style={{ width: '900px', height: 'auto' }}/>
+              </div>
         </div>
-  
-        <div className="section" id="section3">
-          <h2>Section 3</h2>
-          <p>Content for section 3...</p>
-          <input type="email" className="form-control" placeholder="Enter your email" />
-          <button className="btn btn-primary ml-2">Subscribe</button>
-          <img src="/logo.png" alt="Logo" className="logo" />
-        </div>
-  
-        <div className="section" id="section4">
-          <h2>Section 4</h2>
-          <img src="/logo.png" alt="Logo" className="logo" />
-        </div>
-  
-        <div className="section" id="section5">
-          <h2>Section 5</h2>
-          <p>Content for section 5...</p>
-          <input type="email" className="form-control" placeholder="Enter your email" />
-          <button className="btn btn-primary ml-2">Subscribe</button>
-          <img src="/logo.png" alt="Logo" className="logo" />
-        </div>
-  
       </div>
     );
   }

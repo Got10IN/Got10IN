@@ -1,16 +1,61 @@
 .text {
     flex: 1; 
     text-align: left;
-    padding: 0px; 
-    margin-left: 50px;
+    padding-left: 15px;
+    
 }
 
-.container {
-    display: flex; /* 使用flexbox布局 */
-    align-items: center; /* 垂直居中对齐 */
-    padding-top: 60px;
-    padding-left: 100px;
+.text2 {
+    flex: 0.8; 
+    text-align: left;
+    padding-left: 15px;
+}
+.text-body {
+    flex: 1; 
+    text-align: left;    
+}
+
+.text-body-right {
+    flex: 1; 
+    text-align: right;    
+}
+
+
+.image-blue {
+    flex: 0.8;
+    width: 450px;
     padding-right: 100px;
+}
+
+
+.container-body {
+    display: flex; 
+    padding-left: 150px;
+    padding-right: 150px;
+    align-items: center; 
+    padding-top: 150px;
+}
+.container-white {
+    background-color: white;
+    margin-top: -20px;
+    align-items: center; 
+    padding-top: 50px;
+}
+
+.container-small {
+    display: flex; /* 使用flexbox布局 */
+    padding-left: 150px;
+    padding-right: 150px;
+    align-items: center; /* 垂直居中对齐 */
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.medium-text-blue{
+    font: 900 25px '';
+    color: #00366D;
+    line-height: 1.0;
+    margin-top: 0px;
 }
 
 .large-text {
@@ -45,6 +90,7 @@
 
 .subscribe-button {
     background-color: #FFB500; 
+    height:40px;
     font-size: 14px;
     font-weight: 800;
     color: white; 

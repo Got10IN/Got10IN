@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import './header.css';
 
 function Header() {
+    const headerStyle = {
+      paddingLeft: '150px',  // 左侧 padding
+      paddingRight: '150px', // 右侧 padding
+    };
     return (
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={headerStyle}>
             <div className="container">
                 <Link to="/" className="navbar-brand logo-header">
                     <img src="/logo.png" alt="Your Logo" className="logo-img" />

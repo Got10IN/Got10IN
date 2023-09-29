@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Home.css';
 
 function CollegeRanking() {
   const [major, setMajor] = useState('');
@@ -16,7 +17,7 @@ function CollegeRanking() {
     } catch (error) {
       console.error('Error submitting preferences:', error);
     }
-  };
+ };
 
   return (
     <div className="container py-5">
