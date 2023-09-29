@@ -6,6 +6,29 @@ body {
   padding: 0;
 }
 
+.logo-img {
+  max-width: 100px; 
+}
+
+.nav-link {
+  font-weight: bold;
+  color: white; 
+}
+
+
+.nav-item.active .special-link {
+  color: #FFB500; 
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-link:hover {
+  color: inherit !important;
+}
+
+
 .home {
   width: 100%;
   max-width: 1440px;
@@ -28,7 +51,7 @@ body {
 
 .form-control {
   margin-bottom: 20px;
-  width: 80%;
+  width: 60%;
   max-width: 500px;
 }
 
@@ -41,3 +64,4 @@ body {
   height: 187px;
   margin: 20px 0;
 }
+

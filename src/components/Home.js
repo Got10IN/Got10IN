@@ -77,18 +77,25 @@
 
 
 // export default Home;
+import './Home.css';
 
 function Home() {
     return (
       <div className="home">
-  
-        <div className="section" id="section1">
-          <h2>Section 1</h2>
-          <p>Content for section 1...</p>
-          <input type="email" className="form-control" placeholder="Enter your email" />
-          <button className="btn btn-primary ml-2">Subscribe</button>
-          <img src="/logo.png" alt="Logo" className="logo" />
-        </div>
+        <div class="container">
+          <div class="text">   
+              <p class="small-text-yellow">Are you</p>
+              <p class="medium-text">overwhelmed by those crazy<br></br>ranks of national colleges?</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <input type="email" className="form-control" placeholder="Enter your email" />
+                <button className="subscribe-button">Subscribe</button>
+              </div>
+          </div>
+          <div class="text">
+              <img src="/logo.png" alt="Logo" className="logo" />
+              <p class="small-text-white">Your AI empowered college application assistant is here to help!</p>
+          </div>
+        </div>  
   
         <div className="section" id="section2">
           <h2>Section 2</h2>

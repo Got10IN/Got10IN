@@ -1,0 +1,58 @@
+.text {
+    flex: 1; 
+    text-align: left;
+    padding: 0px; 
+    margin-left: 50px;
+}
+
+.container {
+    display: flex; /* 使用flexbox布局 */
+    align-items: center; /* 垂直居中对齐 */
+    padding-top: 60px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.large-text {
+    font: 400 4rem '';
+    line-height: 1.0;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.medium-text {
+    font: 600 30px '';
+    color: rgb(255,255,255,0.8);
+    line-height: 1.0;
+    margin-top: 0px;
+    margin-bottom: 60px;
+}
+
+.small-text-white {
+    font: 600 20px '';
+    line-height: 1.5;
+    margin-bottom: 5px;
+    color:#FFB500; 
+}
+
+
+.small-text-yellow {
+    font: 600 20px '';
+    line-height: 1.5;
+    margin-bottom: 5px;
+    color:#FFB500; 
+}
+
+.subscribe-button {
+    background-color: #FFB500; 
+    font-size: 14px;
+    font-weight: 800;
+    color: white; 
+    border: none; 
+    border-radius: 999px; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    cursor: pointer; 
+}

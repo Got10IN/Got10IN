@@ -1,0 +1,17 @@
+.custom-button {
+    background-color: rgba(255, 255, 255, 0.1); 
+    font-size: 14px;
+    font-weight: 800;
+    color: white; 
+    border: none; 
+    border-radius: 999px; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    cursor: pointer; 
+  }
+  
+  .custom-button:hover {
+    background-color: rgba(255, 255, 255, 0.4); 
+  }
