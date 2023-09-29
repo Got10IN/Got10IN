@@ -1,3 +1,4 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000';  // This is your backend URL.
+axios.defaults.baseURL = 'https://got10in-backend-cfba39007310.herokuapp.com';  // Updated to your backend URL.
+

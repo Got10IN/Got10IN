@@ -1,20 +1,21 @@
 import React from 'react';
+import footerImage from '../public/Footer.png';  // Import the image
 
 function Footer() {
     const imgStyle = {
-      width: '100%', // 图片宽度占满整个屏幕
-      height: 'auto', // 高度自适应
-      maxWidth: '100%', // 图片最大宽度与屏幕宽度相同
-      display: 'block', // 去除默认行内元素间隙
-      margin: '0 auto', // 居中显示
+      width: '100%',
+      height: 'auto',
+      maxWidth: '100%',
+      display: 'block',
+      margin: '0 auto',
     };
   
     return (
       <footer>
-          <img src="footer.png" alt="Footer" style={imgStyle} />
+          <img src={footerImage} alt="Footer" style={imgStyle} />  // Use the imported image as the source
       </footer>
     );
-  }
-  
+}
 
 export default Footer;
+

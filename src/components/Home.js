@@ -18,12 +18,13 @@ function Home() {
         if (response.ok) {
             alert(data.message);
         } else {
-            alert('Error: ' + data.detail);
+            alert(data.detail);  // Display the error message from the backend
         }
     } catch (error) {
         console.error('There was an error!', error);
     }
-  }
+}
+
     return (
       <div className="home">
         <div class="container-body">
