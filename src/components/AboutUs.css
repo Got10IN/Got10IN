@@ -1,0 +1,11 @@
+.aboutus-center-content {
+    justify-content: space-between; 
+    display: flex; /* 使用flexbox布局 */
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+}
+
+.halfscreen-box {
+    flex: 1; 
+}

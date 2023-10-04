@@ -5,8 +5,8 @@ import './header.css';
 
 function Header() {
     const headerStyle = {
-      paddingLeft: '150px',
-      paddingRight: '150px',
+      paddingLeft: '200px',
+      paddingRight: '200px',
     };
 
     const location = useLocation();
@@ -37,16 +37,16 @@ function Header() {
                 <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul className="navbar-nav">
                     <li className={`nav-item ${isActive('/') ? 'active' : ''}`}>
-                        <Link to="/" className="nav-link special-link">Home</Link>
+                        <Link to="/" className="link1">Home</Link>
                     </li>
                     <li className={`nav-item ${isActive('/my-college-ranking') ? 'active' : ''}`}>
-                        <Link to="/my-college-ranking" className="nav-link">My College Ranking</Link>
+                        <Link to="/my-college-ranking" className="link1">My College Ranking</Link>
                     </li>
                     <li className={`nav-item ${isActive('/find-mentor') ? 'active' : ''}`}>
-                        <Link to="/find-mentor" className="nav-link special-link">Find a Mentor</Link>
+                        <Link to="/find-mentor" className="link1">Find a Mentor</Link>
                     </li>
                     <li className={`nav-item ${isActive('/about-us') ? 'active' : ''}`}>
-                        <Link to="/about-us" className="nav-link">About Us</Link>
+                        <Link to="/about-us" className="link1">About Us</Link>
                     </li>
                     </ul>
                 </div>

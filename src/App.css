@@ -11,32 +11,10 @@ body {
   padding: 0;
 }
 
-.logo-img {
-  max-width: 100px; 
-}
-
-.nav-link {
-  font-weight: bold;
-  color: white; 
-}
-
-
-.nav-item.active .special-link {
-  color: #FFB500; 
-}
-
-.nav-item {
-    margin-left: 20px;
-}
-
-.nav-link:hover {
-  color: inherit !important;
-}
-
 
 .home {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1600px;
   margin: 0 auto;
   overflow: hidden;
 }

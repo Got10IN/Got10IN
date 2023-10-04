@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './AboutUs.css'; 
 
 function AboutUs() {
   const [email, setEmail] = useState('');
@@ -22,36 +23,36 @@ function AboutUs() {
   };
   return (
     <div class="container-white" >
-      <div class="container-small">
-          <div class="text2">
-              <img src="/logo-blue.png" alt="Logo" className="logo" style={{ width: '400px', height: 'auto' }}/>
-              <img src="/AboutWord1.png" alt="Logo" className="logo" style={{ width: '400px', height: 'auto' }}/>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop:'80px',paddingBottom:'100px'}}>
-      <input 
-        type="email" 
-        className="form-control" 
-        placeholder="Enter your email" 
-        style={{ borderRadius: '50px',width:'300px',height:'40px'}}
-        value={email}
-        onChange={handleEmailChange}
-      />
-      <button className="subscribe-button" onClick={handleSubscribe}>Subscribe</button>
-    </div>
+      <div class="aboutus-center-content">
+          <div class="halfscreen-box" style={{paddingRight:'100px'}}>
+              <img src="/Logo-AboutUs.png" alt="Logo" className="WordCard"/>
+              <div className="WordCard" style={{ display: 'flex', gap: '20px', paddingTop:'40px',paddingBottom:'100px'}}>
+                <input 
+                  type="email" 
+                  className="form-control" 
+                  placeholder="Enter your email" 
+                  style={{ borderRadius: '50px',width:'80%',height:'40px'}}
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+                <button className="subscribe-button" onClick={handleSubscribe}>Subscribe</button>
+              </div>
           </div>
-          <div class="text">   
-              <img src="/GOT10IN (1).png" alt="Logo" className="logo" style={{ width: '400px', height: 'auto' }}/>
-              <img src="/3buttons.png" alt="Logo" className="logo" style={{ width: '400px', height: 'auto' }}/>
+          <div class="halfscreen-box" style={{paddingTop:'45px'}}>   
+              <img src="/GOT10IN (1).png" alt="Logo" className="WordCard"/>
+              <img src="/3buttons.png" alt="Logo" className="WordCard" style={{paddingTop:'20px'}}/>
+              <img src="/Hi.png" alt="Logo" className="WordCard" style={{paddingTop:'90px'}}/>
           </div>
       </div>
-    <div class="container-small">
-      <img src="/OurStory.png" alt="StudentSay" className="StudentSay" style={{ width: '900px', height: 'auto' }}/>
+    <div class="aboutus-center-content">
+      <img src="/OurStory.png" alt="StudentSay" className="WordCard" />
     </div>
-    <p class="medium-text-blue" style={{marginLeft:'150px'}}>Roadmap</p>
+    <img src="/RoadmapWord.png" alt="Roadmap" style={{paddingLeft:'200px',width:'40%',paddingTop:'100px'}}/>
     <div class="container-small">
-      <img src="/Roadmap.png" alt="StudentSay" className="StudentSay" style={{ width: '900px', height: 'auto' }}/>
+      <img src="/Roadmap.png" alt="StudentSay" className="WordCard"/>
     </div>
     <div class="container-small">
-      <img src="/Comingsoon.png" alt="StudentSay" className="StudentSay" style={{ width: '900px', height: 'auto' }}/>
+      <img src="/Comingsoon.png" alt="StudentSay" className="WordCard" style={{paddingBottom:'100px'}}/>
     </div>
 </div>
   );

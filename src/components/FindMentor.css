@@ -1,38 +1,31 @@
 .mentor-fullscreen-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     height: 800px;
     width: 100%;
+    height: auto;
     background-color: white;
 }
 
 .mentor-center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-}
-
-.image-blue {
-    /* Add any specific styles for the image if needed */
-}
-
-.text-body-right {
-    /* Add any specific styles for the text body if needed */
-}
-
-.medium-text-blue {
-    /* Add any specific styles for the medium text if needed */
-}
-
-.MentorWords {
-    /* Add any specific styles for the MentorWords image if needed */
+    display: flex; 
+    padding-left: 200px;
+    padding-right: 200px;
+    justify-content: flex-start;
+    padding-top: 200px;
+    padding-bottom: 150px;
 }
 
 .subscribe-button {
-    /* Add any specific styles for the subscribe button if needed */
+    background-color: #FFB500; 
+    height:40px;
+    font-size: 14px;
+    font-weight: 800;
+    color: white; 
+    border: none; 
+    border-radius: 999px; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    cursor: pointer; 
 }

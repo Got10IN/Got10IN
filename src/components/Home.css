@@ -1,8 +1,24 @@
+.container-body {
+    justify-content: space-between; 
+    display: flex; 
+    padding-left: 200px;
+    padding-right: 200px;
+    align-items: center; 
+    padding-top: 150px;
+}
+
 .text {
     flex: 1; 
-    text-align: left;
     padding-left: 15px;
-    
+}
+
+.text2 {
+    flex: 0.6; 
+}
+
+.text-body {
+    flex: 1; 
+    text-align: left;   
 }
 
 .error-message {
@@ -11,49 +27,32 @@
     margin-top: 5px;
 }
 
-
-.text2 {
-    flex: 0.8; 
-    text-align: left;
-    padding-left: 15px;
-}
-.text-body {
-    flex: 1; 
-    text-align: left;    
-}
-
 .text-body-right {
     flex: 1; 
     text-align: right;    
 }
 
+.WordCard{
+    max-width: 100%;
+}
 
 .image-blue {
-    flex: 0.8;
+    flex: 1;
     width: 450px;
-    padding-right: 100px;
 }
 
-
-.container-body {
-    display: flex; 
-    padding-left: 150px;
-    padding-right: 150px;
-    align-items: center; 
-    padding-top: 150px;
-}
 .container-white {
     background-color: white;
-    margin-top: -20px;
     align-items: center; 
     padding-top: 50px;
+    width: 100%; /* 让宽度自适应 */
 }
 
 .container-small {
-    display: flex; /* 使用flexbox布局 */
-    padding-left: 150px;
-    padding-right: 150px;
-    align-items: center; /* 垂直居中对齐 */
+    display: flex; 
+    padding-left: 200px;
+    padding-right: 200px;
+    align-items: center; 
     padding-top: 80px;
     padding-bottom: 80px;
 }
@@ -63,6 +62,7 @@
     color: #00366D;
     line-height: 1.0;
     margin-top: 0px;
+    line-height: 150%;
 }
 
 .large-text {
@@ -89,7 +89,7 @@
 
 
 .small-text-yellow {
-    font: 600 20px '';
+    font: 600 25px '';
     line-height: 1.5;
     margin-bottom: 5px;
     color:#FFB500; 
@@ -103,10 +103,79 @@
     color: white; 
     border: none; 
     border-radius: 999px; 
-    padding: 10px 20px; 
+    padding: 15px 20px; 
     text-align: center; 
     text-decoration: none; 
     display: inline-block; 
     cursor: pointer; 
 }
+
+.slider-container {
+    display: flex;
+    flex-direction: column; /* 垂直布局 */
+    align-items: flex-start; /* 靠左对齐 */
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.slider-container-middle {
+    display: flex;
+    flex-direction: column; /* 垂直布局 */
+    align-items: center; /* 靠左对齐 */
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.slider-image {
+    width: 400px;
+    height: auto;
+    margin-top: 25px;
+    display: block;
+}
+
+.dots-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    display: inline-block;
+    width: 15px;
+    height: 8px;
+    margin: 0 5px;
+    background-color: rgb(255,255,255,0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: width 0.3s, height 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.dot:hover {
+    width: 30px; 
+    background-color: #FFB500; 
+    box-shadow: 0 0 10px #FFB500; 
+}
+
+.dot.active {
+    width: 30px; 
+    background-color: #FFB500; 
+    box-shadow: 0 0 10px #FFB500; 
+}
+
+.greydot {
+    display: inline-block;
+    width: 15px;
+    height: 8px;
+    margin: 0 5px;
+    background-color: rgb(0,0,0,0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: width 0.3s, height 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.greydot.active {
+    width: 30px; 
+    background-color: #FFB500; 
+    box-shadow: 0 0 10px #FFB500; 
+}
+
 

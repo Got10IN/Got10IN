@@ -20,7 +20,7 @@ function CollegeRanking() {
  };
 
   return (
-    <div className="container py-5">
+    <div className="mentor-fullscreen-container">
       <h2>College Ranking</h2>
       <p>Discover the top colleges based on your preferences.</p>
       <form onSubmit={handleSubmit} className="mt-4">

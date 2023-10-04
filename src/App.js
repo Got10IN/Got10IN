@@ -5,8 +5,9 @@ import Home from './components/Home';
 import CollegeRanking from './components/CollegeRanking';
 import FindMentor from './components/FindMentor';
 import AboutUs from './components/AboutUs';
+import MyCollegeRanking from './components/MyCollegeRanking';
 import LoginSignup from './components/LoginSignup';
-import CollegePreferences from './components/CollegePreferences';
+// import CollegePreferences from './components/CollegePreferences';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -23,7 +24,7 @@ function App() {
           <Route path="/find-mentor" element={<FindMentor />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/login-signup" element={<LoginSignup />} />
-          <Route path="/my-college-ranking" element={<CollegePreferences />} />
+          <Route path="/my-college-ranking" element={<MyCollegeRanking />} />
         </Routes>
         <Footer />
       </div>
