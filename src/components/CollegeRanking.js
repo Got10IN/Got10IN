@@ -41,7 +41,7 @@ function CollegeRanking() {
             <option value="private">Private</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Get College Rankings</button>
+        <link type="submit" className="btn btn-primary">Get College Rankings</link>
       </form>
     </div>
   );

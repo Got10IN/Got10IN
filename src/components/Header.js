@@ -4,10 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import './header.css';
 
 function Header() {
-    const headerStyle = {
-      paddingLeft: '10%',
-      paddingRight: '10%',
-    };
 
     const location = useLocation();
     const isActive = (path) => location.pathname === path;
@@ -26,8 +22,8 @@ function Header() {
     };
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={headerStyle}>
-            <div className="container">
+      <nav className="container">
+            <div className="navbar navbar-expand-lg fixed-top" style={{paddingLeft:'10%',paddingRight:'10%',paddingTop:"3%",paddingBottom:"1.5%"}}>
                 <Link to="/" className="navbar-brand">
                     <img src="/logo.png" alt="Logo" className="logo-img" />
                 </Link>
@@ -36,17 +32,17 @@ function Header() {
                 </button>
                 <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul className="navbar-nav">
-                    <li className={`nav-item ${isActive('/') ? 'active' : ''}`}>
-                        <Link to="/" className="link1">Home</Link>
+                    <li className="nav-item">
+                        <Link to="/" className={`link1 ${isActive('/') ? 'active' : ''}`}>Home</Link>
                     </li>
-                    <li className={`nav-item ${isActive('/my-college-ranking') ? 'active' : ''}`}>
-                        <Link to="/my-college-ranking" className="link1">My College Ranking</Link>
+                    <li className="nav-item">
+                        <Link to="/my-college-ranking" className={`link1 ${isActive('/my-college-ranking') ? 'active' : ''}`}>My College Ranking</Link>
                     </li>
-                    <li className={`nav-item ${isActive('/find-mentor') ? 'active' : ''}`}>
-                        <Link to="/find-mentor" className="link1">Find a Mentor</Link>
+                    <li className="nav-item">
+                        <Link to="/find-mentor" className={`link1 ${isActive('/find-mentor') ? 'active' : ''}`}>Find a Mentor</Link>
                     </li>
-                    <li className={`nav-item ${isActive('/about-us') ? 'active' : ''}`}>
-                        <Link to="/about-us" className="link1">About Us</Link>
+                    <li className="nav-item">
+                        <Link to="/about-us" className={`link1 ${isActive('/about-us') ? 'active' : ''}`}>About Us</Link>
                     </li>
                     </ul>
                 </div>
