@@ -57,7 +57,7 @@ function AboutUs() {
         <div class="button-container">
           <button className="subscribe-button2" style={{backgroundColor:'rgb(255,255,255,0.3)',height:'50px'}}>Subscribe</button>
           <p className="small-text-white">or</p>
-          <button className="subscribe-button2" style={{backgroundColor:'#FFB500',height:'50px'}}>Sign up</button>
+          <button className="subscribe-button2" style={{backgroundColor:'#FFB500',height:'50px',right:'0%'}}>Sign up</button>
         </div>
       </div>  
     </div>   

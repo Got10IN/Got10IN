@@ -1,29 +1,26 @@
-.fullscreen-container {
-    display: flex;
+.Q-fullscreen-container {
     width: 100%;
     height: auto;
     background-color: white;
 }
 
-.center-container {
+.Q-center-container {
     display: flex; 
-    padding-left: 20%;
-    padding-right: 20%;
-    justify-content: flex-start;
-    padding-top: 15%;
-    padding-bottom: 10%;
+    min-width: 800px;
+    padding-left: 25%;
+    padding-right: 25%;
 }
-
 
 .progress-container {
-    width: 600px;
-    display: flex;
+    width: 100%;
+    display: flex; 
     align-items: center;
-    gap:5%;
-    justify-content: center;
+    margin: auto; 
+    margin-top: auto; 
+    margin-bottom: auto; 
+    gap: 5%;
 }
-
-
+  
 .progress-title {
     font-size: 14px;
     font-weight: bold;
@@ -31,7 +28,7 @@
 }
 
 .barbackground {
-    width: 80%;
+    width: 90%;
     height: 12px;
     background-color: #fff;
     /* border: 1px solid #A0A0A0; */
@@ -51,4 +48,36 @@
     color: #888888;
 }
 
+.Q-Button-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    flex: 0.98;
+  }
+
+.skip-button-container {
+    flex: 1; 
+    text-align: center; 
+  }
+
+.small-button { 
+    font-size: 14px;
+    font-weight: 600;
+    color: white; 
+    border: none; 
+    border-radius: 999px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    cursor: pointer; 
+    white-space: nowrap;
+}
+
+.small-text-blue {
+    color: #003362;
+    font: 600 14px '';
+    line-height: 1.5;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
 
