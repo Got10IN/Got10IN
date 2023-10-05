@@ -51,7 +51,7 @@ function Home() {
           <div class="text">   
               <p class="small-text-yellow">Are you</p>
               <div class="slider-container">
-                <img src={`/Q${currentSlide}.png`} alt={`Word${currentSlide}`} className="word" style={{ width: 'auto', height: '70px', marginTop: '25px',marginBottom: '30px'}} />
+                <img src={`/Q${currentSlide}.png`} alt={`Word${currentSlide}`} className="WordCard2" style={{marginTop: '1%',marginBottom: '5%'}} />
                   <div className="dots-container">
                   {[1, 2, 3].map((slideNumber) => (
                     <div
@@ -63,22 +63,22 @@ function Home() {
                   </div>
               </div>
               {/* <p class="medium-text">overwhelmed by those crazy<br></br>ranks of national colleges?</p> */}
-              <div style={{ display: 'flex', gap: '20px', paddingTop:'40px',paddingBottom:'100px'}}>
-                <input type="email" className="form-control" placeholder="  Please enter your email" style={{ borderRadius: '50px',width:'300px',height:'40px'}} value={email}
+              <div style={{ display: 'flex', gap: '5%', paddingTop:'15%',paddingBottom:'10%'}}>
+                <input type="email" className="form-control" placeholder="  Please enter your email" style={{ borderRadius: '50px',width:'70%',height:'40px'}} value={email}
     onChange={(e) => setEmail(e.target.value)}/>
-                <button className="subscribe-button" onClick = {handleSubscription}>Subscribe</button>
+                <button className="subscribe-button-1" style={{height:'40px'}}onClick = {handleSubscription}>Subscribe</button>
               </div>
           </div>
-          <div class="text2">
-              <img src="/logo2.png" alt="Logo"  style={{ width: '480px', height: 'auto' }}/>
+          <div class="text">
+              <img src="/logo2.png" alt="Logo" className="WordCard"/>
               {/* <p class="small-text-white">Your AI empowered college application assistant is here to help!</p> */}
-              <img src="/Rocket.png" alt="Rocket"  style={{ width: '480px', height: 'auto',marginTop:'-40px'}}/>
+              <img src="/Rocket.png" alt="Rocket"  className="WordCard" style={{marginTop:'-40px'}}/>
           </div>
         </div>  
         <div class="container-white" >
-              <p class="medium-text-blue" style={{marginLeft:'200px',marginTop:'80px'}}>Explore our features</p>
+              <p class="medium-text-blue" style={{marginLeft:'10%',marginTop:'5%',marginBottom:'5%'}}>Explore our features</p>
               <div class="container-small" >
-                <img src="/LandingPic1.png" alt="Logo" className="image-blue" style={{paddingRight:'100px'}}/>
+                <img src="/LandingPic1.png" alt="Logo" className="image-blue" style={{paddingRight:'10%'}}/>
                 <div class="text-body">   
                   <p class="medium-text-blue">We provide you with a personalized college ranking</p>
                   <img src="/Word1-1.png" alt="Word1-1" className="WordCard"/>
@@ -91,21 +91,21 @@ function Home() {
                   <img src="/Word1-2.png" alt="Word1-2" className="WordCard"/>
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLScEu6YWaiO3aV0yNXqRpwTs3j6jV6gflemDeNW_ZC0FE6BiBQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" className="subscribe-button" style={{marginTop:'50px'}}>Join wishlist</a>
                 </div>
-                <img src="/LandingPic2.png" alt="Logo" className="image-blue" style={{paddingLeft:'100px'}}/>
+                <img src="/LandingPic2.png" alt="Logo" className="image-blue" style={{paddingLeft:'10%'}}/>
               </div>
               <div class="container-small">
-                <img src="/LandingPic3.png" alt="Logo" className="image-blue" style={{paddingRight:'100px'}}/>
+                <img src="/LandingPic3.png" alt="Logo" className="image-blue" style={{paddingRight:'10%'}}/>
                 <div class="text-body">   
                   <p class="medium-text-blue">We help you plan your university application</p>
                   <img src="/Word1-3.png" alt="Word1-3" className="WordCard"/>
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLScEu6YWaiO3aV0yNXqRpwTs3j6jV6gflemDeNW_ZC0FE6BiBQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" className="subscribe-button" style={{marginTop:'50px'}}>Join wishlist</a>
                 </div>
               </div>
-              <p class="medium-text-blue" style={{marginTop:'80px',marginLeft:'200px'}}>Our students say</p>
+              <p class="medium-text-blue" style={{marginLeft:'10%', marginBottom:'5%'}}>Our students say</p>
               <div class="container-small">
                 {/* 底部图片切换 */}
                 <div className="slider-container-middle">
-                  <img src={`/StudentSay${currentSlide}.png`} alt={`StudentSay${currentSlide}`} className="WordCard" style={{ marginBottom: '30px'}}/>
+                  <img src={`/StudentSay${currentSlide}.png`} alt={`StudentSay${currentSlide}`} className="WordCard" style={{ marginBottom: '3%'}}/>
                   <div className="dots-container">
                     {[1, 2, 3].map((slideNumber) => (
                       <div

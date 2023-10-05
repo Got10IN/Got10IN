@@ -24,7 +24,7 @@ function AboutUs() {
   return (
     <div class="container-white" >
       <div class="aboutus-center-content">
-          <div class="halfscreen-box" style={{paddingRight:'100px'}}>
+          <div class="halfscreen-box">
               <img src="/Logo-AboutUs.png" alt="Logo" className="WordCard"/>
               <div className="WordCard" style={{ display: 'flex', gap: '20px', paddingTop:'40px',paddingBottom:'100px'}}>
                 <input 
@@ -35,25 +35,32 @@ function AboutUs() {
                   value={email}
                   onChange={handleEmailChange}
                 />
-                <button className="subscribe-button" onClick={handleSubscribe}>Subscribe</button>
+                <button className="subscribe-button-1" onClick={handleSubscribe}>Subscribe</button>
               </div>
           </div>
-          <div class="halfscreen-box" style={{paddingTop:'45px'}}>   
+          <div class="halfscreen-box" style={{paddingTop:'4%'}}>   
               <img src="/GOT10IN (1).png" alt="Logo" className="WordCard"/>
-              <img src="/3buttons.png" alt="Logo" className="WordCard" style={{paddingTop:'20px'}}/>
-              <img src="/Hi.png" alt="Logo" className="WordCard" style={{paddingTop:'90px'}}/>
+              <img src="/3buttons.png" alt="Logo" className="WordCard" style={{paddingTop:'5%'}}/>
+              <img src="/Hi.png" alt="Logo" className="WordCard" style={{paddingTop:'20%'}}/>
           </div>
       </div>
     <div class="aboutus-center-content">
       <img src="/OurStory.png" alt="StudentSay" className="WordCard" />
     </div>
-    <img src="/RoadmapWord.png" alt="Roadmap" style={{paddingLeft:'200px',width:'40%',paddingTop:'100px'}}/>
+    <img src="/RoadmapWord.png" alt="Roadmap" style={{paddingLeft:'10%',width:'40%',paddingTop:'10%'}}/>
     <div class="container-small">
       <img src="/Roadmap.png" alt="StudentSay" className="WordCard"/>
     </div>
-    <div class="container-small">
-      <img src="/Comingsoon.png" alt="StudentSay" className="WordCard" style={{paddingBottom:'100px'}}/>
-    </div>
+    <div class="aboutus-center-content" style={{paddingBottom:'10%'}}>
+      <div class="image-container">
+        <img src="/Comingsoon.png" alt="StudentSay" className="WordCard"/>
+        <div class="button-container">
+          <button className="subscribe-button2" style={{backgroundColor:'rgb(255,255,255,0.3)',height:'50px'}}>Subscribe</button>
+          <p className="small-text-white">or</p>
+          <button className="subscribe-button2" style={{backgroundColor:'#FFB500',height:'50px'}}>Sign up</button>
+        </div>
+      </div>  
+    </div>   
 </div>
   );
 }

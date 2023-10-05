@@ -5,8 +5,8 @@ import './header.css';
 
 function Header() {
     const headerStyle = {
-      paddingLeft: '200px',
-      paddingRight: '200px',
+      paddingLeft: '10%',
+      paddingRight: '10%',
     };
 
     const location = useLocation();
@@ -28,8 +28,8 @@ function Header() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={headerStyle}>
             <div className="container">
-                <Link to="/" className="navbar-brand logo-header">
-                    <img src="/logo.png" alt="Your Logo" className="logo-img" />
+                <Link to="/" className="navbar-brand">
+                    <img src="/logo.png" alt="Logo" className="logo-img" />
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

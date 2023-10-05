@@ -1,13 +1,10 @@
 .navbar {
     width: 100%; /* 宽度占满整个屏幕 */
     background-color: #00366D; 
-  }
-.logo-header {
-    margin-right: auto; /* 将 Logo 推到左侧 */
-  }
+}  
 
 .logo-img {
-  max-width: 100px; 
+  max-width: 100px;
 }
 
 .link1 {
@@ -17,22 +14,8 @@
   text-decoration: none;
 }
 
-.nav-link {
-  color: #FFFFFF;
-  margin-left: 20px;
-  font-weight: bold;
-}
-
-.link1:hover {
+.link:hover {
   color: #FFB500; 
-}
-
-.logo-img {
-  max-width: 100px; 
-}
-  
-.ml-auto {
-    margin-left: auto; /* 将 Login/Signup 推到右侧 */
 }
 
 .custom-button {
@@ -49,9 +32,9 @@
     cursor: pointer; 
   }
   
-  .custom-button:hover {
-    background-color: rgba(255, 255, 255, 0.4); 
-  }
+.custom-button:hover {
+  background-color: rgba(255, 255, 255, 0.4); 
+}
 
 
 
