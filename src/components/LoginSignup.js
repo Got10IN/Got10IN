@@ -10,7 +10,7 @@ function LoginSignup() {
       e.preventDefault();
       try {
           const response = await axios.post('https://got10in-backend-cfba39007310.herokuapp.com/login/', { email, password });
-          if (response.status === 200 && response.data.success) {
+          if (response.status === 200 && response.data.access_token) {
               console.log("Login successful!", response.data);
               localStorage.setItem('isLoggedIn', 'true');
               alert("Login successful!");
