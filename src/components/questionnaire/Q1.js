@@ -64,7 +64,7 @@ function Q1() {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [inputFieldValue, setInputFieldValue] = useState('');
     const [generatedOptions, setGeneratedOptions] = useState([]);
-    const [confirming, setConfirming] = useState(false);
+    const [setConfirming] = useState(false);
 
     const handleSelectOption = (option) => {
         if (selectedOptions.length < 3) {
@@ -92,8 +92,8 @@ function Q1() {
     };
 
     return (
-        <div className="Q-fullscreen-container" style={{ paddingTop: '12%', paddingBottom: '10%' }}>
-            <div className="Q-center-container" style={{ paddingBottom: '5%' }}>
+        <div className="Q-fullscreen-container" style={{ paddingTop: '15%', paddingBottom: '10%' }}>
+            <div className="Q-center-container" style={{ paddingBottom: '3%' }}>
                 <div className="progress-container">
                     <div className="progress-title">Progress</div>
                     <div className="barbackground">
@@ -102,7 +102,7 @@ function Q1() {
                     <div className="progress-text">{`${currentPage}/${totalPages}`}</div>
                 </div>
             </div>
-            <div className="Q-left-container" >
+            <div className="Q-left-container" style={{height:'280px'}} >
                 <p className='main-text'>1. What are your fields of interest?</p>
                 <p className='small-text'>*You can choose up to 3 fields</p>
                 <div className="selected-options-container">

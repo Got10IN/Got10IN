@@ -1,6 +1,6 @@
 .Q-fullscreen-container {
     width: 100%;
-    min-height: 600px;
+    min-height: 700px;
     height: auto;
     background-color: white;
 }
@@ -58,6 +58,7 @@
 .main-text {
     font-size: 18px;
     color: #2C2C2C;
+    line-height: normal
 }
 
 .small-text {
@@ -116,6 +117,10 @@
     height: 40px;
     border: 1px solid #A0A0A0;
     padding: 1% 2%;
+    /* 隐藏浏览器默认的下拉箭头 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .dropdown {
