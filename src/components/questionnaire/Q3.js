@@ -51,7 +51,7 @@ function FieldWithDropdown({ options, selectedOptions, onSelect }) {
 
 function Q3() {
     const currentPage = 3;
-    const totalPages = 12;
+    const totalPages = 11;
 
     const progressPercentage = (currentPage / totalPages) * 100;
 

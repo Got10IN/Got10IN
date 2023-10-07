@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Q2() {
     const currentPage = 2;
-    const totalPages = 12;
+    const totalPages = 11;
 
     const progressPercentage = (currentPage / totalPages) * 100;
 
@@ -37,7 +37,7 @@ function Q2() {
                     <div className="progress-text">{`${currentPage}/${totalPages}`}</div>
                 </div>
             </div>
-            <div className="Q-left-container" style={{height:'280px'}}>
+            <div className="Q-left-container" style={{height:'300px'}}>
                 <p className='main-text'>2. What is your MBTI type?</p>
                 <div className="mbti-select-container">
                     <select

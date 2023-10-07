@@ -51,7 +51,7 @@ function FieldWithDropdown({ options, selectedOptions, onSelect }) {
 
 function Q4() {
     const currentPage = 4;
-    const totalPages = 12;
+    const totalPages = 11;
 
     const progressPercentage = (currentPage / totalPages) * 100;
 
@@ -100,7 +100,7 @@ function Q4() {
                 </div>
             </div>
             <div className="Q-left-container" >
-                <p className='main-text'>3.Tell us about your location preference</p>
+                <p className='main-text'>4.Tell us about your location preference</p>
                 <p className='main-text' style={{ paddingTop: '2%'}}>I like:</p>
                 <p className='small-text'>*You can choose up to 3 locations</p>
                 <div className="selected-options-container">

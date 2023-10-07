@@ -51,7 +51,7 @@ function FieldWithDropdown({ options, selectedOptions, onSelect }) {
 
 function Q1() {
     const currentPage = 1;
-    const totalPages = 12;
+    const totalPages = 11;
 
     const progressPercentage = (currentPage / totalPages) * 100;
 
@@ -64,7 +64,7 @@ function Q1() {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [inputFieldValue, setInputFieldValue] = useState('');
     const [generatedOptions, setGeneratedOptions] = useState([]);
-    const [setConfirming] = useState(false);
+    const [confirming,setConfirming] = useState(false);
 
     const handleSelectOption = (option) => {
         if (selectedOptions.length < 3) {
@@ -102,7 +102,7 @@ function Q1() {
                     <div className="progress-text">{`${currentPage}/${totalPages}`}</div>
                 </div>
             </div>
-            <div className="Q-left-container" style={{height:'280px'}} >
+            <div className="Q-left-container" /*style={{height:'280px'}}*/ >
                 <p className='main-text'>1. What are your fields of interest?</p>
                 <p className='small-text'>*You can choose up to 3 fields</p>
                 <div className="selected-options-container">

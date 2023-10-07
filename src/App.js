@@ -18,7 +18,6 @@ import Q8 from './components/questionnaire/Q8'
 import Q9 from './components/questionnaire/Q9'
 import Q10 from './components/questionnaire/Q10'
 import Q11 from './components/questionnaire/Q11'
-import Q12 from './components/questionnaire/Q12'
 
 // import CollegePreferences from './components/CollegePreferences';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -49,7 +48,6 @@ function App() {
           <Route path="/question9" element={<Q9 />} />
           <Route path="/question10" element={<Q10 />} />
           <Route path="/question11" element={<Q11 />} />
-          <Route path="/question12" element={<Q12 />} />
         </Routes>
         <Footer />
       </div>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Questionaire.css';  
 import { Link } from 'react-router-dom';
 
 function Q11() {
     const currentPage = 11;
-    const totalPages = 12;
+    const totalPages = 11;
 
     const progressPercentage = (currentPage / totalPages) * 100;
 
