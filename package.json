@@ -1,5 +1,5 @@
 {
-    "name": "got10in-ranking",
+    "name": "got10in",
     "version": "0.1.0",
     "main": "src/index.tsx",
     "private": true,
