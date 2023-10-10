@@ -94,7 +94,7 @@ const Q1 = () => {
             <p className='small-text' style={{ paddingTop: '5%' }}>
                 *If you cannot find your interested field in our list, enter one
             </p>
-            <div className='Q-button-container'>
+            <div className='flex justify-between items-center'>
                 <input
                     type='text'
                     className='Q-form-control'

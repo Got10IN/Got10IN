@@ -58,68 +58,51 @@ const Questionaire = () => {
     const CurrQuestion = Questions[currQuestion - 1]
 
     return (
-        <div
-            className='Q-fullscreen-container'
-            style={{ paddingTop: '15%', paddingBottom: '10%' }}
-        >
-            <div className='Q-center-container' style={{ paddingBottom: '3%' }}>
-                <div className='progress-container'>
-                    <div className='progress-title'>Progress</div>
-                    <div className='barbackground'>
-                        <div
-                            className='progress-fill'
-                            style={progressBarStyle}
-                        ></div>
-                    </div>
-                    <div className='progress-text'>{`${currQuestion}/${Questions.length}`}</div>
-                </div>
-            </div>
-            <Suspense>{<CurrQuestion />}</Suspense>
-            <div className='Q-center-container' style={{ paddingTop: '5%' }}>
-                <button
-                    className='small-button'
-                    style={{
-                        backgroundColor: '#96B2CF',
-                        height: '10%',
-                        padding: '1% 3%',
-                        flex: '0.02',
-                        marginRight: '15%',
-                    }}
-                    onClick={exitHandler}
+        <div className='w-full min-h-scree pt-[15%] pb-[10%] bg-white'>
+            <div className='w-1/2 mx-[25%] flex flex-col gap-12'>
+                <div
+                    className='Q-center-container'
+                    style={{ paddingBottom: '3%' }}
                 >
-                    Exit
-                </button>
-                <div className='Q-Button-container' style={{ flex: '0.98' }}>
+                    <div className='progress-container'>
+                        <div className='progress-title'>Progress</div>
+                        <div className='barbackground'>
+                            <div
+                                className='progress-fill'
+                                style={progressBarStyle}
+                            ></div>
+                        </div>
+                        <div className='progress-text'>{`${currQuestion}/${Questions.length}`}</div>
+                    </div>
+                </div>
+                <Suspense fallback={<div className='h-screen'>loading</div>}>
+                    {<CurrQuestion />}
+                </Suspense>
+                <div className='flex justify-between mt-4'>
                     <button
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#96B2CF',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                        onClick={prevQuestionHandler}
+                        className='text-base w-fit h-fit px-4 py-1 font-semibold text-white bg-accent-light rounded-3xl block cursor-pointer align-middle'
+                        onClick={exitHandler}
                     >
-                        <BiSolidChevronLeft />
+                        Exit
                     </button>
+                    <div className='flex justify-between items-center basis-1/2'>
+                        <BiSolidChevronLeft
+                            className='w-fit h-fit pr-6 pl-3 py-2 font-semibold text-white bg-accent-light rounded-3xl block cursor-pointer align-middle'
+                            onClick={prevQuestionHandler}
+                        />
 
-                    <div className='skip-button-container'>
                         <button
                             className='small-text-blue'
                             onClick={skipQuestionHandler}
                         >
                             Skip
                         </button>
+
+                        <BiSolidChevronRight
+                            className='w-fit h-fit pl-6 pr-3 py-2 font-semibold text-white bg-accent-dark rounded-3xl block cursor-pointer align-middle'
+                            onClick={nextQuestionHandler}
+                        />
                     </div>
-                    <button
-                        className='small-button h-full'
-                        style={{
-                            backgroundColor: '#003362',
-                            padding: '1% 4%',
-                        }}
-                        onClick={nextQuestionHandler}
-                    >
-                        <BiSolidChevronRight />
-                    </button>
                 </div>
             </div>
         </div>
