@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react'
+import { Parallax } from 'react-scroll-parallax'
 import './Home.css'
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import Card from './Card'
+import { HOME_CARDS } from '../../data/home/Home.data'
+import { IconBase } from 'react-icons'
 
 function Home() {
     const [email, setEmail] = useState('')
@@ -49,9 +52,9 @@ function Home() {
     }
 
     return (
-        <div className='home'>
+        <div className='with-full mx-0 my-auto overflow-hidden'>
             <div className='container-body'>
-                <div className='text'>
+                <Parallax className='text' speed={-10}>
                     <p className='small-text-yellow'>Are you</p>
                     <div className='slider-container'>
                         <img
@@ -76,11 +79,9 @@ function Home() {
                             ))}
                         </div>
                     </div>
-                    {/* <p className="medium-text">overwhelmed by those crazy<br></br>ranks of national colleges?</p> */}
                     <div
+                        className='flex gap-4'
                         style={{
-                            display: 'flex',
-                            gap: '5%',
                             paddingTop: '15%',
                             paddingBottom: '10%',
                         }}
@@ -88,7 +89,7 @@ function Home() {
                         <input
                             type='email'
                             className='form-control'
-                            placeholder='  Please enter your email'
+                            placeholder='Enter your email to subscribe!'
                             style={{
                                 borderRadius: '50px',
                                 width: '70%',
@@ -105,10 +106,11 @@ function Home() {
                             Subscribe
                         </button>
                     </div>
-                </div>
+                </Parallax>
                 <div className='text'>
-                    <img src='/logo2.png' alt='Logo' className='WordCard' />
-                    {/* <p className="small-text-white">Your AI empowered college application assistant is here to help!</p> */}
+                    <Parallax speed={-10}>
+                        <img src='/logo2.png' alt='Logo' className='WordCard' />
+                    </Parallax>
                     <img
                         src='/Rocket.png'
                         alt='Rocket'
@@ -128,91 +130,14 @@ function Home() {
                 >
                     Explore our features
                 </p>
-                <div className='container-small'>
-                    <img
-                        src='/LandingPic1.png'
-                        alt='Logo'
-                        className='image-blue'
-                        style={{ paddingRight: '10%' }}
-                    />
-                    <div className='text-body'>
-                        <p className='medium-text-blue'>
-                            We provide you with a personalized college ranking
-                        </p>
-                        <img
-                            src='/Word1-1.png'
-                            alt='Word1-1'
-                            className='WordCard'
-                        />
-                        <Link
-                            to='/my-college-ranking'
-                            className='subscribe-button'
-                            style={{ marginTop: '50px' }}
-                        >
-                            Try My College Rank
-                        </Link>
-                    </div>
-                </div>
-                <div className='container-small'>
-                    <div className='text-body'>
-                        <p className='medium-text-blue'>
-                            We get you the best peer & professional mentors
-                            around the clock
-                        </p>
-                        <img
-                            src='/Word1-2.png'
-                            alt='Word1-2'
-                            className='WordCard'
-                        />
-                        <a
-                            href='https://docs.google.com/forms/d/e/1FAIpQLScEu6YWaiO3aV0yNXqRpwTs3j6jV6gflemDeNW_ZC0FE6BiBQ/viewform?usp=sf_link'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='subscribe-button'
-                            style={{ marginTop: '50px' }}
-                        >
-                            Join wishlist
-                        </a>
-                    </div>
-                    <img
-                        src='/LandingPic2.png'
-                        alt='Logo'
-                        className='image-blue'
-                        style={{ paddingLeft: '10%' }}
-                    />
-                </div>
-                <div className='container-small'>
-                    <img
-                        src='/LandingPic3.png'
-                        alt='Logo'
-                        className='image-blue'
-                        style={{ paddingRight: '10%' }}
-                    />
-                    <div className='text-body'>
-                        <p className='medium-text-blue'>
-                            We help you plan your university application
-                        </p>
-                        <img
-                            src='/Word1-3.png'
-                            alt='Word1-3'
-                            className='WordCard'
-                        />
-                        <a
-                            href='https://docs.google.com/forms/d/e/1FAIpQLScEu6YWaiO3aV0yNXqRpwTs3j6jV6gflemDeNW_ZC0FE6BiBQ/viewform?usp=sf_link'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='subscribe-button'
-                            style={{ marginTop: '50px' }}
-                        >
-                            Join wishlist
-                        </a>
-                    </div>
-                </div>
+
+                {HOME_CARDS.map((card) => Card(card))}
+
                 <p
                     className='medium-text-blue'
                     style={{ marginLeft: '10%', marginBottom: '5%' }}
                 >
-                    Our students say
+                    Hear from our students:
                 </p>
                 <div className='container-small'>
                     {/* 底部图片切换 */}
