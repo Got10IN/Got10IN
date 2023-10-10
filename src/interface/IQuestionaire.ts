@@ -9,6 +9,7 @@ export interface IQuestionaire {
     q8: IQMultiSelect
     q9: IQMultiSelect
     q10: IQTendency[]
+    q11: IQMultiSelect[]
 }
 
 export interface IQMultiSelect {

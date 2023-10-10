@@ -1,98 +1,33 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import './Questionaire.css'
 import { TendencySlider } from './components'
+import { useQuestionaireContext } from '../../utils/hooks/QuestionaireContext.hook'
 
-
-
-function Q5() {
-    const currentPage = 5
-    const totalPages = 11
-
-    const progressPercentage = (currentPage / totalPages) * 100
-
-    const progressBarStyle = {
-        width: `${progressPercentage}%`,
-    }
-
+const Q5 = () => {
     const [tendencyValue, setTendencyValue] = useState(50) // 初始值为50
 
-    const handleTendencyChange = (value: number) => {
-        setTendencyValue(value)
-    }
+    const [questionaire, setQuestionaire] = useQuestionaireContext()
+
+    useEffect(() => {
+        setQuestionaire({
+            ...questionaire,
+            q5: {
+                tendency: tendencyValue,
+            },
+        })
+    }, [tendencyValue])
 
     return (
-        <div
-            className='Q-fullscreen-container'
-            style={{ paddingTop: '15%', paddingBottom: '10%' }}
-        >
-            <div className='Q-center-container' style={{ paddingBottom: '3%' }}>
-                <div className='progress-container'>
-                    <div className='progress-title'>Progress</div>
-                    <div className='barbackground'>
-                        <div
-                            className='progress-fill'
-                            style={progressBarStyle}
-                        ></div>
-                    </div>
-                    <div className='progress-text'>{`${currentPage}/${totalPages}`}</div>
-                </div>
-            </div>
-            <div className='Q-left-container' style={{ height: '300px' }}>
-                <p className='main-text'>
-                    5. What kind of lifestyle do you prefer?
-                </p>
-                <p className='small-text'>*Your Tendency: {tendencyValue}</p>
-                <TendencySlider
-                    onValueChange={handleTendencyChange}
-                    labelLeading='🤓 Rural'
-                    labelTrailing='🥳 Urban'
-                />
-            </div>
-            <div className='Q-center-container'>
-                <Link
-                    to='/my-college-ranking'
-                    className='small-button'
-                    style={{
-                        backgroundColor: '#96B2CF',
-                        height: '10%',
-                        padding: '1% 3%',
-                        flex: '0.02',
-                        marginRight: '15%',
-                    }}
-                >
-                    Exit
-                </Link>
-                <div className='Q-Button-container' style={{ flex: '0.98' }}>
-                    <Link
-                        to='/question4'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#96B2CF',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &lt;
-                    </Link>
-                    <div className='skip-button-container'>
-                        <Link to='/question6' className='small-text-blue'>
-                            Skip
-                        </Link>
-                    </div>
-                    <Link
-                        to='/question6'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#003362',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &gt;
-                    </Link>
-                </div>
-            </div>
+        <div className='Q-left-container' style={{ height: '300px' }}>
+            <p className='main-text'>
+                5. What kind of lifestyle do you prefer?
+            </p>
+            <p className='small-text'>*Your Tendency: {tendencyValue}</p>
+            <TendencySlider
+                onValueChange={setTendencyValue}
+                labelLeading='🤓 Rural'
+                labelTrailing='🥳 Urban'
+            />
         </div>
     )
 }

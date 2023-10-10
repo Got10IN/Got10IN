@@ -1,13 +1,29 @@
-import { ReactNode, createContext } from 'react'
+import {
+    Dispatch,
+    ReactNode,
+    SetStateAction,
+    createContext,
+    useState,
+} from 'react'
 import { IQuestionaire } from '../interface/IQuestionaire'
-import { Questionaire } from '../class/Questionaire.class'
+import { CQuestionaire } from '../class/Questionaire.class'
 
-const QuestionaireContext = createContext<IQuestionaire>(new Questionaire())
+const QuestionaireContext = createContext<{
+    questionaire: IQuestionaire
+    setQuestionaire: Dispatch<SetStateAction<IQuestionaire>>
+}>({ questionaire: new CQuestionaire(), setQuestionaire: () => null })
 
-export const QuestionaireContextProvider = ({ children }: { children: ReactNode }) => {
+export const QuestionaireContextProvider = ({
+    children,
+}: {
+    children: ReactNode
+}) => {
+    const [questionaire, setQuestionaire] = useState<IQuestionaire>(
+        new CQuestionaire()
+    )
 
     return (
-        <QuestionaireContext.Provider value={new Questionaire()}>
+        <QuestionaireContext.Provider value={{ questionaire, setQuestionaire }}>
             {children}
         </QuestionaireContext.Provider>
     )

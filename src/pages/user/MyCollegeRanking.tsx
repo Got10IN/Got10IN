@@ -20,7 +20,7 @@ function MyCollegeRanking() {
                         style={{ width: '500px', height: 'auto' }}
                     />
                     <Link
-                        to='/question/1'
+                        to='/question'
                         className='subscribe-button'
                         style={{ marginTop: '20%', width: '350px' }}
                     >

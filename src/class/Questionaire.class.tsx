@@ -5,7 +5,7 @@ import {
     IQuestionaire,
 } from '../interface/IQuestionaire'
 
-export class Questionaire implements IQuestionaire {
+export class CQuestionaire implements IQuestionaire {
     q1: IQMultiSelect
     q2: IQSingleSelect
     q3: IQMultiSelect[]
@@ -16,6 +16,7 @@ export class Questionaire implements IQuestionaire {
     q8: IQMultiSelect
     q9: IQMultiSelect
     q10: IQTendency[]
+    q11: IQMultiSelect[]
 
     constructor() {
         this.q1 = { options: [] }
@@ -36,5 +37,10 @@ export class Questionaire implements IQuestionaire {
             { tendency: 0 },
             { tendency: 0 },
         ]
+        this.q11 = [{ options: [] }, { options: [] }]
+    }
+
+    get json(): string {
+        return JSON.stringify(this)
     }
 }
