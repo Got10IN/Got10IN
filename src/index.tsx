@@ -5,13 +5,16 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './axiosConfig'
 import { QuestionaireContextProvider } from './context/Questionaire.context'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <React.StrictMode>
-        <QuestionaireContextProvider>
-            <App />
-        </QuestionaireContextProvider>
+        <ParallaxProvider>
+            <QuestionaireContextProvider>
+                <App />
+            </QuestionaireContextProvider>
+        </ParallaxProvider>
     </React.StrictMode>
 )
 

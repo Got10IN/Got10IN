@@ -40,19 +40,7 @@ function App() {
                         path='/my-college-ranking'
                         element={<MyCollegeRanking />}
                     />
-                    <Route path='/question' element={<Questionaire />}>
-                        <Route path='/question/1' element={<Q1 />} />
-                        <Route path='/question/2' element={<Q2 />} />
-                        <Route path='/question/3' element={<Q3 />} />
-                        <Route path='/question/4' element={<Q4 />} />
-                        <Route path='/question/5' element={<Q5 />} />
-                        <Route path='/question/6' element={<Q6 />} />
-                        <Route path='/question/7' element={<Q7 />} />
-                        <Route path='/question/8' element={<Q8 />} />
-                        <Route path='/question/9' element={<Q9 />} />
-                        <Route path='/question/10' element={<Q10 />} />
-                        <Route path='/question/11' element={<Q11 />} />
-                    </Route>
+                    <Route path='/question' element={<Questionaire />} />
                 </Route>
             </Routes>
         </Router>
