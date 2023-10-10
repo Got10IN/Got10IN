@@ -1,36 +1,53 @@
 import '../findMentor/FindMentor.css'
-import React from 'react'
+
 import { Link } from 'react-router-dom'
+import MyRankingDemo from '../../assets/home/MyRanking.png'
+import { Parallax } from 'react-scroll-parallax'
+import { BiSolidChevronRight } from 'react-icons/bi'
 
 function MyCollegeRanking() {
     return (
         <div className='mentor-fullscreen-container'>
-            <div className='mentor-center-content'>
-                <img
-                    src='/MyRanking.png'
-                    alt='Mentor'
-                    className='image-blue'
-                    style={{ paddingRight: '100px' }}
-                />
-                <div className='text-body-right'>
+            <div className='flex px-[10%] pt-[15%] pb-[10%] flex-row items-center'>
+                <Parallax speed={5} className='basis-1/2'>
                     <img
-                        src='/MyRankingWords.png'
-                        alt='MyRankingWords'
-                        className='WordCard'
-                        style={{ width: '500px', height: 'auto' }}
+                        src={MyRankingDemo}
+                        alt=''
+                        className='pointer-events-none w-full'
+                        style={{ paddingRight: '100px' }}
                     />
+                </Parallax>
+
+                <div className='basis-1/2 flex flex-col items-end'>
+                    <p className='text-3xl text-accent font-bold'>
+                        Welcome to My College Ranking!
+                    </p>
+                    <span className='text-sm bg-highlight text-white px-2 py-1 rounded-lg max-w-fit'>
+                        Free 🥳
+                    </span>
+                    <p className='font-light text-right mt-8'>
+                        Here, we invite you to complete a brief{' '}
+                        <span className='font-semibold'>1-3 minute</span> quiz.
+                        Within this quiz, you'll be inquired about your MBTI,
+                        academic history, extracurricular passions, financial
+                        status, and various other college selection preferences.
+                        Subsequently, we will craft a personalized college
+                        ranking list complete with a detailed comparison of the
+                        factors that matter most to you.
+                    </p>
+                    <p className='font-light text-sm text-text text-right'>
+                        *Keep in mind, the result is completely free. We'd love
+                        for you to create an account with us, but it is entirely
+                        optional. Feel free to skip anything you don't want to
+                        share too!
+                    </p>
                     <Link
                         to='/question'
-                        className='subscribe-button'
+                        className='subscribe-button align-middle'
                         style={{ marginTop: '20%', width: '350px' }}
                     >
-                        Get started
+                        Get started <BiSolidChevronRight className='inline-block' />
                     </Link>
-                    <img
-                        src='/Try.png'
-                        alt='Try'
-                        style={{ maxWidth: '75%', paddingTop: '2%' }}
-                    />
                 </div>
             </div>
         </div>
