@@ -2,6 +2,7 @@ import React from 'react'
 import './FindMentor.css'
 import { Parallax } from 'react-scroll-parallax'
 import FindMentorDemo from '../../assets/mentor/Mentor.png'
+import { SubscribeButton } from '../../components/functional/SubscribeButton'
 
 function FindMentor() {
     return (
@@ -31,27 +32,10 @@ function FindMentor() {
                         . And definitely, we also offer 1-on-1 real person
                         mentorship whenever you need it.
                     </p>
-                    <a
-                        href='https://docs.google.com/forms/d/e/1FAIpQLScEu6YWaiO3aV0yNXqRpwTs3j6jV6gflemDeNW_ZC0FE6BiBQ/viewform?usp=sf_link'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='subscribe-button'
-                        style={{ marginTop: '15%', width: '350px' }}
-                    >
-                        Join wishlist
-                    </a>
+                    <SubscribeButton />
                 </div>
             </div>
         </div>
-        // <div className="mentor-fullscreen-container">
-        //     <div className="mentor-center-content">
-        //         <img src="/Mentor.png" alt="Mentor" className="image-blue" style={{paddingRight:'100px'}}/>
-        //         <div className="text-body-right">
-        //             <img src="/MentorWords.png" alt="MentorWords" className="WordCard"/>
-        //
-        //         </div>
-        //     </div>
-        // </div>
     )
 }
 

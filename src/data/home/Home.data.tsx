@@ -3,6 +3,7 @@ import Landing1 from '../../assets/home/Landing1.png'
 import Landing2 from '../../assets/home/Landing2.png'
 import Landing3 from '../../assets/home/Landing3.png'
 import { Link } from 'react-router-dom'
+import { SubscribeButton } from '../../components/functional/SubscribeButton'
 
 export const HOME_CARDS: ICard[] = [
     {
@@ -23,10 +24,9 @@ export const HOME_CARDS: ICard[] = [
         button: () => (
             <Link
                 to='/my-college-ranking'
-                className='subscribe-button'
-                style={{ marginTop: '50px' }}
+                className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
             >
-                Try My College Rank
+                Try My College Ranking
             </Link>
         ),
     },
@@ -45,17 +45,7 @@ export const HOME_CARDS: ICard[] = [
             </p>
         ),
         image: Landing2,
-        button: () => (
-            <a
-                href='https://docs.google.com/forms/d/e/1FAIpQLScEu6YWaiO3aV0yNXqRpwTs3j6jV6gflemDeNW_ZC0FE6BiBQ/viewform?usp=sf_link'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='subscribe-button'
-                style={{ marginTop: '50px' }}
-            >
-                Join wishlist
-            </a>
-        ),
+        button: SubscribeButton,
         reverse: true,
     },
     {
@@ -69,16 +59,6 @@ export const HOME_CARDS: ICard[] = [
             </p>
         ),
         image: Landing3,
-        button: () => (
-            <a
-                href='https://docs.google.com/forms/d/e/1FAIpQLScEu6YWaiO3aV0yNXqRpwTs3j6jV6gflemDeNW_ZC0FE6BiBQ/viewform?usp=sf_link'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='subscribe-button'
-                style={{ marginTop: '50px' }}
-            >
-                Join wishlist
-            </a>
-        ),
+        button: SubscribeButton,
     },
 ]
