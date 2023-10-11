@@ -1,12 +1,14 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useUpdateEffect } from 'usehooks-ts'
 import { updateQ1 } from '../../utils/redux/questionnaire'
 import type { RootState } from '../../utils/redux/store'
 import './Questionnaire.css'
-import { FieldWithDropdown } from './components'
 import { Q1Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
 import { Combobox, Transition } from '@headlessui/react'
+import { IoClose } from 'react-icons/io5'
+import { HiMiniChevronUpDown } from 'react-icons/hi2'
+import { FormTitle, MultiSelectDropdownField } from './components'
 
 const Q1 = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
@@ -63,76 +65,19 @@ const Q1 = () => {
     }, [])
 
     return (
-        <div className='Q-left-container' /*style={{height:'280px'}}*/>
-            <p className='main-text'>1. What are your fields of interest?</p>
-            <p className='small-text'>*You can choose up to 3 fields</p>
-
-            <div className='selected-options-container'>
-                {selectedOptions.map((option, index) => (
-                    <div key={index} className='selected-option'>
-                        {option}
-                        <span
-                            className='remove-option'
-                            onClick={() => handleRemoveOption(index)}
-                        >
-                            X
-                        </span>
-                    </div>
-                ))}
-            </div>
-            <Combobox
-                value={selectedOptions}
-                onChange={fai setSelectedOptions}
-                multiple
-            >
-                {selectedOptions.length > 0 && (
-                    <ul className='flex flex-wrap gap-4 mb-4 whitespace-nowrap'>
-                        {selectedOptions.map((option, index) => (
-                            <li key={index} className='flex items-center justify-center bg-accent text-white text-sm font-black rounded-full px-4 py-2'>{option}<button /></li>
-                        ))}
-                    </ul>
-                )}
-                <Combobox.Input
-                    className='rounded-lg w-full h-10 border-text border-[1px] border-solid px-3 py-2'
-                    onChange={(e) => {
-                        setQuery(e.target.value)
-                    }}
-                />
-                <Transition
-                    enter='transition duration-100 ease-out'
-                    enterFrom='transform scale-95 opacity-0'
-                    enterTo='transform scale-100 opacity-100'
-                    leave='transition duration-75 ease-out'
-                    leaveFrom='transform scale-100 opacity-100'
-                    leaveTo='transform scale-95 opacity-0'
-                >
-                    <Combobox.Options>
-                        {filteredOptions.map((option, index) => {
-                            return (
-                                <Combobox.Option
-                                    key={index}
-                                    value={option}
-                                    onClick={() => {
-                                        setSelectedOptions([
-                                            ...selectedOptions,
-                                            option,
-                                        ])
-                                    }}
-                                >
-                                    {option}
-                                </Combobox.Option>
-                            )
-                        })}
-                    </Combobox.Options>
-                </Transition>
-            </Combobox>
-            {/* <FieldWithDropdown
-                options={initialOptions}
+        <Fragment>
+            <FormTitle>1. What are your fields of interest?</FormTitle>
+            <p className='small-text'>
+                *feel free to choose any number of fields you are interested in
+            </p>
+            <MultiSelectDropdownField
+                initialOptions={initialOptions}
                 selectedOptions={selectedOptions}
-                onSelect={handleSelectOption}
-            /> */}
+                setSelectedOptions={setSelectedOptions}
+                removeOptionHandler={handleRemoveOption}
+            />
             <p className='small-text' style={{ paddingTop: '5%' }}>
-                *If you cannot find your interested field in our list, enter one
+                *if your interested field is not in our list, enter it here
             </p>
             <div className='flex justify-between items-center'>
                 <input
@@ -157,7 +102,7 @@ const Q1 = () => {
                     Confirm
                 </button>
             </div>
-        </div>
+        </Fragment>
     )
 }
 

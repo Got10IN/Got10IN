@@ -1,36 +1,18 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../utils/redux/store'
-import { updateQ4 } from '../../utils/redux/questionnaire'
-import './Questionnaire.css'
-import { FieldWithDropdown } from './components'
 import { useUpdateEffect } from 'usehooks-ts'
+import { updateQ4 } from '../../utils/redux/questionnaire'
+import { RootState } from '../../utils/redux/store'
+import './Questionnaire.css'
+import {
+    FormSubtitle,
+    FormTitle,
+    MultiSelectDropdownField,
+    MultiSelectGrid,
+} from './components'
+import { Q4Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
 
 const Q4 = () => {
-    const initialOptions = [
-        'Sunny',
-        'Rainy',
-        'Stormy',
-        'Snowy',
-        'Icy',
-        'Foggy',
-        'Windy',
-        'Muggy',
-        'Dry',
-        'Tropical',
-        'Polar',
-        'Tornado-prone',
-        'Drought',
-        'Mild',
-        'Hailstorm',
-        'Psychology',
-        'Overcast',
-        'Blizzard',
-        'Heatwave',
-        'Tropical Cyclone',
-        'Dust Storm',
-    ]
-
     const [selectedOptions1, setSelectedOptions1] = useState<string[]>([])
     const [selectedOptions2, setSelectedOptions2] = useState<string[]>([])
 
@@ -83,56 +65,28 @@ const Q4 = () => {
         setSelectedOptions2(selectedOptions2.options)
     }, [])
 
+    // @todo look into https://www.npmjs.com/package/react-simple-maps
+
     return (
-        <div className='Q-left-container'>
-            <p className='main-text'>
-                4.Tell us about your location preference
-            </p>
-            <p className='main-text' style={{ paddingTop: '2%' }}>
-                I like:
-            </p>
-            <p className='small-text'>*You can choose up to 3 locations</p>
-            <div className='selected-options-container'>
-                {selectedOptions1.map((option, index) => (
-                    <div key={index} className='selected-option'>
-                        {option}
-                        <span
-                            className='remove-option'
-                            onClick={() => handleRemoveOption1(index)}
-                        >
-                            X
-                        </span>
-                    </div>
-                ))}
-            </div>
-            <FieldWithDropdown
-                options={initialOptions}
+        <Fragment>
+            <FormTitle>
+                4. Tell us a bit about your location preference
+            </FormTitle>
+            <FormSubtitle className='mt-4'>I am thinking about:</FormSubtitle>
+            <MultiSelectGrid
+                initialOptions={initialOptions}
                 selectedOptions={selectedOptions1}
-                onSelect={handleSelectOption1}
+                setSelectedOptions={setSelectedOptions1}
             />
-            <p className='main-text' style={{ paddingTop: '5%' }}>
-                I don't like:
-            </p>
-            <p className='small-text'>*You can choose up to 3 locations</p>
-            <div className='selected-options-container'>
-                {selectedOptions2.map((option, index) => (
-                    <div key={index} className='selected-option'>
-                        {option}
-                        <span
-                            className='remove-option'
-                            onClick={() => handleRemoveOption2(index)}
-                        >
-                            X
-                        </span>
-                    </div>
-                ))}
-            </div>
-            <FieldWithDropdown
-                options={initialOptions}
+            <FormSubtitle className='mt-4'>
+                Places I want to avoid:
+            </FormSubtitle>
+            <MultiSelectGrid
+                initialOptions={initialOptions}
                 selectedOptions={selectedOptions2}
-                onSelect={handleSelectOption2}
+                setSelectedOptions={setSelectedOptions2}
             />
-        </div>
+        </Fragment>
     )
 }
 

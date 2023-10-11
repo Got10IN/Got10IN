@@ -169,14 +169,14 @@
     color: #888888;
 }
 
-.Q-left-container label {
+/* .Q-left-container label {
     display: block;
     align-items: center;
     margin-bottom: 0px;
     font-size: 14px;
     color: #616161;
     cursor: pointer;
-}
+} */
 
 .Q-left-container input[type='checkbox'] {
     margin-right: 2%;

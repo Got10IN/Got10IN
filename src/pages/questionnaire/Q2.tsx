@@ -1,43 +1,16 @@
-import { ChangeEvent, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../utils/redux/store'
-import { updateQ2 } from '../../utils/redux/questionnaire'
-import './Questionnaire.css'
+import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { Combobox, Transition } from '@headlessui/react'
+import { Q2Options as mbtiOptions } from '../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
+import { updateQ2 } from '../../utils/redux/questionnaire'
+import { FormTitle } from './components'
 
 const Q2 = () => {
-    // 初始 MBTI 类型选项
-    const mbtiOptions = [
-        'ISTJ',
-        'ISFJ',
-        'INFJ',
-        'INTJ',
-        'ISTP',
-        'ISFP',
-        'INFP',
-        'INTP',
-        'ESTP',
-        'ESFP',
-        'ENFP',
-        'ENTP',
-        'ESTJ',
-        'ESFJ',
-        'ENFJ',
-        'ENTJ',
-    ]
-
     const [selectedMBTI, setSelectedMBTI] = useState('')
 
-    const handleMBTISelect = (e: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedMBTI(e.target.value)
-    }
+    const questionnaire = useAppSelector((state) => state.questionnaire.value)
 
-    const questionnaire = useSelector(
-        (state: RootState) => state.questionnaire.value
-    )
-
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useUpdateEffect(() => {
         dispatch(updateQ2({ option: selectedMBTI }))
@@ -51,8 +24,8 @@ const Q2 = () => {
     }, [])
 
     return (
-        <div className='Q-left-container' style={{ height: '300px' }}>
-            <p className='main-text'>2. What is your MBTI type?</p>
+        <Fragment>
+            <FormTitle>2. What's your MBTI?</FormTitle>
             <div className='grid grid-cols-4 gap-8'>
                 {mbtiOptions.map((mbti, index) => {
                     const selected = mbti === selectedMBTI
@@ -61,9 +34,9 @@ const Q2 = () => {
                             key={index}
                             className={`${
                                 selected
-                                    ? 'bg-accent-dark scale-110'
-                                    : 'bg-accent-light hover:bg-accent-dark hover:scale-110 hover:duration-300'
-                            } duration-150 cursor-pointer text-white rounded-xl text-center py-2`}
+                                    ? 'bg-accent-dark'
+                                    : 'bg-accent-light hover:bg-accent'
+                            } hover:scale-110 hover:duration-300 duration-150 cursor-pointer text-white rounded-xl text-center py-2`}
                             onClick={() => setSelectedMBTI(mbti)}
                         >
                             {mbti}
@@ -71,7 +44,7 @@ const Q2 = () => {
                     )
                 })}
             </div>
-        </div>
+        </Fragment>
     )
 }
 

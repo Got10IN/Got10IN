@@ -1,8 +1,6 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Suspense, lazy, useState } from 'react'
 import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../../utils/redux/store'
+import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
 import { resetQuestion } from '../../../utils/redux/questionnaire'
 
@@ -77,6 +75,8 @@ const Questionnaire = () => {
 
     const CurrQuestion = Questions[currQuestion - 1]
 
+    const isLastQuestion = currQuestion === 11
+
     return (
         <div className='w-full min-h-scree pt-[15%] pb-[10%] bg-white'>
             <div className='w-1/2 mx-[25%] flex flex-col gap-12'>
@@ -95,39 +95,44 @@ const Questionnaire = () => {
                         <div className='progress-text'>{`${currQuestion}/${Questions.length}`}</div>
                     </div>
                 </div>
-                <Suspense fallback={<div className='h-screen'>loading</div>}>
-                    {<CurrQuestion />}
+                <Suspense
+                    fallback={<div className='min-h-[300px]'>loading</div>}
+                >
+                    <section className='min-h-[300px]'>
+                        {<CurrQuestion />}
+                    </section>
                 </Suspense>
-                <div className='flex justify-between mt-4'>
+
+                <div className='flex justify-between items-center mt-4'>
                     <button
-                        className='w-20 h-8 py-2 text-white bg-accent-light rounded-3xl flex justify-center items-center cursor-pointer align-middle font-semibold'
+                        className='text-accent-dark font-semibold text-sm w-20 h-8 py-2 hover:bg-accent-light duration-150 border-accent border-2 rounded-3xl flex justify-center items-center cursor-pointer align-middle'
                         onClick={exitHandler}
                     >
                         Exit
                     </button>
-                    <div className='flex justify-between items-center basis-1/2'>
+                    <button
+                        className='group w-20 h-8 py-2 text-accent hover:bg-accent-light duration-150 border-accent border-2 rounded-3xl flex justify-center items-center cursor-pointer align-middle font-semibold'
+                        onClick={prevQuestionHandler}
+                    >
+                        <BiSolidChevronLeft className='inline mr-3 flex-none group-hover:-translate-x-2 duration-150' />
+                    </button>
+                    <div className='flex gap-8'>
+                        {!isLastQuestion && (
+                            <button
+                                className='text-accent-dark font-semibold text-sm w-20 h-8 py-2 hover:bg-accent-light duration-150 border-accent border-2 rounded-3xl flex justify-center items-center cursor-pointer align-middle'
+                                onClick={skipQuestionHandler}
+                            >
+                                Skip
+                            </button>
+                        )}
                         <button
-                            className='w-20 h-8 py-2 text-white bg-accent-light rounded-3xl flex justify-center items-center cursor-pointer align-middle font-semibold'
-                            onClick={prevQuestionHandler}
-                        >
-                            <BiSolidChevronLeft className='inline mr-3 flex-none' />
-                        </button>
-
-                        <button
-                            className='small-text-blue'
-                            onClick={skipQuestionHandler}
-                        >
-                            Skip
-                        </button>
-
-                        <button
-                            className='w-20 h-8 py-2 text-white bg-accent-dark rounded-3xl flex justify-center items-center cursor-pointer align-middle font-semibold'
+                            className='group w-20 h-8 py-2 text-white bg-accent-dark rounded-3xl flex justify-center items-center cursor-pointer align-middle font-semibold'
                             onClick={nextQuestionHandler}
                         >
-                            {currQuestion === 11 ? (
+                            {isLastQuestion ? (
                                 'Submit'
                             ) : (
-                                <BiSolidChevronRight className='inline ml-3 flex-none' />
+                                <BiSolidChevronRight className='inline ml-3 flex-none group-hover:translate-x-2 duration-150' />
                             )}
                         </button>
                     </div>

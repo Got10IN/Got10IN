@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../utils/redux/store'
 import { updateQ6 } from '../../utils/redux/questionnaire'
 import './Questionnaire.css'
-import { TendencySlider } from './components'
+import { FormTitle, TendencySlider } from './components'
 import { useUpdateEffect } from 'usehooks-ts'
 
 const Q6 = () => {
@@ -29,15 +29,15 @@ const Q6 = () => {
     }, [])
 
     return (
-        <div className='Q-left-container' style={{ height: '300px' }}>
-            <p className='main-text'>6. What's your ideal college vibe?</p>
-            <p className='small-text'>*Your Tendency: {tendencyValue}</p>
+        <Fragment>
+            <FormTitle>6. What's your ideal college vibe?</FormTitle>
+
             <TendencySlider
                 onValueChange={setTendencyValue}
                 labelLeading='🤓 Hardcore'
                 labelTrailing='🥳 Party'
             />
-        </div>
+        </Fragment>
     )
 }
 

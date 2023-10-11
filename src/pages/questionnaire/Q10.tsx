@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import './Questionnaire.css'
-import { TendencySlider } from './components'
+import { FormSubtitle, FormTitle, TendencySlider } from './components'
 import { IQTendency } from '../../interface/IQuestionnaire'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../utils/redux/store'
@@ -43,26 +43,29 @@ const Q10 = () => {
     }, [])
 
     return (
-        <div className='Q-left-container'>
-            <p className='main-text' style={{ paddingBottom: '1%' }}>
+        <Fragment>
+            <FormTitle>
                 10. How much do the following factors matter to you?
-            </p>
-            <div className='Q-slider-container'>
+            </FormTitle>
+            <div className='flex flex-col [&>*]:flex-1'>
                 {factors.map((factor, index) => {
                     return (
-                        <section key={factor}>
-                            <p className='main-text'>{factor}</p>
+                        <section key={factor} className='flex flex-row items-center'>
+                            <FormSubtitle className='basis-1/5 pt-[2%]'>
+                                {factor}
+                            </FormSubtitle>
+
                             <TendencySlider
                                 onValueChange={(value) =>
                                     handleTendencyChange(value, index)
                                 }
-                                width={100}
+                                initialValue={0}
                             />
                         </section>
                     )
                 })}
             </div>
-        </div>
+        </Fragment>
     )
 }
 

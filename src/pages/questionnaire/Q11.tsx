@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../utils/redux/store'
-import { updateQ11 } from '../../utils/redux/questionnaire'
-import './Questionnaire.css'
 import { useUpdateEffect } from 'usehooks-ts'
+import { Q11Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
+import { updateQ11 } from '../../utils/redux/questionnaire'
+import { RootState } from '../../utils/redux/store'
+import './Questionnaire.css'
+import { FormTitle, MultiSelectGrid, SingleSelectGrid } from './components'
 
 const Q11 = () => {
-    const [selectedOptions1, setSelectedOptions1] = useState<string[]>([])
-    const [selectedOptions2, setSelectedOptions2] = useState<string[]>([])
-    const [selectedOptions3, setSelectedOptions3] = useState<string[]>([])
+    const [selectedOption, setSelectedOption] = useState<string>('')
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
     const questionnaire = useSelector(
         (state: RootState) => state.questionnaire.value
@@ -20,26 +21,42 @@ const Q11 = () => {
         dispatch(
             updateQ11([
                 {
-                    options: selectedOptions1,
+                    options: [selectedOption],
                 },
                 {
-                    options: selectedOptions2,
+                    options: selectedOptions,
                 },
-                {
-                    options: selectedOptions3
-                }
             ])
         )
-    }, [selectedOptions1, selectedOptions2, selectedOptions3])
+    }, [selectedOptions, selectedOption])
 
     useEffect(() => {
-        const [selectedOptions1, selectedOptions2, selectedOptions3] = questionnaire.q11
-        setSelectedOptions1(selectedOptions1.options)
-        setSelectedOptions2(selectedOptions2.options)
-        setSelectedOptions3(selectedOptions3.options)
+        const [selectedOption, selectedOptions] = questionnaire.q11
+        if (selectedOption.options.length > 0) {
+            setSelectedOption(selectedOption.options[0])
+        }
+        setSelectedOptions(selectedOptions.options)
     }, [])
 
-    return <div className='Q-left-container'></div>
+    return (
+        <Fragment>
+            <FormTitle>11. Are you looking at:</FormTitle>
+            <SingleSelectGrid
+                initialOptions={initialOptions.part1}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+            />
+            <FormTitle>
+                Among all the questions you answered, which ones do you think
+                matter to you the most?
+            </FormTitle>
+            <MultiSelectGrid
+                initialOptions={initialOptions.part2}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+            />
+        </Fragment>
+    )
 }
 
 export default Q11

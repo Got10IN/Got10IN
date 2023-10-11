@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../utils/redux/store'
 import { updateQ9 } from '../../utils/redux/questionnaire'
 import './Questionnaire.css'
 import { useUpdateEffect } from 'usehooks-ts'
+import { FormTitle, MultiSelectGrid } from './components'
+import { Q9Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
 
 const Q9 = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
@@ -35,51 +37,17 @@ const Q9 = () => {
     }, [])
 
     return (
-        <div className='Q-left-container' style={{ height: '300px' }}>
-            <p className='main-text' style={{ paddingBottom: '2%' }}>
+        <Fragment>
+            <FormTitle>
                 9. What is the GPA range that meets your expectations for the
                 school you wish to attend?
-            </p>
-            <label>
-                <input
-                    type='checkbox'
-                    value='I don’t care'
-                    checked={selectedOptions.includes('I don’t care')}
-                    onChange={() => handleOptionSelect('I don’t care')}
-                />
-                I don’t care
-            </label>
-            <br />
-            <label>
-                <input
-                    type='checkbox'
-                    value='3.0+'
-                    checked={selectedOptions.includes('3.0+')}
-                    onChange={() => handleOptionSelect('3.0+')}
-                />
-                3.0+
-            </label>
-            <br />
-            <label>
-                <input
-                    type='checkbox'
-                    value='3.0-3.5'
-                    checked={selectedOptions.includes('3.0-3.5')}
-                    onChange={() => handleOptionSelect('3.0-3.5')}
-                />
-                3.0-3.5
-            </label>
-            <br />
-            <label>
-                <input
-                    type='checkbox'
-                    value='above 3.5'
-                    checked={selectedOptions.includes('above 3.5')}
-                    onChange={() => handleOptionSelect('above 3.5')}
-                />
-                above 3.5
-            </label>
-        </div>
+            </FormTitle>
+            <MultiSelectGrid
+                initialOptions={initialOptions}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+            />
+        </Fragment>
     )
 }
 
