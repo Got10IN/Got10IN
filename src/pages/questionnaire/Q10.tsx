@@ -1,148 +1,82 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { TendencySlider } from './components'
-import './Questionaire.css'
+import { Fragment, useEffect, useState } from 'react'
+import './Questionnaire.css'
+import { FormSubtitle, FormTitle, TendencySlider } from './components'
+import { IQTendency } from '../../interface/IQuestionnaire'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../utils/redux/store'
+import { updateQ10 } from '../../utils/redux/questionnaire'
+import { useUpdateEffect } from 'usehooks-ts'
 
-function Q10() {
-    const currentPage = 10
-    const totalPages = 11
+const Q10 = () => {
+    const [tendencyValues, setTendencyValues] = useState<IQTendency[]>([
+        { tendency: 0 },
+        { tendency: 0 },
+        { tendency: 0 },
+        { tendency: 0 },
+        { tendency: 0 },
+        { tendency: 0 },
+        { tendency: 0 },
+    ])
 
-    const progressPercentage = (currentPage / totalPages) * 100
-
-    const progressBarStyle = {
-        width: `${progressPercentage}%`,
+    const handleTendencyChange = (value: number, index: number) => {
+        setTendencyValues([
+            ...tendencyValues.slice(0, index),
+            { tendency: value },
+            ...tendencyValues.slice(index + 1),
+        ])
     }
 
-    const [tendencyValue, setTendencyValue] = useState(0) // 初始值为50
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
 
-    const handleTendencyChange = (value: number) => {
-        setTendencyValue(value)
-    }
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(updateQ10(tendencyValues))
+    }, [tendencyValues])
+
+    useEffect(() => {
+        const tendencyValues = questionnaire.q10
+
+        setTendencyValues(tendencyValues)
+    }, [])
 
     return (
-        <div
-            className='Q-fullscreen-container'
-            style={{ paddingTop: '15%', paddingBottom: '10%' }}
-        >
-            <div className='Q-center-container' style={{ paddingBottom: '3%' }}>
-                <div className='progress-container'>
-                    <div className='progress-title'>Progress</div>
-                    <div className='barbackground'>
-                        <div
-                            className='progress-fill'
-                            style={progressBarStyle}
-                        ></div>
-                    </div>
-                    <div className='progress-text'>{`${currentPage}/${totalPages}`}</div>
-                </div>
+        <Fragment>
+            <FormTitle>
+                10. How much do the following factors matter to you?
+            </FormTitle>
+            <div className='flex flex-col [&>*]:flex-1'>
+                {factors.map((factor, index) => {
+                    return (
+                        <section key={factor} className='flex flex-row items-center'>
+                            <FormSubtitle className='basis-1/5 pt-[2%]'>
+                                {factor}
+                            </FormSubtitle>
+
+                            <TendencySlider
+                                onValueChange={(value) =>
+                                    handleTendencyChange(value, index)
+                                }
+                                initialValue={0}
+                            />
+                        </section>
+                    )
+                })}
             </div>
-            <div className='Q-left-container'>
-                <p className='main-text' style={{ paddingBottom: '1%' }}>
-                    10. How much do the following factors matter to you?
-                </p>
-                <div className='Q-slider-container'>
-                    <p className='main-text'>Diversity</p>
-                    {/* <p className="small-text">*Your Tendency: {tendencyValue}</p> */}
-                    <TendencySlider
-                        onValueChange={handleTendencyChange}
-                        width={100}
-                    />
-                    <p className='main-text' style={{ paddingTop: '5%' }}>
-                        Food
-                    </p>
-                    {/* <p className="small-text">*Your Tendency: {tendencyValue}</p> */}
-                    <TendencySlider
-                        onValueChange={handleTendencyChange}
-                        width={100}
-                    />
-                    <p className='main-text' style={{ paddingTop: '5%' }}>
-                        Safety
-                    </p>
-                    {/* <p className="small-text">*Your Tendency: {tendencyValue}</p> */}
-                    <TendencySlider
-                        onValueChange={handleTendencyChange}
-                        width={100}
-                    />
-                    <p className='main-text' style={{ paddingTop: '5%' }}>
-                        Career path
-                    </p>
-                    {/* <p className="small-text">*Your Tendency: {tendencyValue}</p> */}
-                    <TendencySlider
-                        onValueChange={handleTendencyChange}
-                        width={100}
-                    />
-                    <p className='main-text' style={{ paddingTop: '5%' }}>
-                        Research path
-                    </p>
-                    {/* <p className="small-text">*Your Tendency: {tendencyValue}</p> */}
-                    <TendencySlider
-                        onValueChange={handleTendencyChange}
-                        width={100}
-                    />
-                    <p className='main-text' style={{ paddingTop: '5%' }}>
-                        School reputation
-                    </p>
-                    {/* <p className="small-text">*Your Tendency: {tendencyValue}</p> */}
-                    <TendencySlider
-                        onValueChange={handleTendencyChange}
-                        width={100}
-                    />
-                    <p className='main-text' style={{ paddingTop: '5%' }}>
-                        Sports culture
-                    </p>
-                    {/* <p className="small-text">*Your Tendency: {tendencyValue}</p> */}
-                    <TendencySlider
-                        onValueChange={handleTendencyChange}
-                        width={100}
-                    />
-                </div>
-            </div>
-            <div className='Q-center-container' style={{ paddingTop: '5%' }}>
-                <Link
-                    to='/my-college-ranking'
-                    className='small-button'
-                    style={{
-                        backgroundColor: '#96B2CF',
-                        height: '10%',
-                        padding: '1% 3%',
-                        flex: '0.02',
-                        marginRight: '15%',
-                    }}
-                >
-                    Exit
-                </Link>
-                <div className='Q-Button-container' style={{ flex: '0.98' }}>
-                    <Link
-                        to='/question9'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#96B2CF',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &lt;
-                    </Link>
-                    <div className='skip-button-container'>
-                        <Link to='/question11' className='small-text-blue'>
-                            Skip
-                        </Link>
-                    </div>
-                    <Link
-                        to='/question11'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#003362',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &gt;
-                    </Link>
-                </div>
-            </div>
-        </div>
+        </Fragment>
     )
 }
+
+const factors: string[] = [
+    'Diversity',
+    'Food',
+    'Safety',
+    'Career path',
+    'Research opportunieis',
+    'School reputation',
+    'Sports culture',
+]
 
 export default Q10

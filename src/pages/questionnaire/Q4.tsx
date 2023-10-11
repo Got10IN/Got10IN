@@ -1,43 +1,18 @@
-import React, { useState, useEffect, ChangeEvent } from 'react'
-import './Questionaire.css'
-import { Link } from 'react-router-dom'
-import { FieldWithDropdown } from './components'
+import { Fragment, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useUpdateEffect } from 'usehooks-ts'
+import { updateQ4 } from '../../utils/redux/questionnaire'
+import { RootState } from '../../utils/redux/store'
+import './Questionnaire.css'
+import {
+    FormSubtitle,
+    FormTitle,
+    MultiSelectDropdownField,
+    MultiSelectGrid,
+} from './components'
+import { Q4Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
 
-
-function Q4() {
-    const currentPage = 4
-    const totalPages = 11
-
-    const progressPercentage = (currentPage / totalPages) * 100
-
-    const progressBarStyle = {
-        width: `${progressPercentage}%`,
-    }
-
-    const initialOptions = [
-        'Sunny',
-        'Rainy',
-        'Stormy',
-        'Snowy',
-        'Icy',
-        'Foggy',
-        'Windy',
-        'Muggy',
-        'Dry',
-        'Tropical',
-        'Polar',
-        'Tornado-prone',
-        'Drought',
-        'Mild',
-        'Hailstorm',
-        'Psychology',
-        'Overcast',
-        'Blizzard',
-        'Heatwave',
-        'Tropical Cyclone',
-        'Dust Storm',
-    ]
-
+const Q4 = () => {
     const [selectedOptions1, setSelectedOptions1] = useState<string[]>([])
     const [selectedOptions2, setSelectedOptions2] = useState<string[]>([])
 
@@ -65,117 +40,53 @@ function Q4() {
         setSelectedOptions2(updatedOptions)
     }
 
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
+
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(
+            updateQ4([
+                {
+                    options: selectedOptions1,
+                },
+                {
+                    options: selectedOptions2,
+                },
+            ])
+        )
+    }, [selectedOptions1, selectedOptions2])
+
+    useEffect(() => {
+        const [selectedOptions1, selectedOptions2] = questionnaire.q4
+        setSelectedOptions1(selectedOptions1.options)
+        setSelectedOptions2(selectedOptions2.options)
+    }, [])
+
+    // @todo look into https://www.npmjs.com/package/react-simple-maps
+
     return (
-        <div
-            className='Q-fullscreen-container'
-            style={{ paddingTop: '15%', paddingBottom: '10%' }}
-        >
-            <div className='Q-center-container' style={{ paddingBottom: '3%' }}>
-                <div className='progress-container'>
-                    <div className='progress-title'>Progress</div>
-                    <div className='barbackground'>
-                        <div
-                            className='progress-fill'
-                            style={progressBarStyle}
-                        ></div>
-                    </div>
-                    <div className='progress-text'>{`${currentPage}/${totalPages}`}</div>
-                </div>
-            </div>
-            <div className='Q-left-container'>
-                <p className='main-text'>
-                    4.Tell us about your location preference
-                </p>
-                <p className='main-text' style={{ paddingTop: '2%' }}>
-                    I like:
-                </p>
-                <p className='small-text'>*You can choose up to 3 locations</p>
-                <div className='selected-options-container'>
-                    {selectedOptions1.map((option, index) => (
-                        <div key={index} className='selected-option'>
-                            {option}
-                            <span
-                                className='remove-option'
-                                onClick={() => handleRemoveOption1(index)}
-                            >
-                                X
-                            </span>
-                        </div>
-                    ))}
-                </div>
-                <FieldWithDropdown
-                    options={initialOptions}
-                    selectedOptions={selectedOptions1}
-                    onSelect={handleSelectOption1}
-                />
-                <p className='main-text' style={{ paddingTop: '5%' }}>
-                    I don't like:
-                </p>
-                <p className='small-text'>*You can choose up to 3 locations</p>
-                <div className='selected-options-container'>
-                    {selectedOptions2.map((option, index) => (
-                        <div key={index} className='selected-option'>
-                            {option}
-                            <span
-                                className='remove-option'
-                                onClick={() => handleRemoveOption2(index)}
-                            >
-                                X
-                            </span>
-                        </div>
-                    ))}
-                </div>
-                <FieldWithDropdown
-                    options={initialOptions}
-                    selectedOptions={selectedOptions2}
-                    onSelect={handleSelectOption2}
-                />
-            </div>
-            <div className='Q-center-container' style={{ paddingTop: '5%' }}>
-                <Link
-                    to='/my-college-ranking'
-                    className='small-button'
-                    style={{
-                        backgroundColor: '#96B2CF',
-                        height: '10%',
-                        padding: '1% 3%',
-                        flex: '0.02',
-                        marginRight: '15%',
-                    }}
-                >
-                    Exit
-                </Link>
-                <div className='Q-Button-container' style={{ flex: '0.98' }}>
-                    <Link
-                        to='/question3'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#96B2CF',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &lt;
-                    </Link>
-                    <div className='skip-button-container'>
-                        <Link to='/question5' className='small-text-blue'>
-                            Skip
-                        </Link>
-                    </div>
-                    <Link
-                        to='/question5'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#003362',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &gt;
-                    </Link>
-                </div>
-            </div>
-        </div>
+        <Fragment>
+            <FormTitle>
+                4. Tell us a bit about your location preference
+            </FormTitle>
+            <FormSubtitle className='mt-4'>I am thinking about:</FormSubtitle>
+            <MultiSelectGrid
+                initialOptions={initialOptions}
+                selectedOptions={selectedOptions1}
+                setSelectedOptions={setSelectedOptions1}
+            />
+            <FormSubtitle className='mt-4'>
+                Places I want to avoid:
+            </FormSubtitle>
+            <MultiSelectGrid
+                initialOptions={initialOptions}
+                selectedOptions={selectedOptions2}
+                setSelectedOptions={setSelectedOptions2}
+            />
+        </Fragment>
     )
 }
 

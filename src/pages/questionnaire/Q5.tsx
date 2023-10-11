@@ -1,99 +1,44 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import './Questionaire.css'
-import { TendencySlider } from './components'
+import { Fragment, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../utils/redux/store'
+import { updateQ5 } from '../../utils/redux/questionnaire'
+import './Questionnaire.css'
+import { FormTitle, TendencySlider } from './components'
+import { useUpdateEffect } from 'usehooks-ts'
 
-
-
-function Q5() {
-    const currentPage = 5
-    const totalPages = 11
-
-    const progressPercentage = (currentPage / totalPages) * 100
-
-    const progressBarStyle = {
-        width: `${progressPercentage}%`,
-    }
-
+const Q5 = () => {
     const [tendencyValue, setTendencyValue] = useState(50) // 初始值为50
 
-    const handleTendencyChange = (value: number) => {
-        setTendencyValue(value)
-    }
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
+
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(
+            updateQ5({
+                tendency: tendencyValue,
+            })
+        )
+    }, [tendencyValue])
+
+    useEffect(() => {
+        const tendency = questionnaire.q5.tendency
+        setTendencyValue(tendency)
+    }, [])
 
     return (
-        <div
-            className='Q-fullscreen-container'
-            style={{ paddingTop: '15%', paddingBottom: '10%' }}
-        >
-            <div className='Q-center-container' style={{ paddingBottom: '3%' }}>
-                <div className='progress-container'>
-                    <div className='progress-title'>Progress</div>
-                    <div className='barbackground'>
-                        <div
-                            className='progress-fill'
-                            style={progressBarStyle}
-                        ></div>
-                    </div>
-                    <div className='progress-text'>{`${currentPage}/${totalPages}`}</div>
-                </div>
-            </div>
-            <div className='Q-left-container' style={{ height: '300px' }}>
-                <p className='main-text'>
-                    5. What kind of lifestyle do you prefer?
-                </p>
-                <p className='small-text'>*Your Tendency: {tendencyValue}</p>
-                <TendencySlider
-                    onValueChange={handleTendencyChange}
-                    labelLeading='🤓 Rural'
-                    labelTrailing='🥳 Urban'
-                />
-            </div>
-            <div className='Q-center-container'>
-                <Link
-                    to='/my-college-ranking'
-                    className='small-button'
-                    style={{
-                        backgroundColor: '#96B2CF',
-                        height: '10%',
-                        padding: '1% 3%',
-                        flex: '0.02',
-                        marginRight: '15%',
-                    }}
-                >
-                    Exit
-                </Link>
-                <div className='Q-Button-container' style={{ flex: '0.98' }}>
-                    <Link
-                        to='/question4'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#96B2CF',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &lt;
-                    </Link>
-                    <div className='skip-button-container'>
-                        <Link to='/question6' className='small-text-blue'>
-                            Skip
-                        </Link>
-                    </div>
-                    <Link
-                        to='/question6'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#003362',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &gt;
-                    </Link>
-                </div>
-            </div>
-        </div>
+        <Fragment>
+            <FormTitle>
+                5. Which type of lifestyle do you lean towards?
+            </FormTitle>
+            <TendencySlider
+                onValueChange={setTendencyValue}
+                labelLeading='🤓 Rural'
+                labelTrailing='🥳 Urban'
+            />
+        </Fragment>
     )
 }
 

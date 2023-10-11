@@ -1,78 +1,61 @@
-import { Link } from 'react-router-dom'
-import './Questionaire.css'
+import { Fragment, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useUpdateEffect } from 'usehooks-ts'
+import { Q11Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
+import { updateQ11 } from '../../utils/redux/questionnaire'
+import { RootState } from '../../utils/redux/store'
+import './Questionnaire.css'
+import { FormTitle, MultiSelectGrid, SingleSelectGrid } from './components'
 
-function Q11() {
-    const currentPage = 11
-    const totalPages = 11
+const Q11 = () => {
+    const [selectedOption, setSelectedOption] = useState<string>('')
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
-    const progressPercentage = (currentPage / totalPages) * 100
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
 
-    const progressBarStyle = {
-        width: `${progressPercentage}%`,
-    }
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(
+            updateQ11([
+                {
+                    options: [selectedOption],
+                },
+                {
+                    options: selectedOptions,
+                },
+            ])
+        )
+    }, [selectedOptions, selectedOption])
+
+    useEffect(() => {
+        const [selectedOption, selectedOptions] = questionnaire.q11
+        if (selectedOption.options.length > 0) {
+            setSelectedOption(selectedOption.options[0])
+        }
+        setSelectedOptions(selectedOptions.options)
+    }, [])
 
     return (
-        <div
-            className='Q-fullscreen-container'
-            style={{ paddingTop: '15%', paddingBottom: '10%' }}
-        >
-            <div className='Q-center-container'>
-                <div className='progress-container'>
-                    <div className='progress-title'>Progress</div>
-                    <div className='barbackground'>
-                        <div
-                            className='progress-fill'
-                            style={progressBarStyle}
-                        ></div>
-                    </div>
-                    <div className='progress-text'>{`${currentPage}/${totalPages}`}</div>
-                </div>
-            </div>
-            <div className='Q-center-container'>
-                <Link
-                    to='/my-college-ranking'
-                    className='small-button'
-                    style={{
-                        backgroundColor: '#96B2CF',
-                        height: '10%',
-                        padding: '1% 3%',
-                        flex: '0.02',
-                        marginRight: '15%',
-                    }}
-                >
-                    Exit
-                </Link>
-                <div className='Q-Button-container' style={{ flex: '0.98' }}>
-                    <Link
-                        to='/question10'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#96B2CF',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &lt;
-                    </Link>
-                    <div className='skip-button-container'>
-                        <Link to='/question12' className='small-text-blue'>
-                            Skip
-                        </Link>
-                    </div>
-                    <Link
-                        to='/question12'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#003362',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &gt;
-                    </Link>
-                </div>
-            </div>
-        </div>
+        <Fragment>
+            <FormTitle>11. Are you looking at:</FormTitle>
+            <SingleSelectGrid
+                initialOptions={initialOptions.part1}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+            />
+            <FormTitle>
+                Among all the questions you answered, which ones do you think
+                matter to you the most?
+            </FormTitle>
+            <MultiSelectGrid
+                initialOptions={initialOptions.part2}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+            />
+        </Fragment>
     )
 }
 

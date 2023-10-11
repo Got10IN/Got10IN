@@ -1,124 +1,50 @@
-import React, { ChangeEvent, useState } from 'react'
-import './Questionaire.css'
-import { Link } from 'react-router-dom'
+import { Fragment, useEffect, useState } from 'react'
+import { useUpdateEffect } from 'usehooks-ts'
+import { Q2Options as mbtiOptions } from '../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
+import { updateQ2 } from '../../utils/redux/questionnaire'
+import { FormTitle } from './components'
 
-function Q2() {
-    const currentPage = 2
-    const totalPages = 11
-
-    const progressPercentage = (currentPage / totalPages) * 100
-
-    const progressBarStyle = {
-        width: `${progressPercentage}%`,
-    }
-
-    // 初始 MBTI 类型选项
-    const mbtiOptions = [
-        'ISTJ',
-        'ISFJ',
-        'INFJ',
-        'INTJ',
-        'ISTP',
-        'ISFP',
-        'INFP',
-        'INTP',
-        'ESTP',
-        'ESFP',
-        'ENFP',
-        'ENTP',
-        'ESTJ',
-        'ESFJ',
-        'ENFJ',
-        'ENTJ',
-    ]
-
+const Q2 = () => {
     const [selectedMBTI, setSelectedMBTI] = useState('')
 
-    const handleMBTISelect = (e: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedMBTI(e.target.value)
-    }
+    const questionnaire = useAppSelector((state) => state.questionnaire.value)
+
+    const dispatch = useAppDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(updateQ2({ option: selectedMBTI }))
+    }, [selectedMBTI])
+
+    useEffect(() => {
+        const MBTI = questionnaire.q2.option
+        if (MBTI.length === 4) {
+            setSelectedMBTI(MBTI)
+        }
+    }, [])
 
     return (
-        <div
-            className='Q-fullscreen-container'
-            style={{ paddingTop: '15%', paddingBottom: '10%' }}
-        >
-            <div className='Q-center-container' style={{ paddingBottom: '3%' }}>
-                <div className='progress-container'>
-                    <div className='progress-title'>Progress</div>
-                    <div className='barbackground'>
+        <Fragment>
+            <FormTitle>2. What's your MBTI?</FormTitle>
+            <div className='grid grid-cols-4 gap-8'>
+                {mbtiOptions.map((mbti, index) => {
+                    const selected = mbti === selectedMBTI
+                    return (
                         <div
-                            className='progress-fill'
-                            style={progressBarStyle}
-                        ></div>
-                    </div>
-                    <div className='progress-text'>{`${currentPage}/${totalPages}`}</div>
-                </div>
+                            key={index}
+                            className={`${
+                                selected
+                                    ? 'bg-accent-dark'
+                                    : 'bg-accent-light hover:bg-accent'
+                            } hover:scale-110 hover:duration-300 duration-150 cursor-pointer text-white rounded-xl text-center py-2`}
+                            onClick={() => setSelectedMBTI(mbti)}
+                        >
+                            {mbti}
+                        </div>
+                    )
+                })}
             </div>
-            <div className='Q-left-container' style={{ height: '300px' }}>
-                <p className='main-text'>2. What is your MBTI type?</p>
-                <div className='mbti-select-container'>
-                    <select
-                        className='Q-form-control'
-                        value={selectedMBTI}
-                        onChange={handleMBTISelect}
-                    >
-                        <option value='' disabled>
-                            --Please select your MBTI--
-                        </option>
-                        {mbtiOptions.map((option, index) => (
-                            <option key={index} value={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </div>
-            <div className='Q-center-container' style={{ paddingTop: '5%' }}>
-                <Link
-                    to='/my-college-ranking'
-                    className='small-button'
-                    style={{
-                        backgroundColor: '#96B2CF',
-                        height: '10%',
-                        padding: '1% 3%',
-                        flex: '0.02',
-                        marginRight: '15%',
-                    }}
-                >
-                    Exit
-                </Link>
-                <div className='Q-Button-container' style={{ flex: '0.98' }}>
-                    <Link
-                        to='/question1'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#96B2CF',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &lt;
-                    </Link>
-                    <div className='skip-button-container'>
-                        <Link to='/question3' className='small-text-blue'>
-                            Skip
-                        </Link>
-                    </div>
-                    <Link
-                        to='/question3'
-                        className='small-button'
-                        style={{
-                            backgroundColor: '#003362',
-                            height: '100%',
-                            padding: '1% 4%',
-                        }}
-                    >
-                        &gt;
-                    </Link>
-                </div>
-            </div>
-        </div>
+        </Fragment>
     )
 }
 

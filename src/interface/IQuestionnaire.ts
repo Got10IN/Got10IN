@@ -1,4 +1,4 @@
-export interface IQuestionaire {
+export interface IQuestionnaire {
     q1: IQMultiSelect
     q2: IQSingleSelect
     q3: IQMultiSelect[]
@@ -9,6 +9,7 @@ export interface IQuestionaire {
     q8: IQMultiSelect
     q9: IQMultiSelect
     q10: IQTendency[]
+    q11: IQMultiSelect[]
 }
 
 export interface IQMultiSelect {

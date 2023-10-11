@@ -5,19 +5,6 @@
     background-color: white;
 }
 
-.Q-center-container {
-    display: flex;
-    min-width: 800px;
-    padding-left: 25%;
-    padding-right: 25%;
-}
-
-.Q-left-container {
-    min-width: 800px;
-    padding-left: 25%;
-    padding-right: 25%;
-}
-
 .progress-container {
     width: 100%;
     display: flex;
@@ -56,38 +43,11 @@
 }
 
 .main-text {
-    font-size: 14px;
     color: #2c2c2c;
-    line-height: normal;
 }
 
 .small-text {
-    font-size: 14px;
     color: #a0a0a0;
-}
-
-.Q-Button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.skip-button-container {
-    flex: 1;
-    text-align: center;
-}
-
-.small-button {
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    border: none;
-    border-radius: 999px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    white-space: nowrap;
 }
 
 .confirm-button {
@@ -104,7 +64,8 @@
 
 .small-text-blue {
     color: #003362;
-    font: 600 14px '';
+    font-weight: 600;
+    font-size: 14px;
     line-height: 1.5;
     margin-bottom: 5px;
     text-decoration: none;
@@ -208,14 +169,14 @@
     color: #888888;
 }
 
-.Q-left-container label {
+/* .Q-left-container label {
     display: block;
     align-items: center;
     margin-bottom: 0px;
     font-size: 14px;
     color: #616161;
     cursor: pointer;
-}
+} */
 
 .Q-left-container input[type='checkbox'] {
     margin-right: 2%;
