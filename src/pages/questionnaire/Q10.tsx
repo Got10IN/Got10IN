@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../utils/redux/store'
 import { updateQ10 } from '../../utils/redux/questionnaire'
 import { useUpdateEffect } from 'usehooks-ts'
+import { Q10Factors as factors } from '../../data/questionnaire/Questionnaire.data'
 
 const Q10 = () => {
     const [tendencyValues, setTendencyValues] = useState<IQTendency[]>([
@@ -50,7 +51,10 @@ const Q10 = () => {
             <div className='flex flex-col [&>*]:flex-1'>
                 {factors.map((factor, index) => {
                     return (
-                        <section key={factor} className='flex flex-row items-center'>
+                        <section
+                            key={factor}
+                            className='flex flex-row items-center'
+                        >
                             <FormSubtitle className='basis-1/5 pt-[2%]'>
                                 {factor}
                             </FormSubtitle>
@@ -68,15 +72,5 @@ const Q10 = () => {
         </Fragment>
     )
 }
-
-const factors: string[] = [
-    'Diversity',
-    'Food',
-    'Safety',
-    'Career path',
-    'Research opportunieis',
-    'School reputation',
-    'Sports culture',
-]
 
 export default Q10
