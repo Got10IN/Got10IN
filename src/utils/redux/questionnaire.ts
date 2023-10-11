@@ -26,10 +26,16 @@ export const questionnaireSlice = createSlice({
         updateQ2: (state, action: PayloadAction<IQSingleSelect>) => {
             state.value.q2 = action.payload
         },
-        updateQ3: (state, action: PayloadAction<IQMultiSelect[]>) => {
+        updateQ3: (
+            state,
+            action: PayloadAction<[IQMultiSelect, IQMultiSelect]>
+        ) => {
             state.value.q3 = action.payload
         },
-        updateQ4: (state, action: PayloadAction<IQMultiSelect[]>) => {
+        updateQ4: (
+            state,
+            action: PayloadAction<[IQMultiSelect, IQMultiSelect]>
+        ) => {
             state.value.q4 = action.payload
         },
         updateQ5: (state, action: PayloadAction<IQTendency>) => {
@@ -50,7 +56,10 @@ export const questionnaireSlice = createSlice({
         updateQ10: (state, action: PayloadAction<IQTendency[]>) => {
             state.value.q10 = action.payload
         },
-        updateQ11: (state, action: PayloadAction<IQMultiSelect[]>) => {
+        updateQ11: (
+            state,
+            action: PayloadAction<[IQMultiSelect, IQMultiSelect]>
+        ) => {
             state.value.q11 = action.payload
         },
         resetQuestion: (state, action: PayloadAction<number>) => {
@@ -95,11 +104,7 @@ export const questionnaireSlice = createSlice({
                     ]
                     break
                 case 11:
-                    state.value.q11 = [
-                        { options: [] },
-                        { options: [] },
-                        { options: [] },
-                    ]
+                    state.value.q11 = [{ options: [] }, { options: [] }]
                     break
                 default:
                     break

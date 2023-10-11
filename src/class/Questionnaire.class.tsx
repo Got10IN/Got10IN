@@ -8,15 +8,23 @@ import {
 export class CQuestionnaire implements IQuestionnaire {
     q1: IQMultiSelect
     q2: IQSingleSelect
-    q3: IQMultiSelect[]
-    q4: IQMultiSelect[]
+    q3: [IQMultiSelect, IQMultiSelect]
+    q4: [IQMultiSelect, IQMultiSelect]
     q5: IQTendency
     q6: IQTendency
     q7: IQMultiSelect
     q8: IQMultiSelect
     q9: IQMultiSelect
-    q10: IQTendency[]
-    q11: IQMultiSelect[]
+    q10: [
+        IQTendency,
+        IQTendency,
+        IQTendency,
+        IQTendency,
+        IQTendency,
+        IQTendency,
+        IQTendency
+    ]
+    q11: [IQMultiSelect, IQMultiSelect]
 
     constructor() {
         this.q1 = { options: [] }
@@ -37,7 +45,7 @@ export class CQuestionnaire implements IQuestionnaire {
             { tendency: 0 },
             { tendency: 0 },
         ]
-        this.q11 = [{ options: [] }, { options: [] }, { options: [] }]
+        this.q11 = [{ options: [] }, { options: [] }]
     }
 
     get json(): string {
