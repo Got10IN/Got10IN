@@ -4,17 +4,19 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './axiosConfig'
-import { QuestionaireContextProvider } from './context/Questionaire.context'
+
 import { ParallaxProvider } from 'react-scroll-parallax'
+import { Provider } from 'react-redux'
+import { store } from './utils/redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <React.StrictMode>
-        <ParallaxProvider>
-            <QuestionaireContextProvider>
+        <Provider store={store}>
+            <ParallaxProvider>
                 <App />
-            </QuestionaireContextProvider>
-        </ParallaxProvider>
+            </ParallaxProvider>
+        </Provider>
     </React.StrictMode>
 )
 

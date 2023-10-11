@@ -1,4 +1,4 @@
-export interface IQuestionaire {
+export interface IQuestionnaire {
     q1: IQMultiSelect
     q2: IQSingleSelect
     q3: IQMultiSelect[]

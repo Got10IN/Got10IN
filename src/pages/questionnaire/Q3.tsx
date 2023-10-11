@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
-import './Questionaire.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../utils/redux/store'
+import { updateQ3 } from '../../utils/redux/questionnaire'
+import './Questionnaire.css'
 import { FieldWithDropdown } from './components'
-import { useQuestionaireContext } from '../../utils/hooks/QuestionaireContext.hook'
+import { useUpdateEffect } from 'usehooks-ts'
 
 const Q3 = () => {
     const initialOptions = [
@@ -55,21 +58,30 @@ const Q3 = () => {
         setSelectedOptions2(updatedOptions)
     }
 
-    const [questionaire, setQuestionaire] = useQuestionaireContext()
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
 
-    useEffect(() => {
-        setQuestionaire({
-            ...questionaire,
-            q3: [
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(
+            updateQ3([
                 {
                     options: selectedOptions1,
                 },
                 {
                     options: selectedOptions2,
                 },
-            ],
-        })
+            ])
+        )
     }, [selectedOptions1, selectedOptions2])
+
+    useEffect(() => {
+        const [selectedOptions1, selectedOptions2] = questionnaire.q3
+        setSelectedOptions1(selectedOptions1.options)
+        setSelectedOptions2(selectedOptions2.options)
+    }, [])
 
     return (
         <div className='Q-left-container'>

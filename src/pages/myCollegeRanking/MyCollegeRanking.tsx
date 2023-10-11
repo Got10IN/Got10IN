@@ -1,13 +1,13 @@
 import '../findMentor/FindMentor.css'
 
 import { Link } from 'react-router-dom'
-import MyRankingDemo from '../../assets/home/MyRanking.png'
+import MyRankingDemo from '../../assets/myCollegeRanking/MyRanking.png'
 import { Parallax } from 'react-scroll-parallax'
 import { BiSolidChevronRight } from 'react-icons/bi'
 
 function MyCollegeRanking() {
     return (
-        <div className='mentor-fullscreen-container'>
+        <div className='flex h-auto w-full bg-white'>
             <div className='flex px-[10%] pt-[15%] pb-[10%] flex-row items-center'>
                 <Parallax speed={5} className='basis-1/2'>
                     <img
@@ -27,7 +27,7 @@ function MyCollegeRanking() {
                     </span>
                     <p className='font-light text-right mt-8'>
                         Here, we invite you to complete a brief{' '}
-                        <span className='font-semibold'>1-3 minute</span> quiz.
+                        <span className='font-semibold text-accent'>1-3 minute</span> quiz.
                         Within this quiz, you'll be inquired about your MBTI,
                         academic history, extracurricular passions, financial
                         status, and various other college selection preferences.

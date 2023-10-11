@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
-import './Questionaire.css'
-import { useQuestionaireContext } from '../../utils/hooks/QuestionaireContext.hook'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../utils/redux/store'
+import { updateQ7 } from '../../utils/redux/questionnaire'
+import './Questionnaire.css'
+import { useUpdateEffect } from 'usehooks-ts'
 
 const Q7 = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
@@ -15,16 +18,21 @@ const Q7 = () => {
         }
     }
 
-    const [questionaire, setQuestionaire] = useQuestionaireContext()
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
+
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(updateQ7({ options: selectedOptions }))
+    }, [selectedOptions])
 
     useEffect(() => {
-        setQuestionaire({
-            ...questionaire,
-            q7: {
-                options: selectedOptions,
-            },
-        })
-    }, [selectedOptions])
+        const options = questionnaire.q7.options
+
+        setSelectedOptions(options)
+    }, [])
 
     return (
         <div className='Q-left-container' style={{ height: '300px' }}>

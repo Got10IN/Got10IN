@@ -64,7 +64,8 @@
 
 .small-text-blue {
     color: #003362;
-    font: 600 14px '';
+    font-weight: 600;
+    font-size: 14px;
     line-height: 1.5;
     margin-bottom: 5px;
     text-decoration: none;

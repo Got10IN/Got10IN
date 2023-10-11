@@ -1,28 +1,38 @@
 import { useEffect, useState } from 'react'
-import './Questionaire.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../utils/redux/store'
+import { updateQ5 } from '../../utils/redux/questionnaire'
+import './Questionnaire.css'
 import { TendencySlider } from './components'
-import { useQuestionaireContext } from '../../utils/hooks/QuestionaireContext.hook'
+import { useUpdateEffect } from 'usehooks-ts'
 
 const Q5 = () => {
     const [tendencyValue, setTendencyValue] = useState(50) // 初始值为50
 
-    const [questionaire, setQuestionaire] = useQuestionaireContext()
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
+
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(
+            updateQ5({
+                tendency: tendencyValue,
+            })
+        )
+    }, [tendencyValue])
 
     useEffect(() => {
-        setQuestionaire({
-            ...questionaire,
-            q5: {
-                tendency: tendencyValue,
-            },
-        })
-    }, [tendencyValue])
+        const tendency = questionnaire.q5.tendency
+        setTendencyValue(tendency)
+    }, [])
 
     return (
         <div className='Q-left-container' style={{ height: '300px' }}>
             <p className='main-text'>
                 5. What kind of lifestyle do you prefer?
             </p>
-            <p className='small-text'>*Your Tendency: {tendencyValue}</p>
             <TendencySlider
                 onValueChange={setTendencyValue}
                 labelLeading='🤓 Rural'

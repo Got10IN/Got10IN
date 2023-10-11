@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-import './Questionaire.css'
+import './Questionnaire.css'
 import { TendencySlider } from './components'
-import { useQuestionaireContext } from '../../utils/hooks/QuestionaireContext.hook'
-import { IQTendency } from '../../interface/IQuestionaire'
+import { IQTendency } from '../../interface/IQuestionnaire'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../utils/redux/store'
+import { updateQ10 } from '../../utils/redux/questionnaire'
+import { useUpdateEffect } from 'usehooks-ts'
 
 const Q10 = () => {
-    const [tendencyValue, setTendencyValue] = useState(0)
-
     const [tendencyValues, setTendencyValues] = useState<IQTendency[]>([
         { tendency: 0 },
         { tendency: 0 },
@@ -18,7 +19,6 @@ const Q10 = () => {
     ])
 
     const handleTendencyChange = (value: number, index: number) => {
-        setTendencyValue(value)
         setTendencyValues([
             ...tendencyValues.slice(0, index),
             { tendency: value },
@@ -26,14 +26,21 @@ const Q10 = () => {
         ])
     }
 
-    const [questionaire, setQuestionaire] = useQuestionaireContext()
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
+
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(updateQ10(tendencyValues))
+    }, [tendencyValues])
 
     useEffect(() => {
-        setQuestionaire({
-            ...questionaire,
-            q10: tendencyValues,
-        })
-    }, [tendencyValues])
+        const tendencyValues = questionnaire.q10
+
+        setTendencyValues(tendencyValues)
+    }, [])
 
     return (
         <div className='Q-left-container'>

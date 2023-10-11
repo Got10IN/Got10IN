@@ -75,7 +75,7 @@ export function TendencySlider({
                 max='100'
                 value={sliderValue}
                 onChange={handleSliderChange}
-                step='1'
+                step='10'
                 className='Q-form-control'
                 style={{ width: `${width}%` }}
             />

@@ -1,36 +1,27 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import { useQuestionaireContext } from '../../utils/hooks/QuestionaireContext.hook'
-import './Questionaire.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { useUpdateEffect } from 'usehooks-ts'
+import { updateQ1 } from '../../utils/redux/questionnaire'
+import type { RootState } from '../../utils/redux/store'
+import './Questionnaire.css'
 import { FieldWithDropdown } from './components'
+import { Q1Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
+import { Combobox, Transition } from '@headlessui/react'
 
 const Q1 = () => {
-    const initialOptions = [
-        'Technology',
-        'Science',
-        'Health',
-        'Business',
-        'Education',
-        'Arts',
-        'Music',
-        'Sports',
-        'Travel',
-        'Food',
-        'Fashion',
-        'Finance',
-        'Literature',
-        'History',
-        'Environment',
-        'Psychology',
-        'Gaming',
-        'Photography',
-        'Politics',
-        'Design',
-    ]
-
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
     const [inputFieldValue, setInputFieldValue] = useState('')
-    const [generatedOptions, setGeneratedOptions] = useState<string[]>([])
-    const [confirming, setConfirming] = useState(false)
+    const [query, setQuery] = useState('')
+
+    const [filteredOptions, setFilteredOptions] = useState(initialOptions)
+
+    useEffect(() => {
+        setFilteredOptions(
+            initialOptions.filter((option) => {
+                return option.toLowerCase().includes(query.toLowerCase())
+            })
+        )
+    }, [query])
 
     const handleSelectOption = (option: string) => {
         if (selectedOptions.length < 3) {
@@ -50,23 +41,26 @@ const Q1 = () => {
 
     const handleConfirmClick = () => {
         if (inputFieldValue.trim() !== '') {
-            setGeneratedOptions([...generatedOptions, inputFieldValue])
             setSelectedOptions([...selectedOptions, inputFieldValue])
             setInputFieldValue('')
         }
-        setConfirming(false)
     }
 
-    const [questionaire, setQuestionaire] = useQuestionaireContext()
+    const questionnaire = useSelector(
+        (state: RootState) => state.questionnaire.value
+    )
+
+    const dispatch = useDispatch()
+
+    useUpdateEffect(() => {
+        dispatch(updateQ1({ options: selectedOptions }))
+    }, [selectedOptions])
 
     useEffect(() => {
-        setQuestionaire({
-            ...questionaire,
-            q1: {
-                options: selectedOptions,
-            },
-        })
-    }, [selectedOptions])
+        const options = questionnaire.q1.options
+
+        setSelectedOptions(options)
+    }, [])
 
     return (
         <div className='Q-left-container' /*style={{height:'280px'}}*/>
@@ -86,11 +80,57 @@ const Q1 = () => {
                     </div>
                 ))}
             </div>
-            <FieldWithDropdown
+            <Combobox
+                value={selectedOptions}
+                onChange={fai setSelectedOptions}
+                multiple
+            >
+                {selectedOptions.length > 0 && (
+                    <ul className='flex flex-wrap gap-4 mb-4 whitespace-nowrap'>
+                        {selectedOptions.map((option, index) => (
+                            <li key={index} className='flex items-center justify-center bg-accent text-white text-sm font-black rounded-full px-4 py-2'>{option}<button /></li>
+                        ))}
+                    </ul>
+                )}
+                <Combobox.Input
+                    className='rounded-lg w-full h-10 border-text border-[1px] border-solid px-3 py-2'
+                    onChange={(e) => {
+                        setQuery(e.target.value)
+                    }}
+                />
+                <Transition
+                    enter='transition duration-100 ease-out'
+                    enterFrom='transform scale-95 opacity-0'
+                    enterTo='transform scale-100 opacity-100'
+                    leave='transition duration-75 ease-out'
+                    leaveFrom='transform scale-100 opacity-100'
+                    leaveTo='transform scale-95 opacity-0'
+                >
+                    <Combobox.Options>
+                        {filteredOptions.map((option, index) => {
+                            return (
+                                <Combobox.Option
+                                    key={index}
+                                    value={option}
+                                    onClick={() => {
+                                        setSelectedOptions([
+                                            ...selectedOptions,
+                                            option,
+                                        ])
+                                    }}
+                                >
+                                    {option}
+                                </Combobox.Option>
+                            )
+                        })}
+                    </Combobox.Options>
+                </Transition>
+            </Combobox>
+            {/* <FieldWithDropdown
                 options={initialOptions}
                 selectedOptions={selectedOptions}
                 onSelect={handleSelectOption}
-            />
+            /> */}
             <p className='small-text' style={{ paddingTop: '5%' }}>
                 *If you cannot find your interested field in our list, enter one
             </p>
