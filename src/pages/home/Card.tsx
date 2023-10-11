@@ -20,7 +20,7 @@ const Card = ({ title, description : Description, image, button: Button, reverse
                 <img
                     src={image}
                     alt=''
-                    className={`w-full ${
+                    className={`w-full hover:scale-105 duration-300 ease-in-out ${
                         reverse ? 'pl-[10%]' : 'pr-[10%]'
                     }`}
                 />
