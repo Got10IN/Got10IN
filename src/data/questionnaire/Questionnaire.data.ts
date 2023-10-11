@@ -99,6 +99,16 @@ export const Q8Options = [
 
 export const Q9Options = ["I don't really mind", '3.0+', '3.0-3.5', 'above 3.5']
 
+export const Q10Factors = [
+    'Diversity',
+    'Food',
+    'Safety',
+    'Career path',
+    'Research opportunieis',
+    'School reputation',
+    'Sports culture',
+]
+
 export const Q11Options = {
     part1: ['Undergrad', 'Graduate School'],
     part2: [
