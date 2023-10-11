@@ -11,7 +11,7 @@ module.exports = {
                     light: '#96B2CF',
                 },
                 highlight: '#FFB500',
-                text: '#A0A0A0'
+                text: { DEFAULT: '#A0A0A0', dark: '#2c2c2c' },
             },
         },
     },
