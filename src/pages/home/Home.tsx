@@ -1,24 +1,48 @@
 import { useEffect, useState } from 'react'
 import { Parallax } from 'react-scroll-parallax'
+import LogoWithTagline from '../../assets/home/LogoWithTagline.png'
+import Rocket from '../../assets/home/Rocket.png'
+import Tagline0 from '../../assets/home/Tagline0.png'
+import Tagline1 from '../../assets/home/Tagline1.png'
+import Tagline2 from '../../assets/home/Tagline2.png'
+import Testimonial0 from '../../assets/home/Testimonial0.png'
+import Testimonial1 from '../../assets/home/Testimonial1.png'
+import Testimonial2 from '../../assets/home/Testimonial2.png'
 import { HOME_CARDS } from '../../data/home/Home.data'
 import Card from './Card'
 import './Home.css'
-import LogoWithTagline from '../../assets/home/LogoWithTagline.png'
-import Rocket from '../../assets/home/Rocket.png'
 
 function Home() {
     const [email, setEmail] = useState('')
-    const [currentSlide, setCurrentSlide] = useState(1) // 追踪当前图片编号
+    const [currentSlide, setCurrentSlide] = useState(0) // 追踪当前图片编号
     const totalSlides = 3 // 总共的图片数量
+
+    const taglines: { image: string; alt: string }[] = [
+        {
+            image: Tagline0,
+            alt: 'feeling lost in the search for the perfect school?',
+        },
+        {
+            image: Tagline1,
+            alt: 'uncertain about the next steps in college application?',
+        },
+        {
+            image: Tagline2,
+            alt: 'overwhelmed by those crazy ranks of national colleges?',
+        },
+    ]
+
+    const testimonials: { image: string; alt: string }[] = [
+        { image: Testimonial0, alt: 'testimonial' },
+        { image: Testimonial1, alt: 'testimonial' },
+        { image: Testimonial2, alt: 'testimonial' },
+    ]
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setCurrentSlide((prevSlide) =>
-                prevSlide === totalSlides ? 1 : prevSlide + 1
-            )
+            setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides)
             // 更新圆点
-            handleDotHover(currentSlide === totalSlides ? 1 : currentSlide + 1)
-        }, 3000) // 5秒自动切换
+        }, 3000) // 3秒自动切换
 
         return () => {
             clearTimeout(timer)
@@ -55,17 +79,17 @@ function Home() {
     return (
         <div className='with-full mx-0 my-auto overflow-hidden'>
             <div className='container-body'>
-                <Parallax className='text' speed={-10}>
+                <Parallax className='flex-1' speed={-10}>
                     <p className='small-text-yellow'>Are you</p>
                     <div className='slider-container'>
                         <img
-                            src={`/Q${currentSlide}.png`}
-                            alt={`Word${currentSlide}`}
+                            src={taglines[currentSlide].image}
+                            alt={taglines[currentSlide].alt}
                             className='max-w-full object-cover'
                             style={{ marginTop: '1%', marginBottom: '5%' }}
                         />
                         <div className='dots-container'>
-                            {[1, 2, 3].map((slideNumber) => (
+                            {taglines.map((_, slideNumber) => (
                                 <div
                                     key={slideNumber}
                                     className={`dot ${
@@ -76,39 +100,30 @@ function Home() {
                                     onMouseEnter={() =>
                                         handleDotHover(slideNumber)
                                     }
-                                ></div>
+                                />
                             ))}
                         </div>
                     </div>
-                    <div
-                        className='flex gap-4'
-                        style={{
-                            paddingTop: '15%',
-                            paddingBottom: '10%',
-                        }}
-                    >
+                    <div className='flex gap-4 mt-3/20 mb-1/10 h-10'>
                         <input
                             type='email'
-                            className='form-control'
+                            className='form-control w-7/10 h-full'
                             placeholder='Enter your email to subscribe!'
                             style={{
                                 borderRadius: '50px',
-                                width: '70%',
-                                height: '40px',
                             }}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <button
                             className='subscribe-button-1'
-                            style={{ height: '40px' }}
                             onClick={handleSubscription}
                         >
                             Subscribe
                         </button>
                     </div>
                 </Parallax>
-                <div className='text'>
+                <div className='flex-1'>
                     <Parallax speed={-10}>
                         <img
                             src={LogoWithTagline}
@@ -145,16 +160,15 @@ function Home() {
                     Hear from our students:
                 </p>
                 <div className='container-small'>
-                    {/* 底部图片切换 */}
                     <div className='slider-container-middle'>
                         <img
-                            src={`/StudentSay${currentSlide}.png`}
-                            alt={`StudentSay${currentSlide}`}
+                            src={testimonials[currentSlide].image}
+                            alt={testimonials[currentSlide].alt}
                             className='max-w-full'
                             style={{ marginBottom: '3%' }}
                         />
                         <div className='dots-container'>
-                            {[1, 2, 3].map((slideNumber) => (
+                            {testimonials.map((_, slideNumber) => (
                                 <div
                                     key={slideNumber}
                                     className={`greydot ${
@@ -165,7 +179,7 @@ function Home() {
                                     onMouseEnter={() =>
                                         handleDotHover(slideNumber)
                                     }
-                                ></div>
+                                />
                             ))}
                         </div>
                     </div>
