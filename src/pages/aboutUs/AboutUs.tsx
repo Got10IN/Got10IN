@@ -1,6 +1,15 @@
 import React, { ChangeEvent, useState } from 'react'
 import axios from 'axios'
 import './AboutUs.css'
+import LogoAboutUs from '../../assets/aboutUs/LogoAboutUs.png'
+import Hi from '../../assets/aboutUs/Hi.png'
+import Got10INOutline from '../../assets/aboutUs/GOT10INOutline.png'
+import Buttons from '../../assets/aboutUs/3buttons.png'
+import OurStory from '../../assets/aboutUs/OurStory.png'
+import RoadMap from '../../assets/aboutUs/Roadmap.png'
+import RoadMapTitle from '../../assets/aboutUs/RoadmapTitle.png'
+import ComingSoon from '../../assets/aboutUs/ComingSoon.png'
+import { Button } from '../../components/buttons/Button'
 
 function AboutUs() {
     const [email, setEmail] = useState('')
@@ -24,17 +33,14 @@ function AboutUs() {
             alert('Error subscribing. Please try again.')
         }
     }
+
     return (
         <div className='container-white'>
-            <div className='aboutus-center-content'>
-                <div className='halfscreen-box'>
-                    <img
-                        src='/Logo-AboutUs.png'
-                        alt='Logo'
-                        className='WordCard'
-                    />
+            <div className='flex justify-between mx-1/10 mt-1/20 gap-1/10'>
+                <div className='flex-1'>
+                    <img src={LogoAboutUs} alt='Logo' className='max-w-full' />
                     <div
-                        className='WordCard'
+                        className='max-w-full'
                         style={{
                             display: 'flex',
                             gap: '20px',
@@ -62,72 +68,53 @@ function AboutUs() {
                         </button>
                     </div>
                 </div>
-                <div className='halfscreen-box' style={{ paddingTop: '4%' }}>
+                <div
+                    className='flex-1 pointer-events-none'
+                    style={{ paddingTop: '4%' }}
+                >
+                    <img src={Got10INOutline} alt='' className='max-w-full' />
                     <img
-                        src='/GOT10IN (1).png'
-                        alt='Logo'
-                        className='WordCard'
-                    />
-                    <img
-                        src='/3buttons.png'
-                        alt='Logo'
-                        className='WordCard'
+                        src={Buttons}
+                        alt='Matching, Consulting, Planning'
+                        className='max-w-full'
                         style={{ paddingTop: '5%' }}
                     />
                     <img
-                        src='/Hi.png'
-                        alt='Logo'
-                        className='WordCard'
+                        src={Hi}
+                        alt=''
+                        className='max-w-full'
                         style={{ paddingTop: '20%' }}
                     />
                 </div>
             </div>
-            <div className='aboutus-center-content'>
-                <img
-                    src='/OurStory.png'
-                    alt='StudentSay'
-                    className='WordCard'
-                />
+            <div className='flex justify-between px-1/10 pt-1/20 gap-1/10 pointer-events-none'>
+                <img src={OurStory} alt='Testimonials' className='max-w-full' />
             </div>
             <img
-                src='/RoadmapWord.png'
+                src={RoadMapTitle}
                 alt='Roadmap'
-                style={{ paddingLeft: '10%', width: '40%', paddingTop: '10%' }}
+                className='pointer-events-none pl-1/10 w-2/5 pt-1/10'
             />
             <div className='container-small'>
-                <img src='/Roadmap.png' alt='StudentSay' className='WordCard' />
+                <img
+                    src={RoadMap}
+                    alt='roadmap details'
+                    className='max-w-full'
+                />
             </div>
-            <div
-                className='aboutus-center-content'
-                style={{ paddingBottom: '10%' }}
-            >
-                <div className='image-container'>
+            <div className='flex justify-between px-1/10 pt-1/20 pb-1/10 gap-1/10'>
+                <div className='relative w-full pb-1/20'>
                     <img
-                        src='/Comingsoon.png'
+                        src={ComingSoon}
                         alt='StudentSay'
-                        className='WordCard'
+                        className='max-w-full pointer-events-none'
                     />
-                    <div className='button-container'>
-                        <button
-                            className='subscribe-button2'
-                            style={{
-                                backgroundColor: 'rgb(255,255,255,0.3)',
-                                height: '50px',
-                            }}
-                        >
-                            Subscribe
-                        </button>
-                        <p className='small-text-white'>or</p>
-                        <button
-                            className='subscribe-button2'
-                            style={{
-                                backgroundColor: '#FFB500',
-                                height: '50px',
-                                right: '0%',
-                            }}
-                        >
-                            Sign up
-                        </button>
+                    <div className='gap-[8%] absolute flex right-[23%] bottom-[28%] items-center'>
+                        <Button gray>Subscribe</Button>
+                        <p className='text-xl font-semibold mb-[5px] text-white'>
+                            or
+                        </p>
+                        <Button>Sign up</Button>
                     </div>
                 </div>
             </div>
