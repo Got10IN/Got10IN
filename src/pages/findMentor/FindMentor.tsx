@@ -7,7 +7,7 @@ import { SubscribeButton } from '../../components/functional/SubscribeButton'
 function FindMentor() {
     return (
         <div className='flex h-auto w-full bg-white'>
-            <div className='flex px-[10%] pt-[15%] pb-[10%] flex-row items-center'>
+            <div className='flex px-1/10 pt-[15%] pb-1/10 flex-row items-center'>
                 <Parallax speed={5} className='basis-1/2'>
                     <img
                         src={FindMentorDemo}
