@@ -77,6 +77,8 @@ const Questionnaire = () => {
             },
         }
 
+        console.log(process.env.OpenAIAPIKey)
+
         axios
             .post('https://api.openai.com/v1/completions', data, config)
             .then((response) => {
