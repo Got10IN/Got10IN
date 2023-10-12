@@ -1,35 +1,15 @@
 import { ChangeEvent, Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useUpdateEffect } from 'usehooks-ts'
+import { Q1Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
 import { updateQ1 } from '../../utils/redux/questionnaire'
 import type { RootState } from '../../utils/redux/store'
 import './Questionnaire.css'
-import { Q1Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
-import { Combobox, Transition } from '@headlessui/react'
-import { IoClose } from 'react-icons/io5'
-import { HiMiniChevronUpDown } from 'react-icons/hi2'
 import { FormTitle, MultiSelectDropdownField } from './components'
 
 const Q1 = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
     const [inputFieldValue, setInputFieldValue] = useState('')
-    const [query, setQuery] = useState('')
-
-    const [filteredOptions, setFilteredOptions] = useState(initialOptions)
-
-    useEffect(() => {
-        setFilteredOptions(
-            initialOptions.filter((option) => {
-                return option.toLowerCase().includes(query.toLowerCase())
-            })
-        )
-    }, [query])
-
-    const handleSelectOption = (option: string) => {
-        if (selectedOptions.length < 3) {
-            setSelectedOptions([...selectedOptions, option])
-        }
-    }
 
     const handleRemoveOption = (index: number) => {
         const updatedOptions = [...selectedOptions]
