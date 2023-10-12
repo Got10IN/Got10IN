@@ -110,6 +110,10 @@ export const questionnaireSlice = createSlice({
                     break
             }
         },
+        resetAll: (state) => {
+            state.value = new CQuestionnaire()
+            localStorage.removeItem('rankings')
+        }
     },
 })
 
@@ -126,6 +130,7 @@ export const {
     updateQ10,
     updateQ11,
     resetQuestion,
+    resetAll
 } = questionnaireSlice.actions
 
 export default questionnaireSlice.reducer
