@@ -1,1 +1,1 @@
-export const OpenAIAPIKey = process.env.OpenAIAPIKey
+export const OpenAIAPIKey = process.env.REACT_APP_OpenAIAPIKey
