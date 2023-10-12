@@ -84,7 +84,7 @@ const Questionnaire = () => {
                     console.log('response', response)
                     return response.data.choices[0].text
                 } else {
-                    throw Error('The API request failed')
+                    throw new Error('The API request failed')
                 }
             })
             .then((data: string) => {
