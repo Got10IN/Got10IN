@@ -77,8 +77,6 @@ const Questionnaire = () => {
             },
         }
 
-        console.log(process.env.OpenAIAPIKey)
-
         axios
             .post('https://api.openai.com/v1/completions', data, config)
             .then((response) => {
@@ -108,7 +106,7 @@ const Questionnaire = () => {
                 navigate('/my-college-ranking/result')
             })
             .catch((error) => {
-                console.log('request errored', error)
+                console.log('request errored')
             })
     }
 

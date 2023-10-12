@@ -33,7 +33,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "echo $OpenAIAPIKey; react-scripts build --here",
         "test": "react-scripts test"
     },
     "eslintConfig": {
