@@ -5,6 +5,10 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                screens: {
+                    mb: { max: '512px' },
+                    sm: { min: '513px', max: '768px' },
+                },
                 accent: {
                     DEFAULT: '#00366D',
                     dark: '#003362',
