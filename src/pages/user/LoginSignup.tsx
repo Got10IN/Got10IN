@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import './LoginSignup.css'
+import { signInWithGooglePopup } from '../../utils/firebase/firebase.utils'
 
 function LoginSignup() {
     const [email, setEmail] = useState('')
@@ -27,6 +28,13 @@ function LoginSignup() {
         }
     }
 
+    const [googleResponse, setGoogleResponse] = useState('')
+
+    const googleAuthHandler = async () => {
+        const response = await signInWithGooglePopup()
+        console.log(response)
+    }
+
     return (
         <div className='login-container'>
             <div className='login-content'>
@@ -46,6 +54,9 @@ function LoginSignup() {
                     />
                     <button onClick={handleLogin}>Login</button>
                 </div>
+                <button onClick={googleAuthHandler}>
+                    Sign in with Google Popup
+                </button>
                 <p>
                     Our login and signup features are under development. Please
                     check back soon!
