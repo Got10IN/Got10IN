@@ -115,7 +115,7 @@ const Questionnaire = () => {
     const isLastQuestion = currQuestion === 11
 
     return (
-        <div className='w-full pt-[15%] pb-1/10 bg-white'>
+        <div className='w-full pt-3/20 pb-1/10 bg-white'>
             <div className='w-1/2 mx-[25%] flex flex-col gap-12'>
                 <div
                     className='Q-center-container'

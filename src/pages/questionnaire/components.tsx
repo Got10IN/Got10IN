@@ -220,7 +220,7 @@ export function FieldWithDropdown({ options, selectedOptions, onSelect }: any) {
     return (
         <div>
             <input
-                type='text'
+                type='flex-1'
                 className='Q-form-control'
                 placeholder='Start typing to search'
                 value={field}

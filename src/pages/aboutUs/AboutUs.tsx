@@ -38,7 +38,11 @@ function AboutUs() {
         <div className='container-white'>
             <div className='flex justify-between mx-1/10 mt-1/20 gap-1/10'>
                 <div className='flex-1'>
-                    <img src={LogoAboutUs} alt='Logo' className='max-w-full' />
+                    <img
+                        src={LogoAboutUs}
+                        alt=''
+                        className='max-w-full pointer-events-none'
+                    />
                     <div
                         className='max-w-full'
                         style={{

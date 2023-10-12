@@ -27,7 +27,7 @@ function CollegeRanking() {
                 <div className='form-group'>
                     <label>Major:</label>
                     <input
-                        type='text'
+                        type='flex-1'
                         className='form-control'
                         value={major}
                         onChange={(e) => setMajor(e.target.value)}

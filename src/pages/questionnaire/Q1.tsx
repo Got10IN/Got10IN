@@ -61,7 +61,7 @@ const Q1 = () => {
             </p>
             <div className='flex justify-between items-center'>
                 <input
-                    type='text'
+                    type='flex-1'
                     className='Q-form-control'
                     placeholder='Please enter a field'
                     value={inputFieldValue}
