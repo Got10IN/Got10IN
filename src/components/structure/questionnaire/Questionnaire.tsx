@@ -77,6 +77,8 @@ const Questionnaire = () => {
             },
         }
 
+        console.log(process.env.OpenAIAPIKey)
+
         axios
             .post('https://api.openai.com/v1/completions', data, config)
             .then((response) => {
@@ -84,7 +86,7 @@ const Questionnaire = () => {
                     console.log('response', response)
                     return response.data.choices[0].text
                 } else {
-                    throw Error('The API request failed')
+                    throw new Error('The API request failed')
                 }
             })
             .then((data: string) => {
