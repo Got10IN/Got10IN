@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import questionnaireReducer from './questionnaire'
+import collegeRankingReducer from './collegeRanking'
 
 export const store = configureStore({
     reducer: {
         questionnaire: questionnaireReducer,
+        collegeRanking: collegeRankingReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

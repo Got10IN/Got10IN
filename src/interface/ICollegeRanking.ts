@@ -1,0 +1,1 @@
+export type ICollegeRanking = string[]

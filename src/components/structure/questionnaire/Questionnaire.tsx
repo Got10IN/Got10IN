@@ -1,8 +1,14 @@
+import axios from 'axios'
 import { Suspense, lazy, useState } from 'react'
 import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
+import { ICollegeRanking } from '../../../interface/ICollegeRanking'
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
 import { resetQuestion } from '../../../utils/redux/questionnaire'
+import { generatePrompt } from '../../../utils/requests/openai/generatePrompt'
+import { parseQuesionnaire } from '../../../utils/requests/openai/parseQuestionnaire'
+import { updateState } from '../../../utils/redux/collegeRanking'
+import { OpenAIAPIKey } from '../../../utils/constants/api'
 
 const Questionnaire = () => {
     const [currQuestion, setCurrQuestion] = useState(1)
@@ -42,9 +48,8 @@ const Questionnaire = () => {
 
     const skipQuestionHandler = () => {
         dispatch(resetQuestion(currQuestion + 1))
-        if (currQuestion < 11) {
-            setCurrQuestion(currQuestion + 1)
-        }
+
+        setCurrQuestion(currQuestion + 1)
     }
 
     const nextQuestionHandler = () => {
@@ -56,21 +61,53 @@ const Questionnaire = () => {
     }
 
     const onSubmitHandler = () => {
-        console.log(questionnaire)
-        // fetch(' the api goes in here ')
-        //     .then((response) => {
-        //         if (response.ok) {
-        //             return response.json()
-        //         } else {
-        //             throw new Error('Request Failed')
-        //         }
-        //     })
-        //     .then((data) => {
-        //         //do something with the data
-        //     })
-        //     .catch((error) => {
-        //         console.log(error)
-        //     })
+        const payload = parseQuesionnaire(questionnaire)
+        const prompt = generatePrompt(payload)
+
+        const data = {
+            model: 'gpt-3.5-turbo-instruct',
+            prompt: prompt,
+            max_tokens: 150,
+            temperature: 0,
+        }
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${OpenAIAPIKey}`,
+            },
+        }
+
+        axios
+            .post('https://api.openai.com/v1/completions', data, config)
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('response', response)
+                    return response.data.choices[0].text
+                } else {
+                    throw Error('The API request failed')
+                }
+            })
+            .then((data: string) => {
+                const split = data.split('\n')
+                const ranking: ICollegeRanking = []
+
+                split
+                    .slice(split.length - 10)
+                    .map((entry) => {
+                        return entry.split('. ')
+                    })
+                    .forEach((entry) => {
+                        ranking.push(entry[1].replace(/\([^)]*\)/g, '').trim())
+                    })
+                dispatch(updateState(ranking))
+                localStorage.setItem('rankings', JSON.stringify(ranking))
+            })
+            .then(() => {
+                navigate('/my-college-ranking/result')
+            })
+            .catch((error) => {
+                console.log('request errored', error)
+            })
     }
 
     const CurrQuestion = Questions[currQuestion - 1]

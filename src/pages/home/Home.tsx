@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Parallax } from 'react-scroll-parallax'
-import './Home.css'
-import Card from './Card'
 import { HOME_CARDS } from '../../data/home/Home.data'
-import { IconBase } from 'react-icons'
+import Card from './Card'
+import './Home.css'
+import LogoWithTagline from '../../assets/home/LogoWithTagline.png'
+import Rocket from '../../assets/home/Rocket.png'
 
 function Home() {
     const [email, setEmail] = useState('')
@@ -109,11 +110,15 @@ function Home() {
                 </Parallax>
                 <div className='text'>
                     <Parallax speed={-10}>
-                        <img src='/logo2.png' alt='Logo' className='WordCard' />
+                        <img
+                            src={LogoWithTagline}
+                            alt=''
+                            className='WordCard'
+                        />
                     </Parallax>
                     <img
-                        src='/Rocket.png'
-                        alt='Rocket'
+                        src={Rocket}
+                        alt=''
                         className='WordCard'
                         style={{ marginTop: '-40px' }}
                     />
