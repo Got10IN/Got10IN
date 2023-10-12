@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import './header.css'
@@ -33,7 +33,7 @@ function Header() {
                     paddingBottom: '1.5%',
                 }}
             >
-                <Link to='/' className='navbar-brand pointer-events-none'>
+                <Link to='/' className='navbar-brand select-none'>
                     <img src='/logo.png' alt='Logo' className='logo-img' />
                 </Link>
                 <div
