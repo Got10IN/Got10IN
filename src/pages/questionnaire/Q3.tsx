@@ -53,22 +53,27 @@ const Q3 = () => {
             <FormTitle>
                 3. Tell us a bit about your weather preference
             </FormTitle>
-            <FormSubtitle className='mt-4'>I am looking for:</FormSubtitle>
-            <MultiSelectDropdownField
-                initialOptions={initialOptions}
-                selectedOptions={selectedOptions1}
-                setSelectedOptions={setSelectedOptions1}
-                removeOptionHandler={handleRemoveOption1}
-            />
-            <FormSubtitle className='mt-4'>
-                Weathers I'd want to avoid:
-            </FormSubtitle>
-            <MultiSelectDropdownField
-                initialOptions={initialOptions}
-                selectedOptions={selectedOptions2}
-                setSelectedOptions={setSelectedOptions2}
-                removeOptionHandler={handleRemoveOption2}
-            />
+
+            <div className='relative z-50'>
+                <FormSubtitle className='mt-4'>I am looking for:</FormSubtitle>
+                <MultiSelectDropdownField
+                    initialOptions={initialOptions}
+                    selectedOptions={selectedOptions1}
+                    setSelectedOptions={setSelectedOptions1}
+                    removeOptionHandler={handleRemoveOption1}
+                />
+            </div>
+            <div className='relative z-10'>
+                <FormSubtitle className='mt-4'>
+                    Weathers I'd want to avoid:
+                </FormSubtitle>
+                <MultiSelectDropdownField
+                    initialOptions={initialOptions}
+                    selectedOptions={selectedOptions2}
+                    setSelectedOptions={setSelectedOptions2}
+                    removeOptionHandler={handleRemoveOption2}
+                />
+            </div>
         </Fragment>
     )
 }
