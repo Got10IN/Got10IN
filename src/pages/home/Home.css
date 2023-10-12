@@ -28,15 +28,6 @@
     text-align: right;
 }
 
-.WordCard {
-    max-width: 100%;
-}
-
-.WordCard2 {
-    max-width: 100%;
-    object-fit: cover;
-}
-
 .confine {
     min-width: 1000px;
 }
@@ -87,13 +78,7 @@
     margin-bottom: 60px;
 }
 
-.small-text-white {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 5px;
-    color: #fff;
-}
+
 
 .small-text-yellow {
     font: 600 25px;

@@ -61,7 +61,7 @@ function Home() {
                         <img
                             src={`/Q${currentSlide}.png`}
                             alt={`Word${currentSlide}`}
-                            className='WordCard2'
+                            className='max-w-full object-cover'
                             style={{ marginTop: '1%', marginBottom: '5%' }}
                         />
                         <div className='dots-container'>
@@ -113,13 +113,13 @@ function Home() {
                         <img
                             src={LogoWithTagline}
                             alt=''
-                            className='WordCard'
+                            className='max-w-full'
                         />
                     </Parallax>
                     <img
                         src={Rocket}
                         alt=''
-                        className='WordCard'
+                        className='max-w-full'
                         style={{ marginTop: '-40px' }}
                     />
                 </div>
@@ -150,7 +150,7 @@ function Home() {
                         <img
                             src={`/StudentSay${currentSlide}.png`}
                             alt={`StudentSay${currentSlide}`}
-                            className='WordCard'
+                            className='max-w-full'
                             style={{ marginBottom: '3%' }}
                         />
                         <div className='dots-container'>
