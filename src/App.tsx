@@ -9,6 +9,7 @@ import FindMentor from './pages/findMentor/FindMentor'
 import Home from './pages/home/Home'
 import MyCollegeRanking from './pages/myCollegeRanking/MyCollegeRanking'
 import LoginSignup from './pages/user/LoginSignup'
+import Result from './pages/myCollegeRanking/result/Result.page'
 
 function App() {
     return (
@@ -16,16 +17,20 @@ function App() {
             <Routes>
                 <Route path='/' element={<Navigation />}>
                     <Route index element={<Home />} />
-                    <Route
+                    {/* <Route
                         path='/college-ranking'
                         element={<CollegeRanking />}
-                    />
+                    /> */}
                     <Route path='/find-mentor' element={<FindMentor />} />
                     <Route path='/about-us' element={<AboutUs />} />
                     <Route path='/login-signup' element={<LoginSignup />} />
                     <Route
                         path='/my-college-ranking'
                         element={<MyCollegeRanking />}
+                    />
+                    <Route
+                        path='/my-college-ranking/result'
+                        element={<Result />}
                     />
                     <Route path='/question' element={<Questionnaire />} />
                 </Route>
