@@ -22,7 +22,7 @@ function MyCollegeRanking() {
                     <p className='text-3xl text-accent font-bold'>
                         Welcome to My College Ranking!
                     </p>
-                    <span className='text-sm bg-highlight text-white px-2 py-1 rounded-lg max-w-fit'>
+                    <span className='text-sm bg-highlight text-white px-2 py-1 mt-2 rounded-lg max-w-fit'>
                         Free 🥳
                     </span>
                     <p className='font-light text-right mt-8'>
@@ -35,7 +35,7 @@ function MyCollegeRanking() {
                         ranking list complete with a detailed comparison of the
                         factors that matter most to you.
                     </p>
-                    <p className='font-light text-sm text-text text-right'>
+                    <p className='font-light text-sm text-text text-right mt-2'>
                         *Keep in mind, the result is completely free. We'd love
                         for you to create an account with us, but it is entirely
                         optional. Feel free to skip anything you don't want to
@@ -43,7 +43,7 @@ function MyCollegeRanking() {
                     </p>
                     <Link
                         to='/question'
-                        className='subscribe-button align-middle'
+                        className='text-lg font-extrabold text-white rounded-full px-1/20 py-3 text-center cursor-pinter no-underline inline-block min-w-max bg-highlight align-middle'
                         style={{ marginTop: '20%', width: '350px' }}
                     >
                         Get started <BiSolidChevronRight className='inline-block' />
