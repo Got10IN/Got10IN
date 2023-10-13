@@ -47,7 +47,7 @@ const Q1 = () => {
     return (
         <Fragment>
             <FormTitle>1. What are your fields of interest?</FormTitle>
-            <p className='small-text'>
+            <p className='small-text mb-4'>
                 *feel free to choose any number of fields you are interested in
             </p>
             <MultiSelectDropdownField
@@ -56,7 +56,7 @@ const Q1 = () => {
                 setSelectedOptions={setSelectedOptions}
                 removeOptionHandler={handleRemoveOption}
             />
-            <p className='small-text' style={{ paddingTop: '5%' }}>
+            <p className='small-text mb-4 mt-8'>
                 *if your interested field is not in our list, enter it here
             </p>
             <div className='flex justify-between items-center'>
