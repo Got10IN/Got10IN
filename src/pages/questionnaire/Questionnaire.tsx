@@ -135,9 +135,9 @@ const Questionnaire = () => {
                 <Suspense
                     fallback={<div className='min-h-[300px]'>loading</div>}
                 >
-                    <section className='min-h-[300px]'>
+                    <div className='min-h-[300px]'>
                         {<CurrQuestion />}
-                    </section>
+                    </div>
                 </Suspense>
 
                 <div className='flex justify-between items-center mt-4'>
