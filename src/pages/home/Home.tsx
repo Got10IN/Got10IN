@@ -9,13 +9,14 @@ import Testimonial0 from '../../assets/home/Testimonial0.png'
 import Testimonial1 from '../../assets/home/Testimonial1.png'
 import Testimonial2 from '../../assets/home/Testimonial2.png'
 import { HOME_CARDS } from '../../data/home/Home.data'
-import Card from './Card'
-import './Home.css'
+import Card from './Card.component'
+import { Dot, DotsContainer, SliderContainer } from './Slider.component'
+import { SubscribeField } from '../../components/functional/SubscribeFIeld'
 
 function Home() {
     const [email, setEmail] = useState('')
-    const [currentSlide, setCurrentSlide] = useState(0) // 追踪当前图片编号
-    const totalSlides = 3 // 总共的图片数量
+    const [currentSlide, setCurrentSlide] = useState(0)
+    const totalSlides = 3
 
     const taglines: { image: string; alt: string }[] = [
         {
@@ -77,50 +78,32 @@ function Home() {
     }
 
     return (
-        <div className='with-full mx-0 my-auto overflow-hidden'>
-            <div className='container-body'>
+        <div className='w-full mx-0 my-auto overflow-hidden'>
+            <div className='flex justify-between px-1/10 items-center pt-1/10 gap-1/10'>
                 <Parallax className='flex-1' speed={-10}>
-                    <p className='small-text-yellow'>Are you</p>
-                    <div className='slider-container'>
+                    <p className='text-3xl mb-[5px] text-highlight font-semibold'>
+                        Are you
+                    </p>
+                    <SliderContainer postion='leading'>
                         <img
                             src={taglines[currentSlide].image}
                             alt={taglines[currentSlide].alt}
                             className='max-w-full object-cover'
                             style={{ marginTop: '1%', marginBottom: '5%' }}
                         />
-                        <div className='dots-container'>
+                        <DotsContainer>
                             {taglines.map((_, slideNumber) => (
-                                <div
+                                <Dot
                                     key={slideNumber}
-                                    className={`dot ${
-                                        currentSlide === slideNumber
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                    onMouseEnter={() =>
-                                        handleDotHover(slideNumber)
-                                    }
+                                    slideNumber={slideNumber}
+                                    currentSlide={currentSlide}
+                                    setCurrentSlide={setCurrentSlide}
                                 />
                             ))}
-                        </div>
-                    </div>
-                    <div className='flex gap-4 mt-3/20 mb-1/10 h-10'>
-                        <input
-                            type='email'
-                            className='form-control w-7/10 h-full'
-                            placeholder='Enter your email to subscribe!'
-                            style={{
-                                borderRadius: '50px',
-                            }}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <button
-                            className='subscribe-button-1'
-                            onClick={handleSubscription}
-                        >
-                            Subscribe
-                        </button>
+                        </DotsContainer>
+                    </SliderContainer>
+                    <div className='flex gap-4 mt-1/5 mb-1/10 h-10'>
+                        <SubscribeField />
                     </div>
                 </Parallax>
                 <div className='flex-1'>
@@ -139,50 +122,36 @@ function Home() {
                     />
                 </div>
             </div>
-            <div className='container-white'>
-                <p
-                    className='medium-text-blue'
-                    style={{
-                        marginLeft: '10%',
-                        marginTop: '5%',
-                        marginBottom: '5%',
-                    }}
-                >
+            <div className='bg-white pt-12 w-full'>
+                <p className='text-accent text-2xl font-black mx-1/10 my-1/20'>
                     Explore our features
                 </p>
 
                 {HOME_CARDS.map((card) => Card(card))}
 
-                <p
-                    className='medium-text-blue'
-                    style={{ marginLeft: '10%', marginBottom: '5%' }}
-                >
+                <p className='text-accent text-2xl font-black mx-1/10 mb-1/20'>
                     Hear from our students:
                 </p>
-                <div className='container-small'>
-                    <div className='slider-container-middle'>
+                <div className='flex px-1/10 items-center pb-1/10'>
+                    <SliderContainer postion='center'>
                         <img
                             src={testimonials[currentSlide].image}
                             alt={testimonials[currentSlide].alt}
                             className='max-w-full'
                             style={{ marginBottom: '3%' }}
                         />
-                        <div className='dots-container'>
+                        <DotsContainer>
                             {testimonials.map((_, slideNumber) => (
-                                <div
+                                <Dot
                                     key={slideNumber}
-                                    className={`greydot ${
-                                        currentSlide === slideNumber
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                    onMouseEnter={() =>
-                                        handleDotHover(slideNumber)
-                                    }
+                                    slideNumber={slideNumber}
+                                    currentSlide={currentSlide}
+                                    setCurrentSlide={setCurrentSlide}
+                                    light
                                 />
                             ))}
-                        </div>
-                    </div>
+                        </DotsContainer>
+                    </SliderContainer>
                 </div>
             </div>
         </div>

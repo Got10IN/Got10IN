@@ -30,6 +30,7 @@ module.exports = {
             },
             dropShadow: {
                 standard: '10px 10px 18px 0px rgba(150, 178, 207, 0.40)',
+                dot: '0 0 10px #ffb500',
             },
             fontFamily: {
                 poppins: "'Poppins', Arial, sans-serif",
