@@ -1,4 +1,4 @@
-import { SubscribeButton } from '../../components/functional/SubscribeButton'
+import { WishlistButton } from '../../components/functional/WishlistButton'
 import './LoginSignup.css'
 
 function LoginSignup() {
@@ -11,7 +11,7 @@ function LoginSignup() {
                 <br />
                 In the meantime,
             </p>
-            <SubscribeButton />
+            <WishlistButton />
         </div>
     )
 }
