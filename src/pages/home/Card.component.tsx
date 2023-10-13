@@ -27,7 +27,7 @@ const Card = ({ title, description : Description, image, button: Button, reverse
             </Parallax>
 
             <div className='basis-1/2'>
-                <p className='text-3xl font-black text-accent'>{title}</p>
+                <p className='text-3xl font-black text-accent mb-4'>{title}</p>
                 <Description />
 
                 <Button />
