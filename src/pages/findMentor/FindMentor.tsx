@@ -2,7 +2,7 @@ import React from 'react'
 import './FindMentor.css'
 import { Parallax } from 'react-scroll-parallax'
 import FindMentorDemo from '../../assets/mentor/Mentor.png'
-import { SubscribeButton } from '../../components/functional/SubscribeButton'
+import { WishlistButton } from '../../components/functional/WishlistButton'
 
 function FindMentor() {
     return (
@@ -32,7 +32,7 @@ function FindMentor() {
                         . And definitely, we also offer 1-on-1 real person
                         mentorship whenever you need it.
                     </p>
-                    <SubscribeButton />
+                    <WishlistButton />
                 </div>
             </div>
         </div>
