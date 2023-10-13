@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { ChangeEvent, useState } from 'react'
-
 import Buttons from '../../assets/aboutUs/3buttons.png'
 import ComingSoon from '../../assets/aboutUs/ComingSoon.png'
 import Got10INOutline from '../../assets/aboutUs/GOT10INOutline.png'
@@ -10,6 +9,7 @@ import OurStory from '../../assets/aboutUs/OurStory.png'
 import RoadMap from '../../assets/aboutUs/Roadmap.png'
 import RoadMapTitle from '../../assets/aboutUs/RoadmapTitle.png'
 import { Button } from '../../components/buttons/Button'
+import { SubscribeField } from '../../components/functional/SubscribeFIeld'
 
 function AboutUs() {
     const [email, setEmail] = useState('')
@@ -35,7 +35,7 @@ function AboutUs() {
     }
 
     return (
-        <div className='container-white'>
+        <div className='bg-white pt-12 w-full'>
             <div className='flex justify-between mx-1/10 mt-1/20 gap-1/10'>
                 <div className='flex-1'>
                     <img
@@ -43,33 +43,8 @@ function AboutUs() {
                         alt=''
                         className='max-w-full pointer-events-none'
                     />
-                    <div
-                        className='max-w-full'
-                        style={{
-                            display: 'flex',
-                            gap: '20px',
-                            paddingTop: '40px',
-                            paddingBottom: '100px',
-                        }}
-                    >
-                        <input
-                            type='email'
-                            className='form-control'
-                            placeholder='Enter your email'
-                            style={{
-                                borderRadius: '50px',
-                                width: '80%',
-                                height: '40px',
-                            }}
-                            value={email}
-                            onChange={handleEmailChange}
-                        />
-                        <button
-                            className='subscribe-button-1'
-                            onClick={handleSubscribe}
-                        >
-                            Subscribe
-                        </button>
+                    <div className='max-w-full flex items-center gap-5 pt-10 pb-24'>
+                        <SubscribeField />
                     </div>
                 </div>
                 <div
@@ -99,7 +74,7 @@ function AboutUs() {
                 alt='Roadmap'
                 className='pointer-events-none pl-1/10 w-2/5 pt-1/10'
             />
-            <div className='container-small'>
+            <div className='flex px-1/10 items-center pb-1/10'>
                 <img
                     src={RoadMap}
                     alt='roadmap details'
