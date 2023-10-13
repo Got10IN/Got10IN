@@ -2,13 +2,13 @@ import axios from 'axios'
 import { Suspense, lazy, useState } from 'react'
 import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
-import { ICollegeRanking } from '../../../interface/ICollegeRanking'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { resetQuestion } from '../../../utils/redux/questionnaire'
-import { generatePrompt } from '../../../utils/requests/openai/generatePrompt'
-import { parseQuesionnaire } from '../../../utils/requests/openai/parseQuestionnaire'
-import { updateState } from '../../../utils/redux/collegeRanking'
-import { OpenAIAPIKey } from '../../../utils/constants/api'
+import { ICollegeRanking } from '../../interface/ICollegeRanking'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
+import { resetQuestion } from '../../utils/redux/questionnaire'
+import { generatePrompt } from '../../utils/requests/openai/generatePrompt'
+import { parseQuesionnaire } from '../../utils/requests/openai/parseQuestionnaire'
+import { updateState } from '../../utils/redux/collegeRanking'
+import { OpenAIAPIKey } from '../../utils/constants/api'
 
 const Questionnaire = () => {
     const [currQuestion, setCurrQuestion] = useState(1)
@@ -17,17 +17,17 @@ const Questionnaire = () => {
     const dispatch = useAppDispatch()
 
     const Questions = [
-        lazy(() => import('../../../pages/questionnaire/Q1')),
-        lazy(() => import('../../../pages/questionnaire/Q2')),
-        lazy(() => import('../../../pages/questionnaire/Q3')),
-        lazy(() => import('../../../pages/questionnaire/Q4')),
-        lazy(() => import('../../../pages/questionnaire/Q5')),
-        lazy(() => import('../../../pages/questionnaire/Q6')),
-        lazy(() => import('../../../pages/questionnaire/Q7')),
-        lazy(() => import('../../../pages/questionnaire/Q8')),
-        lazy(() => import('../../../pages/questionnaire/Q9')),
-        lazy(() => import('../../../pages/questionnaire/Q10')),
-        lazy(() => import('../../../pages/questionnaire/Q11')),
+        lazy(() => import('./Q1')),
+        lazy(() => import('./Q2')),
+        lazy(() => import('./Q3')),
+        lazy(() => import('./Q4')),
+        lazy(() => import('./Q5')),
+        lazy(() => import('./Q6')),
+        lazy(() => import('./Q7')),
+        lazy(() => import('./Q8')),
+        lazy(() => import('./Q9')),
+        lazy(() => import('./Q10')),
+        lazy(() => import('./Q11')),
     ]
 
     const progressBarStyle = {
@@ -115,7 +115,7 @@ const Questionnaire = () => {
     const isLastQuestion = currQuestion === 11
 
     return (
-        <div className='w-full min-h-scree pt-[15%] pb-[10%] bg-white'>
+        <div className='w-full pt-3/20 pb-1/10 bg-white'>
             <div className='w-1/2 mx-[25%] flex flex-col gap-12'>
                 <div
                     className='Q-center-container'
@@ -135,9 +135,9 @@ const Questionnaire = () => {
                 <Suspense
                     fallback={<div className='min-h-[300px]'>loading</div>}
                 >
-                    <section className='min-h-[300px]'>
+                    <div className='min-h-[300px]'>
                         {<CurrQuestion />}
-                    </section>
+                    </div>
                 </Suspense>
 
                 <div className='flex justify-between items-center mt-4'>

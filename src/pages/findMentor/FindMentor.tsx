@@ -2,12 +2,12 @@ import React from 'react'
 import './FindMentor.css'
 import { Parallax } from 'react-scroll-parallax'
 import FindMentorDemo from '../../assets/mentor/Mentor.png'
-import { SubscribeButton } from '../../components/functional/SubscribeButton'
+import { WishlistButton } from '../../components/functional/WishlistButton'
 
 function FindMentor() {
     return (
         <div className='flex h-auto w-full bg-white'>
-            <div className='flex px-[10%] pt-[15%] pb-[10%] flex-row items-center'>
+            <div className='flex px-1/10 pt-3/20 pb-1/10 flex-row items-center'>
                 <Parallax speed={5} className='basis-1/2'>
                     <img
                         src={FindMentorDemo}
@@ -32,7 +32,7 @@ function FindMentor() {
                         . And definitely, we also offer 1-on-1 real person
                         mentorship whenever you need it.
                     </p>
-                    <SubscribeButton />
+                    <WishlistButton />
                 </div>
             </div>
         </div>

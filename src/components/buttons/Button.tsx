@@ -1,15 +1,18 @@
 import { FC } from 'react'
 
 interface IButton {
-    text: string | FC
-    onClickHandler: () => void
+    children: string | FC
+    onClickHandler?: () => void
+    gray?: boolean
 }
 
-export const Button = ({ text, onClickHandler }: IButton) => (
+export const Button = ({ children, onClickHandler, gray }: IButton) => (
     <button
-        className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
+        className={`${
+            gray ? 'bg-white/30' : 'bg-highlight'
+        } text-sm font-extrabold text-white rounded-full px-1/5 py-3 text-center cursor-pinter no-underline inline-block min-w-max`}
         onClick={onClickHandler}
     >
-        {typeof text === 'string' ? text : <text />}
+        {typeof children === 'string' ? children : <text />}
     </button>
 )

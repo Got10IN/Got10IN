@@ -16,11 +16,11 @@ interface IComponent {
 }
 
 export const FormTitle = ({ children }: IComponent) => (
-    <p className='text-text-dark font-bold'>{children}</p>
+    <p className='text-text-dark font-bold mb-4 '>{children}</p>
 )
 
 export const FormSubtitle = ({ children, className }: IComponent) => (
-    <p className={'text-text-dark font-semibold ' + className}>{children}</p>
+    <p className={'text-text-dark font-semibold mb-4 ' + className}>{children}</p>
 )
 
 export const MultiSelectDropdownField = ({
@@ -220,7 +220,7 @@ export function FieldWithDropdown({ options, selectedOptions, onSelect }: any) {
     return (
         <div>
             <input
-                type='text'
+                type='flex-1'
                 className='Q-form-control'
                 placeholder='Start typing to search'
                 value={field}

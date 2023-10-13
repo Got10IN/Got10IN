@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom"
-import Header from "./header/Header"
+import Header from "./Header"
 import Footer from "./Footer"
 
 const Navigation = () => {
     return (
-        <main className='App'>
+        <main className='flex flex-col items-center bg-accent'>
             <Header />
             <Outlet />
             <Footer />

@@ -1,24 +1,49 @@
 import { useEffect, useState } from 'react'
 import { Parallax } from 'react-scroll-parallax'
-import { HOME_CARDS } from '../../data/home/Home.data'
-import Card from './Card'
-import './Home.css'
 import LogoWithTagline from '../../assets/home/LogoWithTagline.png'
 import Rocket from '../../assets/home/Rocket.png'
+import Tagline0 from '../../assets/home/Tagline0.png'
+import Tagline1 from '../../assets/home/Tagline1.png'
+import Tagline2 from '../../assets/home/Tagline2.png'
+import Testimonial0 from '../../assets/home/Testimonial0.png'
+import Testimonial1 from '../../assets/home/Testimonial1.png'
+import Testimonial2 from '../../assets/home/Testimonial2.png'
+import { HOME_CARDS } from '../../data/home/Home.data'
+import Card from './Card.component'
+import { Dot, DotsContainer, SliderContainer } from './Slider.component'
+import { SubscribeField } from '../../components/functional/SubscribeFIeld'
 
 function Home() {
     const [email, setEmail] = useState('')
-    const [currentSlide, setCurrentSlide] = useState(1) // 追踪当前图片编号
-    const totalSlides = 3 // 总共的图片数量
+    const [currentSlide, setCurrentSlide] = useState(0)
+    const totalSlides = 3
+
+    const taglines: { image: string; alt: string }[] = [
+        {
+            image: Tagline0,
+            alt: 'feeling lost in the search for the perfect school?',
+        },
+        {
+            image: Tagline1,
+            alt: 'uncertain about the next steps in college application?',
+        },
+        {
+            image: Tagline2,
+            alt: 'overwhelmed by those crazy ranks of national colleges?',
+        },
+    ]
+
+    const testimonials: { image: string; alt: string }[] = [
+        { image: Testimonial0, alt: 'testimonial' },
+        { image: Testimonial1, alt: 'testimonial' },
+        { image: Testimonial2, alt: 'testimonial' },
+    ]
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setCurrentSlide((prevSlide) =>
-                prevSlide === totalSlides ? 1 : prevSlide + 1
-            )
+            setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides)
             // 更新圆点
-            handleDotHover(currentSlide === totalSlides ? 1 : currentSlide + 1)
-        }, 3000) // 5秒自动切换
+        }, 3000) // 3秒自动切换
 
         return () => {
             clearTimeout(timer)
@@ -53,122 +78,80 @@ function Home() {
     }
 
     return (
-        <div className='with-full mx-0 my-auto overflow-hidden'>
-            <div className='container-body'>
-                <Parallax className='text' speed={-10}>
-                    <p className='small-text-yellow'>Are you</p>
-                    <div className='slider-container'>
+        <div className='w-full mx-0 my-auto overflow-hidden'>
+            <div className='flex justify-between px-1/10 items-center pt-1/10 gap-1/10'>
+                <Parallax className='flex-1' speed={-10}>
+                    <p className='text-3xl mb-[5px] text-highlight font-semibold'>
+                        Are you
+                    </p>
+                    <SliderContainer postion='leading'>
                         <img
-                            src={`/Q${currentSlide}.png`}
-                            alt={`Word${currentSlide}`}
-                            className='WordCard2'
+                            src={taglines[currentSlide].image}
+                            alt={taglines[currentSlide].alt}
+                            className='max-w-full object-cover'
                             style={{ marginTop: '1%', marginBottom: '5%' }}
                         />
-                        <div className='dots-container'>
-                            {[1, 2, 3].map((slideNumber) => (
-                                <div
+                        <DotsContainer>
+                            {taglines.map((_, slideNumber) => (
+                                <Dot
                                     key={slideNumber}
-                                    className={`dot ${
-                                        currentSlide === slideNumber
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                    onMouseEnter={() =>
-                                        handleDotHover(slideNumber)
-                                    }
-                                ></div>
+                                    slideNumber={slideNumber}
+                                    currentSlide={currentSlide}
+                                    setCurrentSlide={setCurrentSlide}
+                                />
                             ))}
-                        </div>
-                    </div>
-                    <div
-                        className='flex gap-4'
-                        style={{
-                            paddingTop: '15%',
-                            paddingBottom: '10%',
-                        }}
-                    >
-                        <input
-                            type='email'
-                            className='form-control'
-                            placeholder='Enter your email to subscribe!'
-                            style={{
-                                borderRadius: '50px',
-                                width: '70%',
-                                height: '40px',
-                            }}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <button
-                            className='subscribe-button-1'
-                            style={{ height: '40px' }}
-                            onClick={handleSubscription}
-                        >
-                            Subscribe
-                        </button>
+                        </DotsContainer>
+                    </SliderContainer>
+                    <div className='flex gap-4 mt-1/5 mb-1/10 h-10'>
+                        <SubscribeField />
                     </div>
                 </Parallax>
-                <div className='text'>
+                <div className='flex-1'>
                     <Parallax speed={-10}>
                         <img
                             src={LogoWithTagline}
                             alt=''
-                            className='WordCard'
+                            className='max-w-full'
                         />
                     </Parallax>
                     <img
                         src={Rocket}
                         alt=''
-                        className='WordCard'
+                        className='max-w-full'
                         style={{ marginTop: '-40px' }}
                     />
                 </div>
             </div>
-            <div className='container-white'>
-                <p
-                    className='medium-text-blue'
-                    style={{
-                        marginLeft: '10%',
-                        marginTop: '5%',
-                        marginBottom: '5%',
-                    }}
-                >
+            <div className='bg-white pt-12 w-full'>
+                <p className='text-accent text-2xl font-black mx-1/10 my-1/20'>
                     Explore our features
                 </p>
 
                 {HOME_CARDS.map((card) => Card(card))}
 
-                <p
-                    className='medium-text-blue'
-                    style={{ marginLeft: '10%', marginBottom: '5%' }}
-                >
+                <p className='text-accent text-2xl font-black mx-1/10 mb-1/20'>
                     Hear from our students:
                 </p>
-                <div className='container-small'>
-                    {/* 底部图片切换 */}
-                    <div className='slider-container-middle'>
+                <div className='flex px-1/10 items-center pb-1/10'>
+                    <SliderContainer postion='center'>
                         <img
-                            src={`/StudentSay${currentSlide}.png`}
-                            alt={`StudentSay${currentSlide}`}
-                            className='WordCard'
+                            src={testimonials[currentSlide].image}
+                            alt={testimonials[currentSlide].alt}
+                            className='max-w-full'
                             style={{ marginBottom: '3%' }}
                         />
-                        <div className='dots-container'>
-                            {[1, 2, 3].map((slideNumber) => (
-                                <div
+                        <DotsContainer>
+                            {testimonials.map((_, slideNumber) => (
+                                <Dot
                                     key={slideNumber}
-                                    className={`greydot ${
-                                        currentSlide === slideNumber
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                    onMouseEnter={() =>
-                                        handleDotHover(slideNumber)
-                                    }
-                                ></div>
+                                    slideNumber={slideNumber}
+                                    currentSlide={currentSlide}
+                                    setCurrentSlide={setCurrentSlide}
+                                    light
+                                />
                             ))}
-                        </div>
-                    </div>
+                        </DotsContainer>
+                    </SliderContainer>
                 </div>
             </div>
         </div>

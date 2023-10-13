@@ -1,9 +1,9 @@
-import { ICard } from '../../pages/home/Card'
+import { ICard } from '../../pages/home/Card.component'
 import Landing1 from '../../assets/home/Landing1.png'
 import Landing2 from '../../assets/home/Landing2.png'
 import Landing3 from '../../assets/home/Landing3.png'
 import { Link } from 'react-router-dom'
-import { SubscribeButton } from '../../components/functional/SubscribeButton'
+import { WishlistButton } from '../../components/functional/WishlistButton'
 
 export const HOME_CARDS: ICard[] = [
     {
@@ -24,7 +24,7 @@ export const HOME_CARDS: ICard[] = [
         button: () => (
             <Link
                 to='/my-college-ranking'
-                className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
+                className='bg-highlight text-lg font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
             >
                 Try My College Ranking
             </Link>
@@ -45,7 +45,7 @@ export const HOME_CARDS: ICard[] = [
             </p>
         ),
         image: Landing2,
-        button: SubscribeButton,
+        button: WishlistButton,
         reverse: true,
     },
     {
@@ -59,6 +59,6 @@ export const HOME_CARDS: ICard[] = [
             </p>
         ),
         image: Landing3,
-        button: SubscribeButton,
+        button: WishlistButton,
     },
 ]

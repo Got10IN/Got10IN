@@ -1,19 +1,15 @@
-import React from 'react';
+import FooterImage from '../../../assets/navigation/footer/Footer.png'
 
 function Footer() {
-    const imgStyle = {
-      width: '100%',
-      height: 'auto',
-      maxWidth: '100%',
-      display: 'block',
-      margin: '0 auto',
-    };
-  
     return (
-      <footer>
-          <img src={process.env.PUBLIC_URL + '/Footer.png'} alt="Footer" style={imgStyle} />
-      </footer>
-    );
+        <footer>
+            <img
+                src={FooterImage}
+                alt='temporary footer'
+                className='w-full h-auto max-w-full block my-0 mx-auto'
+            />
+        </footer>
+    )
 }
 
-export default Footer;
+export default Footer
