@@ -115,19 +115,19 @@ const Questionnaire = () => {
     const isLastQuestion = currQuestion === 11
 
     return (
-        <div className='w-full pt-3/20 pb-1/10 bg-white'>
-            <div className='w-1/2 mx-[25%] flex flex-col gap-12'>
+        <div className='w-full pt-3/20 pb-1/10 bg-white sm:pt-48'>
+            <div className='w-1/2 mx-[25%] sm:mx-10 sm:w-auto flex flex-col gap-12'>
                 <div
                     className='Q-center-container'
                     style={{ paddingBottom: '3%' }}
                 >
                     <div className='progress-container'>
-                        <div className='progress-title'>Progress</div>
+                        <div className='progress-title sm:hidden'>Progress</div>
                         <div className='barbackground'>
                             <div
                                 className='progress-fill'
                                 style={progressBarStyle}
-                            ></div>
+                            />
                         </div>
                         <div className='progress-text'>{`${currQuestion}/${Questions.length}`}</div>
                     </div>
@@ -142,7 +142,7 @@ const Questionnaire = () => {
 
                 <div className='flex justify-between items-center mt-4'>
                     <button
-                        className='text-accent-dark font-semibold text-sm w-20 h-8 py-2 hover:bg-accent-light duration-150 border-accent border-2 rounded-3xl flex justify-center items-center cursor-pointer align-middle'
+                        className='text-accent-dark font-semibold text-sm w-20 h-8 py-2 hover:bg-accent-light duration-150 border-accent border-2 rounded-3xl flex justify-center items-center cursor-pointer align-middle sm:hidden'
                         onClick={exitHandler}
                     >
                         Exit
@@ -156,7 +156,7 @@ const Questionnaire = () => {
                     <div className='flex gap-8'>
                         {!isLastQuestion && (
                             <button
-                                className='text-accent-dark font-semibold text-sm w-20 h-8 py-2 hover:bg-accent-light duration-150 border-accent border-2 rounded-3xl flex justify-center items-center cursor-pointer align-middle'
+                                className='text-accent-dark font-semibold text-sm w-20 h-8 py-2 hover:bg-accent-light duration-150 border-accent border-2 sm:border-none rounded-3xl flex justify-center items-center cursor-pointer align-middle'
                                 onClick={skipQuestionHandler}
                             >
                                 Skip

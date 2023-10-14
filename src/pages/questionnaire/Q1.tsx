@@ -69,15 +69,9 @@ const Q1 = () => {
                     style={{ width: '80%' }}
                 />
                 <button
-                    className='confirm-button'
+                    className='confirm-button w-3/20 min-w-fit h-full py-1.5 px-4 bg-accent-dark ml-4'
                     onClick={handleConfirmClick}
-                    style={{
-                        backgroundColor: '#003362',
-                        width: '15%',
-                        height: '100%',
-                        padding: '1% 2%',
-                        marginLeft: '5%',
-                    }}
+
                 >
                     Confirm
                 </button>

@@ -10,16 +10,6 @@ import { FormTitle, MultiSelectGrid } from './components'
 const Q7 = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
-    const handleOptionSelect = (option: string) => {
-        if (selectedOptions.includes(option)) {
-            setSelectedOptions(
-                selectedOptions.filter((item) => item !== option)
-            )
-        } else {
-            setSelectedOptions([...selectedOptions, option])
-        }
-    }
-
     const questionnaire = useSelector(
         (state: RootState) => state.questionnaire.value
     )
@@ -39,7 +29,7 @@ const Q7 = () => {
     return (
         <Fragment>
             <FormTitle>
-                7. What type(s) of college do you prefer?
+                7. What type(s) of school do you prefer?
             </FormTitle>
             <MultiSelectGrid
                 initialOptions={initialOptions}

@@ -15,8 +15,8 @@ interface IComponent {
     className?: string
 }
 
-export const FormTitle = ({ children }: IComponent) => (
-    <p className='text-text-dark font-bold mb-4 '>{children}</p>
+export const FormTitle = ({ children, className }: IComponent) => (
+    <p className={'text-text-dark font-bold mb-4 ' + className}>{children}</p>
 )
 
 export const FormSubtitle = ({ children, className }: IComponent) => (
@@ -96,7 +96,7 @@ export const MultiSelectDropdownField = ({
                 >
                     <Combobox.Options className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
                         {filteredOptions.length === 0 && query !== '' ? (
-                            <div className='relative cursor-default select-none py-2 text-gray-700'>
+                            <div className='ml-8 relative cursor-default select-none py-2 text-gray-700'>
                                 Nothing found.
                             </div>
                         ) : (
@@ -111,7 +111,7 @@ export const MultiSelectDropdownField = ({
                                                 option,
                                             ])
                                         }}
-                                        className='relative cursor-default select-none py-2 text-gray-900'
+                                        className='ml-8 relative cursor-default select-none py-2 text-gray-900'
                                     >
                                         {option}
                                     </Combobox.Option>
@@ -264,7 +264,7 @@ export function TendencySlider({
 
     return (
         <div className='tendency-slider' style={{ paddingTop: '2%' }}>
-            <div className='slider-label'>{labelLeading}</div>
+            <div className='slider-label text-center'>{labelLeading}</div>
             <input
                 type='range'
                 min='0'
@@ -275,7 +275,7 @@ export function TendencySlider({
                 className='Q-form-control'
                 style={{ width: `${width}%` }}
             />
-            <div className='slider-label'>{labelTrailing}</div>
+            <div className='slider-label text-center'>{labelTrailing}</div>
         </div>
     )
 }

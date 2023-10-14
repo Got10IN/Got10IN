@@ -26,7 +26,7 @@ const Q2 = () => {
     return (
         <Fragment>
             <FormTitle>2. What's your MBTI?</FormTitle>
-            <div className='grid grid-cols-4 gap-8'>
+            <div className='grid grid-cols-4 gap-8 sm:gap-4'>
                 {mbtiOptions.map((mbti, index) => {
                     const selected = mbti === selectedMBTI
                     return (
