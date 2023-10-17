@@ -1,5 +1,4 @@
 import { WishlistButton } from '../../components/functional/WishlistButton'
-import './LoginSignup.css'
 
 function LoginSignup() {
     return (
