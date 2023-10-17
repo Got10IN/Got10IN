@@ -14,7 +14,7 @@ const Card = ({ title, description : Description, image, button: Button, reverse
         <div
             className={`flex px-1/10 items-center pb-[12%] gap-8 ${
                 reverse ? 'flex-row-reverse' : 'flex-row'
-            }`}
+            } sm:flex-col`}
         >
             <Parallax speed={5} className='basis-1/2'>
                 <img

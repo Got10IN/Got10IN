@@ -55,7 +55,7 @@ const Q10 = () => {
                             key={factor}
                             className='flex flex-row items-center'
                         >
-                            <FormSubtitle className='basis-1/5 pt-[2%]'>
+                            <FormSubtitle className='basis-1/5 sm:basis-2/5 pt-[2%]'>
                                 {factor}
                             </FormSubtitle>
 

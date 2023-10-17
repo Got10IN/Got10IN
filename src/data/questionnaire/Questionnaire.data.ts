@@ -90,7 +90,7 @@ export const Q4Options = [
     'Southeast',
 ]
 
-export const Q7Options = ['Public', 'Private', 'Liberal Arts']
+export const Q7Options = ['Public', 'Private', 'Liberal Arts College']
 
 export const Q8Options = [
     'Below 15k/semester',

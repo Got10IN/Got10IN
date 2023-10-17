@@ -42,44 +42,18 @@ function Home() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides)
-            // 更新圆点
-        }, 3000) // 3秒自动切换
+        }, 3000)
 
         return () => {
             clearTimeout(timer)
         }
     }, [currentSlide])
 
-    const handleDotHover = (slideNumber: number) => {
-        setCurrentSlide(slideNumber)
-    }
-
-    const handleSubscription = async () => {
-        try {
-            const response = await fetch(
-                'https://got10in-backend-cfba39007310.herokuapp.com/subscribe/',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email }),
-                }
-            )
-            const data = await response.json()
-            if (response.ok) {
-                alert(data.message)
-            } else {
-                alert(data.detail) // Display the error message from the backend
-            }
-        } catch (error) {
-            console.error('There was an error!', error)
-        }
-    }
-
     return (
         <div className='w-full mx-0 my-auto overflow-hidden'>
-            <div className='flex justify-between px-1/10 items-center pt-1/10 gap-1/10'>
+            <div className='flex justify-between px-1/10 items-center pt-1/10 gap-1/10 overflow-hidden sm:flex-col-reverse sm:pt-1/5'>
+                {/* <span className='absolute bottom-1/10 left-1/5 w-80 h-80 blur-[350px] rounded-full bg-highlight block' /> */}
+                {/* <span className='absolute -top-1/10 right-1/10 w-80 h-80 blur-[350px] rounded-full bg-secondary block' /> */}
                 <Parallax className='flex-1' speed={-10}>
                     <p className='text-3xl mb-[5px] text-highlight font-semibold'>
                         Are you
@@ -102,7 +76,7 @@ function Home() {
                             ))}
                         </DotsContainer>
                     </SliderContainer>
-                    <div className='flex gap-4 mt-1/5 mb-1/10 h-10'>
+                    <div className='flex gap-4 mt-1/5 mb-1/10 h-10 sm:w-full'>
                         <SubscribeField />
                     </div>
                 </Parallax>

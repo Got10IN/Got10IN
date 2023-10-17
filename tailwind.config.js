@@ -6,7 +6,7 @@ module.exports = {
         extend: {
             screens: {
                 mb: { max: '512px' },
-                sm: { min: '513px', max: '768px' },
+                sm: { max: '768px' },
             },
             colors: {
                 accent: {
@@ -15,6 +15,7 @@ module.exports = {
                     light: '#96B2CF',
                 },
                 highlight: '#FFB500',
+                secondary: '#96B2CF',
                 text: { DEFAULT: '#A0A0A0', dark: '#2c2c2c' },
                 silver: '#CDCDCD',
                 bronze: '#FF8A00',
@@ -25,6 +26,9 @@ module.exports = {
                 '3/20': '15%',
                 '1/5': '20%',
                 '3/10': '30%',
+                '2/5': '40%',
+                '1/2': '50%',
+                '3/5': '60%',
                 '7/10': '70%',
                 '9/10': '90%',
             },

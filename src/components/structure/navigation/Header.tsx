@@ -4,12 +4,7 @@ import Logo from '../../../assets/navigation/header/logo.png'
 import { NavLinks } from '../../../data/navigation/NavLinks'
 
 function Header() {
-    const location = useLocation()
     const navigate = useNavigate()
-
-    const isActive = (path: string): boolean => {
-        return location.pathname === path
-    }
 
     const [isLoggedIn, setIsLoggedIn] = useState(
         !!localStorage.getItem('isLoggedIn')
@@ -20,11 +15,6 @@ function Header() {
             setIsLoggedIn(true)
         }
     }, [])
-
-    const handleLogout = () => {
-        setIsLoggedIn(false)
-        localStorage.removeItem('isLoggedIn')
-    }
 
     const loginButtonHandler = () => {
         if (isLoggedIn) {
@@ -57,12 +47,12 @@ function Header() {
 
     return (
         <nav className='w-full fixed top-0 right-0 left-0 z-[331] bg-accent'>
-            <div className='flex justify-start items-center flex-nowrap px-1/10 pt-10 pb-[18px]'>
+            <div className='flex justify-start items-center flex-nowrap px-1/10 pt-10 pb-[18px] sm:h-36'>
                 <Link to='/' className='my-auto mr-4 select-none'>
                     <img src={Logo} alt='Got10IN' className='max-w-[100px]' />
                 </Link>
 
-                <ul className='flex-grow flex flex-row justify-center pl-0 mb-0'>
+                <ul className='flex-grow flex flex-row justify-center pl-0 mb-0 sm:hidden'>
                     {NavLinks.map(({ path, label }) => (
                         <NavLink key={label} path={path} label={label} />
                     ))}

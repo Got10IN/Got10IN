@@ -13,7 +13,6 @@ import {
 } from '../../../utils/constants/links'
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
 import { resetAll } from '../../../utils/redux/questionnaire'
-import { ICollegeRanking } from '../../../interface/ICollegeRanking'
 import { updateState } from '../../../utils/redux/collegeRanking'
 
 const Result = () => {
@@ -50,16 +49,16 @@ const Result = () => {
     }, [])
 
     return (
-        <div className='bg-white mt-40 w-full px-36 py-12'>
+        <div className='bg-white mt-40 w-full px-36 py-12 sm:px-8'>
             <div className='relative w-full font-poppins mb-12'>
-                <p className='text-3xl text-text-dark font-medium'>
+                <p className='text-3xl text-text-dark font-medium sm:text-lg sm:font-bold sm:text-center'>
                     Hey{' '}
-                    <span className='text-highlight text-4xl font-bold'>
+                    <span className='text-highlight text-4xl font-bold sm:text-lg'>
                         Applicant
                     </span>
                     , here are the top 10 colleges tailored just for you!
                 </p>
-                <p className='text-xl font-medium'>
+                <p className='text-xl font-medium sm:hidden'>
                     *
                     <span
                         className='text-highlight underline cursor-pointer'
@@ -72,15 +71,15 @@ const Result = () => {
                     to unlock the detail Index comparison of your ranking
                     results
                 </p>
-                <img src={Arrow} alt='' className='absolute right-0 top-12' />
+                <img src={Arrow} alt='' className='absolute right-0 top-12 sm:top-8' />
             </div>
-            <div className='grid grid-cols-2 gap-16 mt-12'>
+            <div className='grid grid-cols-2 gap-16 mt-12 sm:grid-cols-1 sm:mt-20'>
                 <div className='flex flex-col gap-8'>
                     {rankings.slice(0, 3).map((school, index) => {
                         return (
                             <div
                                 key={index}
-                                className='relative drop-shadow-standard w-full h-36 bg-accent text-white rounded-[1.7rem] flex items-center justify-start gap-4 px-4'
+                                className='relative drop-shadow-standard w-full h-36 sm:h-20 bg-accent text-white rounded-[1.7rem] flex items-center justify-start gap-4 px-4'
                             >
                                 {index === 0 && (
                                     <img
@@ -102,7 +101,7 @@ const Result = () => {
                                         {index + 1}
                                     </p>
                                 </span>
-                                <p className='block m-0 text-3xl font-bold'>
+                                <p className='block m-0 text-3xl font-bold sm:text-2xl'>
                                     {school}
                                 </p>
                             </div>
@@ -111,6 +110,7 @@ const Result = () => {
                     <img
                         src={Logo}
                         alt='The result is generated based on your personal preference'
+                        className='sm:hidden'
                     />
                 </div>
                 <div className='flex flex-col gap-3'>
@@ -130,7 +130,7 @@ const Result = () => {
                         )
                     })}
                     <button
-                        className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
+                        className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block sm:hidden'
                         onClick={() => {
                             dispatch(resetAll())
                             navigate('/my-college-ranking')
@@ -138,7 +138,7 @@ const Result = () => {
                     >
                         Redo the Test
                     </button>
-                    <div className='flex justify-between text-xl mt-2 px-2'>
+                    <div className='flex justify-between sm:flex-col sm:gap-4 sm:justify-normal text-xl mt-2 px-2'>
                         Share you rankings to:
                         <ul className='flex gap-2 text-highlight [&>*]:cursor-pointer'>
                             <FaDiscord
