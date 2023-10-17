@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../../../assets/navigation/header/logo.png'
 import { NavLinks } from '../../../data/navigation/NavLinks'
@@ -6,15 +5,7 @@ import { NavLinks } from '../../../data/navigation/NavLinks'
 function Header() {
     const navigate = useNavigate()
 
-    const [isLoggedIn, setIsLoggedIn] = useState(
-        !!localStorage.getItem('isLoggedIn')
-    )
-
-    useEffect(() => {
-        if (localStorage.getItem('isLoggedIn')) {
-            setIsLoggedIn(true)
-        }
-    }, [])
+    const isLoggedIn = false
 
     const loginButtonHandler = () => {
         if (isLoggedIn) {
@@ -46,8 +37,17 @@ function Header() {
     }
 
     return (
-        <nav className='w-full fixed top-0 right-0 left-0 z-[331] bg-accent'>
-            <div className='flex justify-start items-center flex-nowrap px-1/10 pt-10 pb-[18px] sm:h-36'>
+        <nav
+            className={`w-full h-24 fixed top-0 right-0 left-0 z-[331] flex items-end ${
+                false && 'hidden'
+            }`}
+        >
+            <div
+                className={`absolute h-full w-full bg-accent -z-10 ${
+                    false && 'opacity-0 transition-opacity'
+                }`}
+            />
+            <div className='flex justify-start items-center flex-nowrap px-1/10 mb-4 sm:h-36 w-full'>
                 <Link to='/' className='my-auto mr-4 select-none'>
                     <img src={Logo} alt='Got10IN' className='max-w-[100px]' />
                 </Link>
