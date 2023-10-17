@@ -2,18 +2,13 @@ import { Combobox, Transition } from '@headlessui/react'
 import {
     ChangeEvent,
     Dispatch,
-    ReactNode,
     SetStateAction,
     useEffect,
-    useState,
+    useState
 } from 'react'
 import { HiMiniChevronUpDown } from 'react-icons/hi2'
 import { IoClose } from 'react-icons/io5'
-
-interface IComponent {
-    children: ReactNode
-    className?: string
-}
+import { IComponent } from '../../interface/IComponent'
 
 export const FormTitle = ({ children, className }: IComponent) => (
     <p className={'text-text-dark font-bold mb-4 ' + className}>{children}</p>
