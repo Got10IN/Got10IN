@@ -2,6 +2,12 @@ import { ICard } from '../../pages/home/Card.component'
 import Landing1 from '../../assets/home/Landing1.png'
 import Landing2 from '../../assets/home/Landing2.png'
 import Landing3 from '../../assets/home/Landing3.png'
+import Tagline0 from '../../assets/home/Tagline0.png'
+import Tagline1 from '../../assets/home/Tagline1.png'
+import Tagline2 from '../../assets/home/Tagline2.png'
+import Testimonial0 from '../../assets/home/Testimonial0.png'
+import Testimonial1 from '../../assets/home/Testimonial1.png'
+import Testimonial2 from '../../assets/home/Testimonial2.png'
 import { Link } from 'react-router-dom'
 import { WishlistButton } from '../../components/functional/WishlistButton'
 
@@ -61,4 +67,25 @@ export const HOME_CARDS: ICard[] = [
         image: Landing3,
         button: WishlistButton,
     },
+]
+
+export const taglines: { image: string; alt: string }[] = [
+    {
+        image: Tagline0,
+        alt: 'feeling lost in the search for the perfect school?',
+    },
+    {
+        image: Tagline1,
+        alt: 'uncertain about the next steps in college application?',
+    },
+    {
+        image: Tagline2,
+        alt: 'overwhelmed by those crazy ranks of national colleges?',
+    },
+]
+
+export const testimonials: { image: string; alt: string }[] = [
+    { image: Testimonial0, alt: 'testimonial' },
+    { image: Testimonial1, alt: 'testimonial' },
+    { image: Testimonial2, alt: 'testimonial' },
 ]
