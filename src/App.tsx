@@ -7,10 +7,13 @@ import MyCollegeRanking from './pages/myCollegeRanking/MyCollegeRanking'
 import Result from './pages/myCollegeRanking/result/Result.page'
 import Questionnaire from './pages/questionnaire/Questionnaire'
 import LoginSignup from './pages/user/LoginSignup'
+import NavigationHandler from './components/structure/navigation/NavigationHandler'
+
 
 function App() {
     return (
         <Router>
+            <NavigationHandler />
             <Routes>
                 <Route path='/' element={<Navigation />}>
                     <Route index element={<Home />} />
