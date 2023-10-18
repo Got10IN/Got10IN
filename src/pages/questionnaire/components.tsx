@@ -4,18 +4,21 @@ import {
     Dispatch,
     SetStateAction,
     useEffect,
-    useState
+    useState,
 } from 'react'
 import { HiMiniChevronUpDown } from 'react-icons/hi2'
 import { IoClose } from 'react-icons/io5'
 import { IComponent } from '../../interface/IComponent'
+import './Q-form-control.css'
 
 export const FormTitle = ({ children, className }: IComponent) => (
     <p className={'text-text-dark font-bold mb-4 ' + className}>{children}</p>
 )
 
 export const FormSubtitle = ({ children, className }: IComponent) => (
-    <p className={'text-text-dark font-semibold mb-4 ' + className}>{children}</p>
+    <p className={'text-text-dark font-semibold mb-4 ' + className}>
+        {children}
+    </p>
 )
 
 export const MultiSelectDropdownField = ({
@@ -189,53 +192,6 @@ export const SingleSelectGrid = ({
     )
 }
 
-export function FieldWithDropdown({ options, selectedOptions, onSelect }: any) {
-    const [field, setField] = useState('')
-    const [filteredOptions, setFilteredOptions] = useState([])
-
-    useEffect(() => {
-        setField('')
-    }, [selectedOptions])
-
-    const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value
-        setField(inputValue)
-
-        const filtered = options.filter((option: string) =>
-            option.toLowerCase().includes(inputValue.toLowerCase())
-        )
-
-        setFilteredOptions(filtered)
-    }
-
-    const handleOptionClick = (option: string) => {
-        onSelect(option)
-    }
-
-    return (
-        <div>
-            <input
-                type='flex-1'
-                className='Q-form-control'
-                placeholder='Start typing to search'
-                value={field}
-                onChange={handleFieldChange}
-            />
-            <div className='dropdown'>
-                {filteredOptions.map((option, index) => (
-                    <div
-                        key={index}
-                        className='dropdown-option'
-                        onClick={() => handleOptionClick(option)}
-                    >
-                        {option}
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
-}
-
 export function TendencySlider({
     onValueChange,
     labelLeading,
@@ -258,8 +214,15 @@ export function TendencySlider({
     }
 
     return (
-        <div className='tendency-slider' style={{ paddingTop: '2%' }}>
-            <div className='slider-label text-center'>{labelLeading}</div>
+        <div
+            className='flex items-center justify-between w-full mx-auto'
+            style={{ paddingTop: '2%' }}
+        >
+            {labelLeading && (
+                <div className='text-sm text-text-88 text-center'>
+                    {labelLeading}
+                </div>
+            )}
             <input
                 type='range'
                 min='0'
@@ -270,7 +233,11 @@ export function TendencySlider({
                 className='Q-form-control'
                 style={{ width: `${width}%` }}
             />
-            <div className='slider-label text-center'>{labelTrailing}</div>
+            {labelTrailing && (
+                <div className='text-sm text-text-88 text-center'>
+                    {labelTrailing}
+                </div>
+            )}
         </div>
     )
 }

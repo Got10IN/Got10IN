@@ -1,12 +1,10 @@
 import { Fragment, useEffect, useState } from 'react'
-import './Questionnaire.css'
-import { FormSubtitle, FormTitle, TendencySlider } from './components'
-import { IQTendency } from '../../interface/IQuestionnaire'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../utils/redux/store'
-import { updateQ10 } from '../../utils/redux/questionnaire'
 import { useUpdateEffect } from 'usehooks-ts'
 import { Q10Factors as factors } from '../../data/questionnaire/Questionnaire.data'
+import { IQTendency } from '../../interface/IQuestionnaire'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
+import { updateQ10 } from '../../utils/redux/questionnaire'
+import { FormSubtitle, FormTitle, TendencySlider } from './components'
 
 const Q10 = () => {
     const [tendencyValues, setTendencyValues] = useState<IQTendency[]>([
@@ -27,11 +25,11 @@ const Q10 = () => {
         ])
     }
 
-    const questionnaire = useSelector(
-        (state: RootState) => state.questionnaire.value
+    const questionnaire = useAppSelector(
+        (state) => state.questionnaire.value
     )
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useUpdateEffect(() => {
         dispatch(updateQ10(tendencyValues))

@@ -1,10 +1,8 @@
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { updateQ8 } from '../../utils/redux/questionnaire'
-import './Questionnaire.css'
-
 import { Q8Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
+import { updateQ8 } from '../../utils/redux/questionnaire'
 import { FormTitle, MultiSelectGrid } from './components'
 
 const Q8 = () => {

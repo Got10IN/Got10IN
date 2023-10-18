@@ -1,19 +1,17 @@
 import { Fragment, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../utils/redux/store'
-import { updateQ5 } from '../../utils/redux/questionnaire'
-import './Questionnaire.css'
-import { FormTitle, TendencySlider } from './components'
 import { useUpdateEffect } from 'usehooks-ts'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
+import { updateQ5 } from '../../utils/redux/questionnaire'
+import { FormTitle, TendencySlider } from './components'
 
 const Q5 = () => {
     const [tendencyValue, setTendencyValue] = useState(50) // 初始值为50
 
-    const questionnaire = useSelector(
-        (state: RootState) => state.questionnaire.value
+    const questionnaire = useAppSelector(
+        (state) => state.questionnaire.value
     )
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useUpdateEffect(() => {
         dispatch(
