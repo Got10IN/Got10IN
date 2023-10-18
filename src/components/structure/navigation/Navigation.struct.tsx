@@ -4,7 +4,7 @@ import Footer from "./Footer"
 
 const Navigation = () => {
     return (
-        <main className='flex flex-col items-center bg-accent'>
+        <main className='flex flex-col items-center'>
             <Header />
             <Outlet />
             <Footer />
