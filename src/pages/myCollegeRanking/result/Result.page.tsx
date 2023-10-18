@@ -145,7 +145,7 @@ const Result = () => {
                         )
                     })}
                     <button
-                        className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block sm:hidden'
+                        className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
                         onClick={() => {
                             dispatch(resetAll())
                             navigate('/my-college-ranking')

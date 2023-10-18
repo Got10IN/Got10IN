@@ -48,7 +48,7 @@ function Header() {
     return (
         <nav
             className={`w-full h-24 fixed top-0 right-0 left-0 z-[331] flex items-end ${
-                hidden && 'hidden'
+                hidden && 'sm:hidden'
             }`}
         >
             <div
