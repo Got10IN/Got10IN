@@ -230,7 +230,7 @@ export function TendencySlider({
                 value={sliderValue}
                 onChange={handleSliderChange}
                 step='10'
-                className='Q-form-control'
+                className='Q-form-control grow'
                 style={{ width: `${width}%` }}
             />
             {labelTrailing && (
