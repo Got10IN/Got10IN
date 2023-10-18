@@ -2,42 +2,14 @@ import { useEffect, useState } from 'react'
 import { Parallax } from 'react-scroll-parallax'
 import LogoWithTagline from '../../assets/home/LogoWithTagline.png'
 import Rocket from '../../assets/home/Rocket.png'
-import Tagline0 from '../../assets/home/Tagline0.png'
-import Tagline1 from '../../assets/home/Tagline1.png'
-import Tagline2 from '../../assets/home/Tagline2.png'
-import Testimonial0 from '../../assets/home/Testimonial0.png'
-import Testimonial1 from '../../assets/home/Testimonial1.png'
-import Testimonial2 from '../../assets/home/Testimonial2.png'
-import { HOME_CARDS } from '../../data/home/Home.data'
+import { SubscribeField } from '../../components/functional/SubscribeFIeld'
+import { HOME_CARDS, taglines, testimonials } from '../../data/home/Home.data'
 import Card from './Card.component'
 import { Dot, DotsContainer, SliderContainer } from './Slider.component'
-import { SubscribeField } from '../../components/functional/SubscribeFIeld'
 
 function Home() {
-    const [email, setEmail] = useState('')
     const [currentSlide, setCurrentSlide] = useState(0)
     const totalSlides = 3
-
-    const taglines: { image: string; alt: string }[] = [
-        {
-            image: Tagline0,
-            alt: 'feeling lost in the search for the perfect school?',
-        },
-        {
-            image: Tagline1,
-            alt: 'uncertain about the next steps in college application?',
-        },
-        {
-            image: Tagline2,
-            alt: 'overwhelmed by those crazy ranks of national colleges?',
-        },
-    ]
-
-    const testimonials: { image: string; alt: string }[] = [
-        { image: Testimonial0, alt: 'testimonial' },
-        { image: Testimonial1, alt: 'testimonial' },
-        { image: Testimonial2, alt: 'testimonial' },
-    ]
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -101,7 +73,15 @@ function Home() {
                     Explore our features
                 </p>
 
-                {HOME_CARDS.map((card) => Card(card))}
+                {HOME_CARDS.map(({ title, description, image, button }) => (
+                    <Card
+                        key={title}
+                        title={title}
+                        description={description}
+                        image={image}
+                        button={button}
+                    />
+                ))}
 
                 <p className='text-accent text-2xl font-black mx-1/10 mb-1/20'>
                     Hear from our students:

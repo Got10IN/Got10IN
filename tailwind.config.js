@@ -16,7 +16,12 @@ module.exports = {
                 },
                 highlight: '#FFB500',
                 secondary: '#96B2CF',
-                text: { DEFAULT: '#A0A0A0', dark: '#2c2c2c' },
+                text: {
+                    DEFAULT: '#A0A0A0',
+                    dark: '#2c2c2c',
+                    61: '#616161',
+                    88: '#888888',
+                },
                 silver: '#CDCDCD',
                 bronze: '#FF8A00',
             },
@@ -38,6 +43,9 @@ module.exports = {
             },
             fontFamily: {
                 poppins: "'Poppins', Arial, sans-serif",
+            },
+            boxShadow: {
+                progress: 'inset 0 0 0 1px #a0a0a0',
             },
         },
     },

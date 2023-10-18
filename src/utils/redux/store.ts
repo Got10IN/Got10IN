@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import questionnaireReducer from './questionnaire'
 import collegeRankingReducer from './collegeRanking'
+import questionnaireReducer from './questionnaire'
 
 export const store = configureStore({
     reducer: {

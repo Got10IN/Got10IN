@@ -1,10 +1,9 @@
-import { ChangeEvent, Fragment, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
 import { Q1Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
 import { updateQ1 } from '../../utils/redux/questionnaire'
-import type { RootState } from '../../utils/redux/store'
-import './Questionnaire.css'
+
 import { FormTitle, MultiSelectDropdownField } from './components'
 
 const Q1 = () => {
@@ -17,10 +16,6 @@ const Q1 = () => {
         setSelectedOptions(updatedOptions)
     }
 
-    const handleInputFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setInputFieldValue(e.target.value)
-    }
-
     const handleConfirmClick = () => {
         if (inputFieldValue.trim() !== '') {
             setSelectedOptions([...selectedOptions, inputFieldValue])
@@ -28,11 +23,9 @@ const Q1 = () => {
         }
     }
 
-    const questionnaire = useSelector(
-        (state: RootState) => state.questionnaire.value
-    )
+    const questionnaire = useAppSelector((state) => state.questionnaire.value)
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useUpdateEffect(() => {
         dispatch(updateQ1({ options: selectedOptions }))
@@ -47,7 +40,7 @@ const Q1 = () => {
     return (
         <Fragment>
             <FormTitle>1. What are your fields of interest?</FormTitle>
-            <p className='small-text mb-4'>
+            <p className='text-text mb-4'>
                 *feel free to choose any number of fields you are interested in
             </p>
             <MultiSelectDropdownField
@@ -56,7 +49,7 @@ const Q1 = () => {
                 setSelectedOptions={setSelectedOptions}
                 removeOptionHandler={handleRemoveOption}
             />
-            <p className='small-text mb-4 mt-8'>
+            <p className='text-text mb-4 mt-8'>
                 *if your interested field is not in our list, enter it here
             </p>
             <div className='flex justify-between items-center'>
@@ -65,13 +58,14 @@ const Q1 = () => {
                     className='Q-form-control'
                     placeholder='Please enter a field'
                     value={inputFieldValue}
-                    onChange={handleInputFieldChange}
+                    onChange={(e) => {
+                        setInputFieldValue(e.target.value)
+                    }}
                     style={{ width: '80%' }}
                 />
                 <button
-                    className='confirm-button w-3/20 min-w-fit h-full py-1.5 px-4 bg-accent-dark ml-4'
+                    className='text-sm font-semibold text-white border-none rounded-full inline-block cursor-pointer w-3/20 min-w-fit h-full py-1.5 px-4 bg-accent-dark ml-4'
                     onClick={handleConfirmClick}
-
                 >
                     Confirm
                 </button>

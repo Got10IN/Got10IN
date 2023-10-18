@@ -30,10 +30,6 @@ const Questionnaire = () => {
         lazy(() => import('./Q11')),
     ]
 
-    const progressBarStyle = {
-        width: `${(currQuestion / Questions.length) * 100}%`,
-    }
-
     const questionnaire = useAppSelector((state) => state.questionnaire.value)
 
     const exitHandler = () => {
@@ -58,6 +54,10 @@ const Questionnaire = () => {
         } else {
             onSubmitHandler()
         }
+    }
+
+    const progressBarStyle = {
+        width: `${(currQuestion / Questions.length) * 100}%`,
     }
 
     const onSubmitHandler = () => {
@@ -121,23 +121,23 @@ const Questionnaire = () => {
                     className='Q-center-container'
                     style={{ paddingBottom: '3%' }}
                 >
-                    <div className='progress-container'>
-                        <div className='progress-title sm:hidden'>Progress</div>
-                        <div className='barbackground'>
+                    <div className='w-full flex items-center m-auto gap-1/20'>
+                        <div className='text-sm font-bold text-text-61 sm:hidden'>
+                            Progress
+                        </div>
+                        <div className='rounded-full w-9/10 h-3 shadow-progress'>
                             <div
-                                className='progress-fill'
+                                className={`h-full bg-accent-light transition-all duration-300 ease-in rounded-full`}
                                 style={progressBarStyle}
                             />
                         </div>
-                        <div className='progress-text'>{`${currQuestion}/${Questions.length}`}</div>
+                        <div className='text-sm text-text-88'>{`${currQuestion}/${Questions.length}`}</div>
                     </div>
                 </div>
                 <Suspense
                     fallback={<div className='min-h-[300px]'>loading</div>}
                 >
-                    <div className='min-h-[300px]'>
-                        {<CurrQuestion />}
-                    </div>
+                    <div className='min-h-[300px]'>{<CurrQuestion />}</div>
                 </Suspense>
 
                 <div className='flex justify-between items-center mt-4'>

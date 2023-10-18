@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { ChangeEvent, useState } from 'react'
+import { Parallax } from 'react-scroll-parallax'
 import Buttons from '../../assets/aboutUs/3buttons.png'
 import ComingSoon from '../../assets/aboutUs/ComingSoon.png'
 import Got10INOutline from '../../assets/aboutUs/GOT10INOutline.png'
@@ -10,44 +9,24 @@ import RoadMap from '../../assets/aboutUs/Roadmap.png'
 import RoadMapTitle from '../../assets/aboutUs/RoadmapTitle.png'
 import { Button } from '../../components/buttons/Button'
 import { SubscribeField } from '../../components/functional/SubscribeFIeld'
+import Page from '../../components/layout/Page.layout'
 
 function AboutUs() {
-    const [email, setEmail] = useState('')
-
-    const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value)
-    }
-
-    const handleSubscribe = async () => {
-        try {
-            const response = await axios.post(
-                'https://got10in-backend-cfba39007310.herokuapp.com/subscribe',
-                { email: email }
-            )
-            if (response.status === 200) {
-                alert('Subscribed successfully!')
-            } else {
-                alert('Error subscribing. Please try again.')
-            }
-        } catch (error) {
-            alert('Error subscribing. Please try again.')
-        }
-    }
-
     return (
-        <div className='bg-white pt-12 w-full'>
-            <div className='flex justify-between mx-1/10 mt-1/20 gap-1/10'>
-                <div className='flex-1'>
+        <Page className='flex-col gap-12 items-start'>
+            <div className='flex justify-between gap-1/10'>
+                <Parallax speed={-5} className='flex-1'>
                     <img
                         src={LogoAboutUs}
                         alt=''
                         className='max-w-full pointer-events-none'
                     />
-                    <div className='max-w-full flex items-center gap-5 pt-10 pb-24'>
+                    <div className='max-w-full flex items-center gap-5 pt-10 pb-20'>
                         <SubscribeField />
                     </div>
-                </div>
-                <div
+                </Parallax>
+                <Parallax
+                    speed={5}
                     className='flex-1 pointer-events-none'
                     style={{ paddingTop: '4%' }}
                 >
@@ -64,24 +43,26 @@ function AboutUs() {
                         className='max-w-full'
                         style={{ paddingTop: '20%' }}
                     />
-                </div>
+                </Parallax>
             </div>
-            <div className='flex justify-between px-1/10 pt-1/20 gap-1/10 pointer-events-none'>
+            <div className='flex justify-between gap-1/10 pointer-events-none mb-4'>
                 <img src={OurStory} alt='Testimonials' className='max-w-full' />
             </div>
-            <img
-                src={RoadMapTitle}
-                alt='Roadmap'
-                className='pointer-events-none pl-1/10 w-2/5 pt-1/10'
-            />
-            <div className='flex px-1/10 items-center pb-1/10'>
+            <div className='w-full'>
                 <img
-                    src={RoadMap}
-                    alt='roadmap details'
-                    className='max-w-full'
+                    src={RoadMapTitle}
+                    alt='Roadmap'
+                    className='pointer-events-none w-2/5'
                 />
+                <div className='flex items-center pb-1/10'>
+                    <img
+                        src={RoadMap}
+                        alt='roadmap details'
+                        className='max-w-full'
+                    />
+                </div>
             </div>
-            <div className='flex justify-between px-1/10 pt-1/20 pb-1/10 gap-1/10'>
+            <div className='flex justify-between gap-1/10'>
                 <div className='relative w-full pb-1/20'>
                     <img
                         src={ComingSoon}
@@ -97,7 +78,7 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
-        </div>
+        </Page>
     )
 }
 

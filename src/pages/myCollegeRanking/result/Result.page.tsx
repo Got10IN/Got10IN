@@ -49,9 +49,20 @@ const Result = () => {
     }, [])
 
     return (
-        <div className='bg-white mt-40 w-full px-36 py-12 sm:px-8'>
+        <div className='bg-white mt-40 sm:mt-0 w-full px-36 py-12 sm:px-8 relative'>
+            <div className='absolute hidden sm:flex flex-col'>
+                <QRCode
+                    value={CollegeRankingPage}
+                    size={100}
+                    fgColor='#003362'
+                    className='mx-2.5'
+                />
+                <span className='text-sm text-text text-center block w-[120px]'>
+                    Share the quiz with your friends!
+                </span>
+            </div>
             <div className='relative w-full font-poppins mb-12'>
-                <p className='text-3xl text-text-dark font-medium sm:text-lg sm:font-bold sm:text-center'>
+                <p className='text-3xl text-text-dark font-medium sm:text-lg sm:font-bold sm:text-right sm:ml-2/5 sm:w-3/5'>
                     Hey{' '}
                     <span className='text-highlight text-4xl font-bold sm:text-lg'>
                         Applicant
@@ -71,10 +82,14 @@ const Result = () => {
                     to unlock the detail Index comparison of your ranking
                     results
                 </p>
-                <img src={Arrow} alt='' className='absolute right-0 top-12 sm:top-8' />
+                <img
+                    src={Arrow}
+                    alt=''
+                    className='absolute right-0 top-12 sm:top-16'
+                />
             </div>
-            <div className='grid grid-cols-2 gap-16 mt-12 sm:grid-cols-1 sm:mt-20'>
-                <div className='flex flex-col gap-8'>
+            <div className='grid grid-cols-2 gap-16 sm:gap-8 mt-12 sm:grid-cols-1 sm:mt-20'>
+                <div className='flex flex-col gap-8 sm:gap-4'>
                     {rankings.slice(0, 3).map((school, index) => {
                         return (
                             <div
@@ -130,7 +145,7 @@ const Result = () => {
                         )
                     })}
                     <button
-                        className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block sm:hidden'
+                        className='bg-highlight text-sm font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
                         onClick={() => {
                             dispatch(resetAll())
                             navigate('/my-college-ranking')
@@ -158,7 +173,7 @@ const Result = () => {
                             />
                         </ul>
                     </div>
-                    <div className='w-full flex justify-end gap-4 px-2'>
+                    <div className='w-full flex justify-end gap-4 px-2 sm:hidden'>
                         <div className='flex justify-end flex-col gap-2'>
                             <QRCode
                                 value={CollegeRankingPage}
@@ -167,7 +182,7 @@ const Result = () => {
                                 className='ml-auto'
                             />
                             <span className='text-sm text-text block'>
-                                Share the quiz to your friends!
+                                Share the quiz with your friends!
                             </span>
                         </div>
                     </div>

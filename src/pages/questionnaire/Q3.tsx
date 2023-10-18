@@ -1,10 +1,8 @@
 import { Fragment, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useUpdateEffect } from 'usehooks-ts'
 import { Q3Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
 import { updateQ3 } from '../../utils/redux/questionnaire'
-import { RootState } from '../../utils/redux/store'
-import './Questionnaire.css'
 import { FormSubtitle, FormTitle, MultiSelectDropdownField } from './components'
 
 const Q3 = () => {
@@ -23,11 +21,11 @@ const Q3 = () => {
         setSelectedOptions2(updatedOptions)
     }
 
-    const questionnaire = useSelector(
-        (state: RootState) => state.questionnaire.value
+    const questionnaire = useAppSelector(
+        (state) => state.questionnaire.value
     )
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useUpdateEffect(() => {
         dispatch(
