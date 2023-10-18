@@ -1,9 +1,39 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../../../assets/navigation/header/logo.png'
 import { NavLinks } from '../../../data/navigation/NavLinks'
+import { useEffect, useState } from 'react'
+
+const NavLink = ({ path, label }: { path: string; label: string }) => {
+    const location = useLocation()
+
+    const isActive = (path: string): boolean => {
+        return location.pathname === path
+    }
+
+    return (
+        <Link
+            to={path}
+            className={`ml-10 font-semibold no-underline ${
+                isActive(path)
+                    ? 'text-highlight'
+                    : 'text-white hover:text-highlight'
+            }`}
+        >
+            {label}
+        </Link>
+    )
+}
 
 function Header() {
     const navigate = useNavigate()
+
+    const location = useLocation()
+
+    const [hidden, setHidden] = useState(false)
+
+    useEffect(() => {
+        setHidden(location.pathname === '/my-college-ranking/result')
+    }, [location])
 
     const isLoggedIn = false
 
@@ -15,31 +45,10 @@ function Header() {
         }
     }
 
-    const NavLink = ({ path, label }: { path: string; label: string }) => {
-        const location = useLocation()
-
-        const isActive = (path: string): boolean => {
-            return location.pathname === path
-        }
-
-        return (
-            <Link
-                to={path}
-                className={`ml-10 font-semibold no-underline ${
-                    isActive(path)
-                        ? 'text-highlight'
-                        : 'text-white hover:text-highlight'
-                }`}
-            >
-                {label}
-            </Link>
-        )
-    }
-
     return (
         <nav
             className={`w-full h-24 fixed top-0 right-0 left-0 z-[331] flex items-end ${
-                false && 'hidden'
+                hidden && 'hidden'
             }`}
         >
             <div
@@ -47,8 +56,8 @@ function Header() {
                     false && 'opacity-0 transition-opacity'
                 }`}
             />
-            <div className='flex justify-start items-center flex-nowrap px-1/10 mb-4 sm:h-36 w-full'>
-                <Link to='/' className='my-auto mr-4 select-none'>
+            <div className='flex justify-start items-center flex-nowrap px-1/10 mb-4 w-full'>
+                <Link to='/' className='mr-4 select-none'>
                     <img src={Logo} alt='Got10IN' className='max-w-[100px]' />
                 </Link>
 
