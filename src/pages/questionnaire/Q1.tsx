@@ -1,4 +1,4 @@
-import { ChangeEvent, Fragment, lazy, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
 import { Q1Options as initialOptions } from '../../data/questionnaire/Questionnaire.data'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'

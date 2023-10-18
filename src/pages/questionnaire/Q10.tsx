@@ -25,9 +25,7 @@ const Q10 = () => {
         ])
     }
 
-    const questionnaire = useAppSelector(
-        (state) => state.questionnaire.value
-    )
+    const questionnaire = useAppSelector((state) => state.questionnaire.value)
 
     const dispatch = useAppDispatch()
 
