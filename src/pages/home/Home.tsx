@@ -22,9 +22,9 @@ function Home() {
     }, [currentSlide])
 
     return (
-        <div className='w-full mx-0 my-auto overflow-hidden'>
+        <div className='w-full mx-0 my-auto overflow-hidden bg-accent'>
             <div className='flex justify-between px-1/10 items-center pt-1/10 gap-1/10 overflow-hidden sm:flex-col-reverse sm:pt-1/5'>
-                {/* <span className='absolute bottom-1/10 left-1/5 w-80 h-80 blur-[350px] rounded-full bg-highlight block' /> */}
+                <span className='absolute bottom-1/20 left-1/5 w-64 h-64 blur-[350px] rounded-full bg-highlight block' />
                 {/* <span className='absolute -top-1/10 right-1/10 w-80 h-80 blur-[350px] rounded-full bg-secondary block' /> */}
                 <Parallax className='flex-1' speed={-10}>
                     <p className='text-3xl mb-[5px] text-highlight font-semibold'>
