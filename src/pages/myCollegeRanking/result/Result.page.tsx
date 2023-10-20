@@ -14,6 +14,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
 import { resetAll } from '../../../utils/redux/questionnaire'
 import { updateState } from '../../../utils/redux/collegeRanking'
+import { WishlistButton } from '../../../components/functional/WishlistButton'
 
 const Result = () => {
     const rankings = useAppSelector((state) => state.collegeRanking.value)
@@ -58,7 +59,7 @@ const Result = () => {
                     className='mx-2.5'
                 />
                 <span className='text-sm text-text text-center block w-[120px]'>
-                    Share the quiz with your friends!
+                    Scan to get your personalized ranking!
                 </span>
             </div>
             <div className='relative w-full font-poppins mb-12'>
@@ -153,8 +154,16 @@ const Result = () => {
                     >
                         Redo the Test
                     </button>
+                    <div className='w-full my-4 flex flex-col justify-center'>
+                        <p className='mb-2'>
+                            Interested in talking to our AI-empowered mentors
+                            about how they got into those schools? Join the
+                            wishlist to be notified when the feature launches!
+                        </p>
+                        <WishlistButton className='mx-auto' />
+                    </div>
                     <div className='flex justify-between sm:flex-col sm:gap-4 sm:justify-normal text-xl mt-2 px-2'>
-                        Share you rankings to:
+                        Join our community:
                         <ul className='flex gap-2 text-highlight [&>*]:cursor-pointer'>
                             <FaDiscord
                                 onClick={() => {
@@ -182,7 +191,7 @@ const Result = () => {
                                 className='ml-auto'
                             />
                             <span className='text-sm text-text block'>
-                                Share the quiz with your friends!
+                                Scan to get your personalized ranking!
                             </span>
                         </div>
                     </div>
