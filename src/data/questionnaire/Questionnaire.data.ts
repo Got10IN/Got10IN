@@ -133,7 +133,7 @@ export const Q10Factors = [
     'Food',
     'Safety',
     'Career path',
-    'Research opportunieis',
+    'Research opportunities',
     'School reputation',
     'Sports culture',
 ]
