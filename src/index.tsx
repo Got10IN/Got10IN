@@ -8,6 +8,7 @@ import './axiosConfig'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import { Provider } from 'react-redux'
 import { store } from './utils/redux/store'
+import { inject } from '@vercel/analytics'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
@@ -19,6 +20,8 @@ root.render(
         </Provider>
     </React.StrictMode>
 )
+
+inject()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
