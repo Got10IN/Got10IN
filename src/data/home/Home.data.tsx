@@ -51,7 +51,7 @@ export const HOME_CARDS: ICard[] = [
             </p>
         ),
         image: Landing2,
-        button: WishlistButton,
+        button: () => <WishlistButton className='mt-12' />,
         reverse: true,
     },
     {
@@ -65,7 +65,7 @@ export const HOME_CARDS: ICard[] = [
             </p>
         ),
         image: Landing3,
-        button: WishlistButton,
+        button: () => <WishlistButton className='mt-12' />,
     },
 ]
 
