@@ -40,13 +40,14 @@ export const generatePrompt = ({
     Location preferences: ${location}
     Lifestyle: ${lifestyle}
     College vibe: ${vibe}
-    College types: ${collegeType}
     Ideal tuition: ${tuition}
     GPA range: ${gpa}
     Other important factors: ${otherFactors}
     This ranking is for: ${rankingFor}
     Which ones of the above factors matter more: ${importantFactors}
     Please include public universities, private universities, liberal arts colleges, art schools like ACCD or RISD, and other school types as you see fit.
+
+    Please make most of the schools you list in the type of ${collegeType}. If I said Liberal Arts College, please make at least 8 of them being liberal arts colleges.
     
     To reiterate, please return the answer in a JSON format and nothing else`
 }
