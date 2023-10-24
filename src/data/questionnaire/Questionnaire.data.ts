@@ -90,33 +90,29 @@ export const Q3Options = [
     'Icy',
     'Foggy',
     'Windy',
-    'Muggy',
     'Dry',
     'Tropical',
-    'Polar',
-    'Tornado-prone',
     'Drought',
     'Mild',
-    'Hailstorm',
     'Overcast',
     'Blizzard',
-    'Heatwave',
-    'Tropical Cyclone',
-    'Dust Storm',
 ]
 
 export const Q4Options = [
     'Pacific Northwest',
     'Coastal California',
     'Southwest',
-    'Mountains',
     'Midwest',
     'South',
     'Northeast',
     'Southeast',
 ]
 
-export const Q7Options = ['Public', 'Private', 'Liberal Arts College']
+export const Q7Options = [
+    'Public Universities',
+    'Private Schools',
+    'Liberal Arts Colleges',
+]
 
 export const Q8Options = [
     'Below 15k/semester',
