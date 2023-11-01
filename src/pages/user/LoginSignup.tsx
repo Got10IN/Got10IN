@@ -10,7 +10,7 @@ function LoginSignup() {
                 <br />
                 In the meantime,
             </p>
-            <WishlistButton />
+            <WishlistButton className='mt-12' />
         </div>
     )
 }
