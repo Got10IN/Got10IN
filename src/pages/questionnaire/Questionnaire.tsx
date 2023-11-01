@@ -3,12 +3,12 @@ import { Suspense, lazy, useState } from 'react'
 import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import { ICollegeRanking } from '../../interface/ICollegeRanking'
+import { OpenAIAPIKey } from '../../utils/constants/api'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/redux.hook'
+import { updateState } from '../../utils/redux/collegeRanking'
 import { resetQuestion } from '../../utils/redux/questionnaire'
 import { generatePrompt } from '../../utils/requests/openai/generatePrompt'
 import { parseQuesionnaire } from '../../utils/requests/openai/parseQuestionnaire'
-import { updateState } from '../../utils/redux/collegeRanking'
-import { OpenAIAPIKey } from '../../utils/constants/api'
 
 const Questionnaire = () => {
     const [currQuestion, setCurrQuestion] = useState(1)
@@ -77,37 +77,50 @@ const Questionnaire = () => {
             },
         }
 
-        axios
-            .post('https://api.openai.com/v1/completions', data, config)
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log('response', response)
-                    return response.data.choices[0].text
-                } else {
-                    throw new Error('The API request failed')
-                }
-            })
-            .then((data: string) => {
-                const split = data.split('\n')
-                const ranking: ICollegeRanking = []
+        const request = async () => {
+            axios
+                .post('https://api.openai.com/v1/completions', data, config)
+                .then((response) => {
+                    if (response.status === 200) {
+                        console.log('response', response)
+                        return response.data.choices[0].text
+                    } else {
+                        throw new Error('The API request failed')
+                    }
+                })
+                .then((data: string) => {
+                    const split = data.split('\n')
+                    const ranking: ICollegeRanking = []
 
-                split
-                    .slice(split.length - 10)
-                    .map((entry) => {
-                        return entry.split('. ')
-                    })
-                    .forEach((entry) => {
-                        ranking.push(entry[1].replace(/\([^)]*\)/g, '').trim())
-                    })
-                dispatch(updateState(ranking))
-                localStorage.setItem('rankings', JSON.stringify(ranking))
+                    split
+                        .slice(split.length - 10)
+                        .map((entry) => {
+                            return entry.split('. ')
+                        })
+                        .forEach((entry) => {
+                            ranking.push(
+                                entry[1].replace(/\([^)]*\)/g, '').trim()
+                            )
+                        })
+                    dispatch(updateState(ranking))
+                    localStorage.setItem('rankings', JSON.stringify(ranking))
+                })
+                .then(() => {
+                    navigate('/my-college-ranking/result')
+                })
+        }
+
+        request().catch(() => {
+            data.temperature += 0.3
+            request().catch(() => {
+                data.temperature += 0.3
+                request().catch(() => {
+                    console.log(
+                        'reqest failed after three tries. if you are here, we apologize. please feel free to reach out to us for support.'
+                    )
+                })
             })
-            .then(() => {
-                navigate('/my-college-ranking/result')
-            })
-            .catch((error) => {
-                console.log('request errored')
-            })
+        })
     }
 
     const CurrQuestion = Questions[currQuestion - 1]
