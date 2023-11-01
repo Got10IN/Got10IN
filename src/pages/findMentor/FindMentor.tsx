@@ -32,7 +32,7 @@ function FindMentor() {
                     . And definitely, we also offer 1-on-1 real person
                     mentorship whenever you need it.
                 </p>
-                <WishlistButton />
+                <WishlistButton className='mt-12'/>
             </div>
         </Page>
     )
