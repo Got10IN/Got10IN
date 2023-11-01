@@ -6,7 +6,7 @@ import Page from '../../components/layout/Page.layout'
 
 function MyCollegeRanking() {
     return (
-        <Page>
+        <Page className='!flex-row'>
             <Parallax speed={5} className='basis-1/2'>
                 <img
                     src={MyRankingDemo}
