@@ -6,7 +6,6 @@ import { Dot, DotsContainer, SliderContainer } from '../home/Slider.component'
 import './FindMentor.css'
 import Page from '../../components/layout/Page.layout'
 import mentorpic from '../../assets/mentor/Mentor.png'
-import menteesGotIn from '../../assets/mentor/MenteesGotIn.png'
 import { Button } from '../../components/buttons/Button'
 import ComingSoon from '../../assets/aboutUs/ComingSoon.png'
 import DeptButton from './DeptButton.component'
@@ -15,6 +14,7 @@ import { OverallDropDown } from './OverallDropDown.component'
 import MentorCard from './MentorCard.component'
 import { MENTOR_CARDS } from '../../data/mentor/FindMentor.data'
 import { HOME_CARDS } from '../../data/home/Home.data'
+
 
 class Input extends React.Component {
     _handleKeyDown = (e: { key: string }) => {
@@ -28,16 +28,12 @@ class Input extends React.Component {
     }
 }
 
+
 function FindMentor() {
     const [searchMentor, setSearchMentor] = useState('')
     const [talkToMentor, setTalkToMentor] = useState('')
     const [isOpen, setOpen] = useState(false);
-    const navigate =useNavigate();
-    const routeChangeToBecomeAMentor = ()=>{
-        let path='/become-a-mentor';
-        navigate(path);
-    }
-
+  
     const handleDropDown = () => {
         setOpen(!isOpen);
     };
@@ -66,7 +62,6 @@ function FindMentor() {
             }
         } catch (error) {}
     }
-
     const handleTalkToMentor = async () => {
         try {
             const response = await fetch(
@@ -89,46 +84,50 @@ function FindMentor() {
                     'An unknown issue has occurred! So sorry about this. If you want, contact us through any method and ask to be added to the list.'
                 )
             }
-        } catch (error) {} 
+        } catch (error) {}
+
+        
     }
 
     return (  
         <Page className='flex-col items-start'>   
             <div className='absolute h-80 w-full bg-accent-light top-1/10'/>
             
-            <div className='flex max-h-fit w-full z-20 mb-8'>
-                <div className='grid grid-cols-3 gap-4 place-items-center'>
-                    <div>
-                        
-                        <img className="h-48 w-64 mt-8 ml-1/10" 
+            <div className='flex relative h-64 w-full z-10 space-y-8'>
+                <div >
+                    <div className="lg:flex items-center">
+                        <div className='shrink-0'>
+                            <img className="h-48 w-64 mt-4 md:mt-8 ml-40" 
                             src={mentorpic} 
                             alt="mentor pic"
-                        />
-                    </div>    
-                    <div className="col-span-2 overflow-hidden text-center space-y-4 sm:text-left items-center">
-                        <p className="text-2xl text-blue space-y-4 break-words">
-                            Become our mentor
-                            <span className=" inline text-2xl text-white font-semibold break-words">
-                                , and step out of the frame of time-based salary.
-                            </span>
-                        </p>
-
-                        <div className=" flex text-sm text-white space-y-1 break-words ">
-                            let us help you automate your consulting service 
-                            and make your expertise able to help more students 
-                            as long as gain unlimited benefits.
+                            />
                         </div>
-    
-                        <button onClick={routeChangeToBecomeAMentor}
-                            className="px-4 py-2 text-sm text-white font-semibold bg-amber-500 rounded-full border border-amber-500 hover:text-blue hover:bg-yellow-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
-                            Become a mentor
-                        </button>                                                                               
-                    </div>
-                </div>   
-                
+                        <div className="container mx-auto overflow-hidden text-center space-y-4 sm:text-left items-center">
+                            <p className="text-2xl text-blue space-y-4 break-words">
+                                Become our mentor
+                                <span className=" inline text-2xl text-white font-semibold break-words">
+                                    , and step out of the frame of time-based salary.
+                                </span>
+                            </p>
+
+                            <div className=" flex text-sm text-white space-y-1 break-words ">
+                                let us help you automate your consulting service 
+                                and make your expertise able to help more students 
+                                as long as gain unlimited benefits.
+                            </div>
+        
+                            <button className="px-4 py-2 text-sm text-white font-semibold bg-amber-500 rounded-full border border-amber-500 hover:text-blue hover:bg-yellow-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
+                                Become a mentor
+                            </button>                                                                               
+                        </div>
+                    </div>   
+                </div>
             </div>
+
             
-            <div className='flex w-full gap-4 mb-8 relative'>
+    
+            
+            <div className='flex w-full gap-8 mb-8 relative'>
                 <div className="flex place-items-center gap-8 w-full">
                     <div className='min-w-max text-lg font-semibold text-black '>
                         Find a mentor
@@ -139,7 +138,7 @@ function FindMentor() {
                         placeholder='Please enter keywords'
                         value={searchMentor}
                         onChange={(e) => setSearchMentor(e.target.value)}
-                        onKeyDown={routeChangeToBecomeAMentor}
+                        onKeyDown={handleSearchMentor}
                     />
                     
                     <span className='text-md font-semibold text-black '>
@@ -147,7 +146,7 @@ function FindMentor() {
                     </span>
                     <button
                         className="px-4 py-2 text-md text-white font-semibold bg-accent rounded-full border border-purple-200 hover:text-white hover:bg-dark-900 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"                                                                            
-                        onClick={routeChangeToBecomeAMentor}
+                        onClick={handleSearchMentor}
                     >
                         Match me a mentor
                     </button>
@@ -176,7 +175,7 @@ function FindMentor() {
 
             {isOpen ?  <OverallDropDown/>: null}
             
-            <div className='flex flex-row space-x-2 justify-between mb-8'>
+            <div className='flex flex-row-3 justify-between mb-8'>
 
                 <DeptButton title='All' />
                 <DeptButton title='Computer Science' />
@@ -224,8 +223,7 @@ function FindMentor() {
 
             <div className='flex justify-between bottom-1/20 relative h-32 w-32'>    
                 <div className='absolute inset-x-0 bottom-0 h-16'>
-                    <button onClick={routeChangeToBecomeAMentor}
-                    className="px-6 py-3 text-md text-accent-light font-semibold rounded-full border border-accent hover:text-white hover:bg-blue-200 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+                    <button className="px-6 py-3 text-md text-accent-light font-semibold rounded-full border border-accent hover:text-white hover:bg-blue-200 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
                         Load more
                     </button>               
                 </div>

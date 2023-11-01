@@ -2,8 +2,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../../../assets/navigation/header/logo.png'
 import { NavLinks } from '../../../data/navigation/NavLinks'
 import { useEffect, useState } from 'react'
-import { FaDiscord } from 'react-icons/fa6'
-import { DiscordInvitation } from '../../../utils/constants/links'
 
 const NavLink = ({ path, label }: { path: string; label: string }) => {
     const location = useLocation()
@@ -69,21 +67,13 @@ function Header() {
                     ))}
                 </ul>
 
-                <div className='ml-auto hidden'>
+                <div className='ml-auto'>
                     <button
                         className='bg-white/10 hover:bg-white/40 duration-150 px-5 py-2.5 text-sm font-semibold text-white border-none rounded-full text-center inline-block cursor-pointer'
                         onClick={loginButtonHandler}
                     >
                         {isLoggedIn ? 'My Account' : 'Log In / Sign Up'}
                     </button>
-                </div>
-                <div
-                    className='ml-auto bg-white/10 hover:bg-white/40 duration-150 p-3 rounded-full cursor-pointer'
-                    onClick={() => {
-                        window.location.href = DiscordInvitation
-                    }}
-                >
-                    <FaDiscord className='w-6 h-6 text-white' />
                 </div>
             </div>
         </nav>

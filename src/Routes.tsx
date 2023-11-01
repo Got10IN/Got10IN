@@ -7,6 +7,8 @@ import LoginSignup from './pages/user/LoginSignup'
 import MyCollegeRanking from './pages/myCollegeRanking/MyCollegeRanking'
 import Result from './pages/myCollegeRanking/result/Result.page'
 import Questionnaire from './pages/questionnaire/Questionnaire'
+import MentorDetail from './pages/findMentor/MentorDetail'
+import BecomeAMentor from './pages/findMentor/BecomeAMentor'
 
 const Routes = () => (
     <RoutesContainer>
@@ -19,6 +21,8 @@ const Routes = () => (
             <Route path='/my-college-ranking' element={<MyCollegeRanking />} />
             <Route path='/my-college-ranking/result' element={<Result />} />
             <Route path='/question' element={<Questionnaire />} />
+            <Route path='/mentor-detail' element={<MentorDetail />} />
+            <Route path='/become-a-mentor' element={<BecomeAMentor />} />
         </Route>
     </RoutesContainer>
 )
