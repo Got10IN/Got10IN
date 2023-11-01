@@ -1,11 +1,15 @@
 import { IComponent } from '../../interface/IComponent'
+import { WishListForm } from '../../utils/constants/links'
 
-export const WishlistButton = ({className}: IComponent) => (
+export const WishlistButton = ({ className }: IComponent) => (
     <a
-        href='https://airtable.com/appR1Mc0m0Gvrh4wx/shrgsXpR0QIXTfvHy'
+        href={WishListForm}
         target='_blank'
         rel='noopener noreferrer'
-        className={'bg-highlight text-lg hover:drop-shadow-standard font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline inline-block ' + className}
+        className={
+            'bg-highlight hover:drop-shadow-standard font-semibold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline inline-block ' +
+            className
+        }
     >
         Join wishlist
     </a>
