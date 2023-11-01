@@ -1,24 +1,15 @@
-import React, { Fragment, ReactNode, useState, useEffect } from 'react'
-import { render } from 'react-dom'
-import { Dot, DotsContainer, SliderContainer } from '../home/Slider.component'
+import { useState } from 'react'
 
-import { Parallax } from 'react-scroll-parallax'
-import FindMentorDemo from '../../assets/mentor/Mentor.png'
-import { WishlistButton } from '../../components/functional/WishlistButton'
-import Page from '../../components/layout/Page.layout'
-import mentor1pic from '../../assets/mentor/mentor1.png'
-import mentorpic from '../../assets/mentor/Mentor.png'
+import { useNavigate } from 'react-router-dom'
 import largementor from '../../assets/mentor/LargeMentor.png'
 import menteesGotIn from '../../assets/mentor/MenteesGotIn.png'
-import uniLgoUCB from '../../assets/mentor/UniLogo-UCB.png'
+import mentorpic from '../../assets/mentor/Mentor.png'
 import uniLogoCalTech from '../../assets/mentor/UniLogo-CalTech.png'
-import { Button } from '../../components/buttons/Button'
-import ComingSoon from '../../assets/aboutUs/ComingSoon.png'
-import DeptButton from './DeptButton.component'
-import { LoadMoreArrow } from './LoadMoreArrow.component'
-import { OverallDropDown } from './OverallDropDown.component'
-import { useNavigate } from 'react-router-dom'
+import uniLgoUCB from '../../assets/mentor/UniLogo-UCB.png'
+import mentor1pic from '../../assets/mentor/mentor1.png'
+import Page from '../../components/layout/Page.layout'
 import { MENTOR_CATEGORIES } from '../../data/mentor/MentorCategories'
+import DeptButton from './DeptButton.component'
 
 function MentorDetail() {
     const [searchMentor, setSearchMentor] = useState('')
@@ -198,7 +189,6 @@ function MentorDetail() {
                 {MENTOR_CATEGORIES.map((category) => (
                     <DeptButton key={category}>{category}</DeptButton>
                 ))}
-                <LoadMoreArrow />
             </div>
 
             <div className='h-56 w-full p-4 grid grid-flow-row auto-rows-max md:auto-rows-min mb-8 space-y-4 shadow-md'>

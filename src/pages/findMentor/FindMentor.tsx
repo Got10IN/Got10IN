@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { IoArrowDownCircle, IoOptions } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
+import { Parallax } from 'react-scroll-parallax'
 import mentorBanner from '../../assets/mentor/Mentor.png'
 import Page from '../../components/layout/Page.layout'
 import { MENTOR_CARDS } from '../../data/mentor/FindMentor.data'
+import { MENTOR_CATEGORIES } from '../../data/mentor/MentorCategories'
 import DeptButton from './DeptButton.component'
-import { LoadMoreArrow } from './LoadMoreArrow.component'
 import MentorCard from './MentorCard.component'
 import { OverallDropDown } from './OverallDropDown.component'
-import { Parallax } from 'react-scroll-parallax'
-import { IoArrowDownCircle, IoOptions } from 'react-icons/io5'
-import { MENTOR_CATEGORIES } from '../../data/mentor/MentorCategories'
 
 function FindMentor() {
     const [searchMentor, setSearchMentor] = useState('')
