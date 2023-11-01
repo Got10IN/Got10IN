@@ -1,28 +1,23 @@
-import { FC } from 'react'
+import { IComponent } from '../../interface/IComponent'
 
-export interface IDeptButton {
-    title: string
-    description?: FC
-    button?: FC
-}
-
-const DeptButton = ({ title, description : Description, button: Button,}: IDeptButton) => {
-    const isAll = (title: string): boolean => {
-        return title === 'All'
-    }
-
+const DeptButton = ({
+    children,
+    selected,
+    ...args
+}: IComponent & {
+    selected?: boolean
+}) => {
     return (
-         
-        <div>
-            <button className= {`px-4 py-2 text-sm text-black font-semibold rounded-lg shadow-md hover:text-white hover:bg-blue-200 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-offset-2' 
-            ${isAll(title) ? "bg-accent-light"
-                    : "bg-white"}`}
-            >
-                {title}
-            </button>
-
-            
-        </div>
+        <button
+            className={`px-4 py-2 text-sm min-w-max text-black ${
+                selected
+                    ? 'bg-accent text-white'
+                    : 'bg-white hover:text-white hover:bg-accent-light'
+            } font-semibold rounded-lg duration-150`}
+            {...args}
+        >
+            {children}
+        </button>
     )
 }
 
