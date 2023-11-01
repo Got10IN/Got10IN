@@ -73,13 +73,14 @@ function Home() {
                     Explore our features
                 </p>
 
-                {HOME_CARDS.map(({ title, description, image, button }) => (
+                {HOME_CARDS.map(({ title, description, image, button, reverse }) => (
                     <Card
                         key={title}
                         title={title}
                         description={description}
                         image={image}
                         button={button}
+                        reverse={reverse}
                     />
                 ))}
 
