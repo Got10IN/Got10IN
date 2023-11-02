@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 export interface IMentorCard {
     id: string
@@ -15,7 +15,6 @@ export interface IMentorCard {
     oneOnonePrice: number
     totalHour: number
     mentorPic: string
-    button: FC
     reverse?: boolean
 }
 
@@ -34,7 +33,6 @@ const MentorCard = ({
     oneOnonePrice,
     totalHour,
     mentorPic,
-    button: Button,
 }: IMentorCard) => {
     return (
         <div className='basis-1/2 h-fit bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl space-x-8'>
@@ -132,7 +130,12 @@ const MentorCard = ({
                             </p>
                         </div>
                     </div>
-                    <Button />
+                    <Link
+                        to={`/mentor-detail/${id}`}
+                        className=' rounded-full px-4 py-2 border text-sm text-black text-center cursor-pinter no-underline mb-4 inline-block'
+                    >
+                        Details
+                    </Link>
                 </div>
             </div>
         </div>

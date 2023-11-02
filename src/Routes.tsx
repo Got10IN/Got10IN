@@ -21,7 +21,7 @@ const Routes = () => (
             <Route path='/my-college-ranking' element={<MyCollegeRanking />} />
             <Route path='/my-college-ranking/result' element={<Result />} />
             <Route path='/question' element={<Questionnaire />} />
-            <Route path='/mentor-detail' element={<MentorDetail />} />
+            <Route path='/mentor-detail/:mentorId' element={<MentorDetail />} />
             <Route path='/become-a-mentor' element={<BecomeAMentor />} />
         </Route>
     </RoutesContainer>

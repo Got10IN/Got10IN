@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoArrowDownCircle, IoOptions } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 import { Parallax } from 'react-scroll-parallax'
@@ -11,19 +11,34 @@ import MentorCard from './MentorCard.component'
 import { OverallDropDown } from './OverallDropDown.component'
 
 function FindMentor() {
-    const [searchMentor, setSearchMentor] = useState('')
-    const [dropdownOpen, setDropdownOpen] = useState(false)
     const navigate = useNavigate()
+
+    // search-bar related props
+    const [query, setQuery] = useState('')
+
+    // filter-bar related props
+    const [dropdownOpen, setDropdownOpen] = useState(false)
+
     const routeChangeToBecomeAMentor = () => {
         navigate('/become-a-mentor')
     }
 
     const handleDropDown = () => {
-        setDropdownOpen(!dropdownOpen)
+        setDropdownOpen((state) => !state)
     }
 
     const [selectedCategory, setSelectedCategory] = useState('All')
     const [categoriesExpanded, setCategoriesExpanded] = useState(false)
+
+    const [filteredMentors, setFilteredMentors] = useState(MENTOR_CARDS)
+
+    useEffect(() => {
+        setFilteredMentors(
+            MENTOR_CARDS.filter((mentor) => {
+                return true
+            })
+        )
+    }, [query, selectedCategory])
 
     return (
         <Page
@@ -68,8 +83,8 @@ function FindMentor() {
                         type='filter'
                         className='grow h-10 py-2 px-4 text-md border border-gray-300 rounded-full bg-gray-50 '
                         placeholder='Start your own search here...'
-                        value={searchMentor}
-                        onChange={(e) => setSearchMentor(e.target.value)}
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
                         onKeyDown={() => {}}
                     />
                     <button
@@ -84,7 +99,11 @@ function FindMentor() {
             {dropdownOpen && <OverallDropDown />}
 
             <div className='flex flex-row mb-8 max-w-full gap-2'>
-                <div className={`flex flex-row gap-2 overflow-x-auto drop-shadow-categories scrollbar-hidden ${categoriesExpanded && 'flex-wrap'}`}>
+                <div
+                    className={`flex flex-row gap-2 overflow-x-auto drop-shadow-categories scrollbar-hidden ${
+                        categoriesExpanded && 'flex-wrap'
+                    }`}
+                >
                     <DeptButton
                         selected={selectedCategory === ''}
                         onClick={() => {

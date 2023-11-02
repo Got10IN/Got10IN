@@ -1,13 +1,14 @@
-import { useState } from 'react'
-
-import { useNavigate } from 'react-router-dom'
-import largementor from '../../assets/mentor/LargeMentor.png'
+import { useEffect, useState } from 'react'
+import { TbBrandZoom, TbLock } from 'react-icons/tb'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Parallax } from 'react-scroll-parallax'
 import menteesGotIn from '../../assets/mentor/MenteesGotIn.png'
 import mentorpic from '../../assets/mentor/Mentor.png'
 import uniLogoCalTech from '../../assets/mentor/UniLogo-CalTech.png'
 import uniLgoUCB from '../../assets/mentor/UniLogo-UCB.png'
 import mentor1pic from '../../assets/mentor/mentor1.png'
 import Page from '../../components/layout/Page.layout'
+import { MENTOR_CARDS } from '../../data/mentor/FindMentor.data'
 import { MENTOR_CATEGORIES } from '../../data/mentor/MentorCategories'
 import DeptButton from './DeptButton.component'
 
@@ -16,6 +17,18 @@ function MentorDetail() {
     const [talkToMentor, setTalkToMentor] = useState('')
     const [isOpen, setOpen] = useState(false)
     const navigate = useNavigate()
+
+    const [mentor, setMentor] = useState(MENTOR_CARDS[0])
+
+    const { mentorId } = useParams()
+
+    useEffect(() => {
+        setMentor(
+            MENTOR_CARDS.filter(({ id }) => {
+                return id === mentorId
+            })[0]
+        )
+    }, [mentorId])
 
     const handleDropDown = () => {
         setOpen(!isOpen)
@@ -27,28 +40,38 @@ function MentorDetail() {
     }
 
     return (
-        <Page className='flex-col items-start'>
-            <div className='absolute h-80 w-full bg-accent-light top-1/10' />
+        <Page
+            removeTopMargin
+            banner={
+                <div className='flex w-full gap-4 items-center mb-8 bg-accent-light pt-10 pb-6 px-3/20'>
+                    <Parallax speed={5} className='max-w-[40%] sm:hidden'>
+                        <img src={mentorpic} alt='' />
+                    </Parallax>
 
-            <div className='flex max-h-fit w-full z-0 mb-8'>
-                <div className='grid grid-cols-3 gap-8 place-items-center'>
-                    <div>
-                        <img
-                            className='h-48 w-64 mt-8 ml-1/10'
-                            src={mentorpic}
-                            alt='mentor pic'
-                        />
-                    </div>
-                    <div className='col-span-2 overflow-hidden text-center space-y-4 sm:text-left items-center'>
-                        <img
-                            className='h-32 w-96 mt-8'
-                            src={largementor}
-                            alt='largementor pic'
-                        />
+                    <div className='text-right sm:text-left items-end sm:items-start flex flex-col gap-8'>
+                        <p className='text-3xl font-bold text-white'>
+                            <span className='text-accent'>
+                                Become our mentor
+                            </span>
+                            , and step out of the frame of time-based salary.
+                        </p>
+
+                        <p className='text-white'>
+                            let us help you automate your consulting service and
+                            make your expertise able to help more students as
+                            long as gain unlimited benefits.
+                        </p>
+
+                        <button
+                            onClick={routeChangeToBecomeAMentor}
+                            className='px-4 py-2 text-sm text-white font-medium bg-highlight rounded-full'
+                        >
+                            Become a mentor
+                        </button>
                     </div>
                 </div>
-            </div>
-
+            }
+        >
             <div className='grid grid-cols-2 mb-8'>
                 <div className='col-span-1 flex items-center space-x-4'>
                     <div className='block h-full w-full rounded-lg object-none z-20 bg-white  dark:bg-neutral-700'>
@@ -61,8 +84,9 @@ function MentorDetail() {
                         </div>
                     </div>
 
-                    <div className='font-medium space-y-4 dark:text-white'>
-                        <div className='text-2xl'>Amy Smith</div>
+                    <div className='font-medium space-y-4'>
+                        <div className='text-2xl'>{mentor.name}</div>
+                        <div>{mentorId}</div>
                         <div className='text-sm text-gray-500 dark:text-gray-400'>
                             Hey, kids. I'm a passionate design mentor. Let me
                             help you get in to your dream school!
@@ -78,23 +102,10 @@ function MentorDetail() {
                         <div>
                             <button
                                 onClick={routeChangeToBecomeAMentor}
-                                className='px-6 py-3 text-md text-white bg-accent-light font-semibold rounded-lg justify-self-center border-accent hover:text-white hover:bg-blue-200 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2'
+                                className='flex flex-col items-center px-6 py-3 text-md text-white bg-accent-light font-semibold rounded-lg hover:text-white hover:bg-blue-200 hover:border-transparent duration-150'
                             >
-                                <svg
-                                    xmlns='http://www.w3.org/2000/svg'
-                                    fill='none'
-                                    viewBox='0 0 24 24'
-                                    stroke-width='1.5'
-                                    stroke='currentColor'
-                                    className='w-6 h-6'
-                                >
-                                    <path
-                                        stroke-linecap='round'
-                                        stroke-linejoin='round'
-                                        d='M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z'
-                                    />
-                                </svg>
-                                Unlock
+                                <TbLock className='block' />
+                                <span className='block'>Unlock</span>
                             </button>
                         </div>
 
@@ -107,22 +118,12 @@ function MentorDetail() {
                         <div>
                             <button
                                 onClick={routeChangeToBecomeAMentor}
-                                className='px-6 py-3 text-md  text-white bg-gray-300 font-semibold rounded-lg justify-self-center border-accent hover:text-white hover:bg-yellow-400 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2'
+                                className='flex items-center flex-col px-6 py-3 text-md text-white bg-gray-300 font-semibold rounded-lg border-accent hover:text-white hover:bg-yellow-400 hover:border-transparent duration-150'
                             >
-                                <svg
-                                    xmlns='http://www.w3.org/2000/svg'
-                                    fill='none'
-                                    viewBox='0 0 24 24'
-                                    stroke-width='1.5'
-                                    stroke='currentColor'
-                                    className='w-6 h-6'
-                                >
-                                    <path
-                                        stroke-linecap='round'
-                                        d='M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z'
-                                    />
-                                </svg>
-                                Book Now
+                                <TbBrandZoom className='block' />
+                                <span className='block min-w-max'>
+                                    Book Now
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -183,7 +184,7 @@ function MentorDetail() {
             </div>
 
             <div className='flex flex-row space-x-2 justify-between mb-8'>
-                <button className='px-4 py-2 text-sm text-black bg-accent-light font-semibold rounded-lg border-accent hover:text-white hover:bg-blue-200 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2'>
+                <button className='px-4 py-2 text-sm min-w-max text-black bg-accent-light font-semibold rounded-lg border-accent hover:text-white hover:bg-blue-200 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2'>
                     Talks about:
                 </button>
                 {MENTOR_CATEGORIES.map((category) => (
