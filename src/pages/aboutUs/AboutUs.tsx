@@ -66,7 +66,7 @@ function AboutUs() {
                 <div className='relative w-full pb-1/20'>
                     <img
                         src={ComingSoon}
-                        alt='StudentSay'
+                        alt='Stay tuned, lots of amazing features are coming soon'
                         className='max-w-full pointer-events-none'
                     />
                     <div className='gap-[8%] absolute flex right-[23%] bottom-[28%] items-center'>

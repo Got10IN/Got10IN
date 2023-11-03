@@ -1,6 +1,3 @@
-import { ReactNode } from "react"
+import { HTMLAttributes } from 'react'
 
-export interface IComponent {
-    children?: ReactNode
-    className?: string
-}
+export type IComponent = HTMLAttributes<HTMLElement>

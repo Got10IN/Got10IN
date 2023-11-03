@@ -38,14 +38,17 @@ module.exports = {
                 '9/10': '90%',
             },
             dropShadow: {
-                standard: '10px 10px 18px 0px rgba(150, 178, 207, 0.40)',
+                standard: '10px 10px 18px rgba(150, 178, 207, 0.40)',
                 dot: '0 0 10px #ffb500',
+                categories: '0px 4px 16px rgba(0, 0, 0, 0.10)',
             },
             fontFamily: {
                 poppins: "'Poppins', Arial, sans-serif",
             },
             boxShadow: {
+                standard: '0 0 18px 0 rgba(150, 178, 207, 0.40)',
                 progress: 'inset 0 0 0 1px #a0a0a0',
+                categories: '0px 4px 16px 0px rgba(0, 0, 0, 0.10)',
             },
         },
     },

@@ -3,7 +3,7 @@ import { Parallax } from 'react-scroll-parallax'
 import LogoWithTagline from '../../assets/home/LogoWithTagline.png'
 import Rocket from '../../assets/home/Rocket.png'
 import { SubscribeField } from '../../components/functional/SubscribeFIeld'
-import { HOME_CARDS, taglines, testimonials } from '../../data/home/Home.data'
+import { HOME_CARDS, taglines } from '../../data/home/Home.data'
 import Card from './Card.component'
 import { Dot, DotsContainer, SliderContainer } from './Slider.component'
 
@@ -84,7 +84,7 @@ function Home() {
                     />
                 ))}
 
-                <p className='text-accent text-2xl font-black mx-1/10 mb-1/20'>
+                {/* <p className='text-accent text-2xl font-black mx-1/10 mb-1/20'>
                     Hear from our students:
                 </p>
                 <div className='flex px-1/10 items-center pb-1/10'>
@@ -107,7 +107,7 @@ function Home() {
                             ))}
                         </DotsContainer>
                     </SliderContainer>
-                </div>
+                </div> */}
             </div>
         </div>
     )

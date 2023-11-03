@@ -1,18 +1,19 @@
-import { FC } from 'react'
+import { HTMLAttributes } from 'react'
 
-interface IButton {
-    children: string | FC
-    onClickHandler?: () => void
+type IButton = {
     gray?: boolean
-}
+} & HTMLAttributes<HTMLButtonElement>
 
-export const Button = ({ children, onClickHandler, gray }: IButton) => (
+export const Button = ({ children, gray, className, ...args }: IButton) => (
     <button
-        className={`${
-            gray ? 'bg-white/30' : 'bg-highlight'
-        } text-sm font-extrabold text-white rounded-full px-1/5 py-3 text-center cursor-pinter no-underline inline-block min-w-max`}
-        onClick={onClickHandler}
+        className={
+            `${
+                gray ? 'bg-white/30' : 'bg-highlight'
+            } text-sm font-extrabold text-white rounded-full px-1/5 py-3 text-center cursor-pinter no-underline block min-w-max ` +
+            className
+        }
+        {...args}
     >
-        {typeof children === 'string' ? children : <text />}
+        {children}
     </button>
 )
