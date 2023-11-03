@@ -1,6 +1,3 @@
-import { HTMLAttributes, ReactNode } from 'react'
+import { HTMLAttributes } from 'react'
 
-export type IComponent = {
-    children?: ReactNode
-    className?: string
-} & HTMLAttributes<HTMLElement>
+export type IComponent = HTMLAttributes<HTMLElement>
