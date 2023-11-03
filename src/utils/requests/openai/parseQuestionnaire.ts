@@ -1,4 +1,4 @@
-import { IQuestionnaire } from '../../../interface/IQuestionnaire'
+import { IQuestionnaire } from '../../types/IQuestionnaire'
 import { PPrompt } from './generatePrompt'
 
 export const parseQuesionnaire = (quesionnaire: IQuestionnaire): PPrompt => {

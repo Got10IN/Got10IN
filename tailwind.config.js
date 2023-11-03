@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./src/**/*.{js,jsx,ts,tsx}'],
+    content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
 
     theme: {
         extend: {
@@ -43,7 +43,9 @@ module.exports = {
                 categories: '0px 4px 16px rgba(0, 0, 0, 0.10)',
             },
             fontFamily: {
-                poppins: "'Poppins', Arial, sans-serif",
+                poppins: ['var(--font-poppins)'],
+                roboto: ['var(--font-roboto)'],
+                inter: ['var(--font-inter)'],
             },
             boxShadow: {
                 standard: '0 0 18px 0 rgba(150, 178, 207, 0.40)',

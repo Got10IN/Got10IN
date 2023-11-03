@@ -1,4 +1,4 @@
-import { IComponent } from '../../interface/IComponent'
+import { IComponent } from '../../utils/types/IComponent'
 import { WishListForm } from '../../utils/constants/links'
 import { Button } from '../buttons/Button'
 

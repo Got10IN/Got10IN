@@ -8,8 +8,9 @@ import Tagline2 from '../../assets/home/Tagline2.png'
 import Testimonial0 from '../../assets/home/Testimonial0.png'
 import Testimonial1 from '../../assets/home/Testimonial1.png'
 import Testimonial2 from '../../assets/home/Testimonial2.png'
-import { Link } from 'react-router-dom'
+
 import { WishlistButton } from '../../components/functional/WishlistButton'
+import Link from 'next/link'
 
 export const HOME_CARDS: ICard[] = [
     {
@@ -29,7 +30,7 @@ export const HOME_CARDS: ICard[] = [
         image: Landing1,
         button: () => (
             <Link
-                to='/my-college-ranking'
+                href='/my-college-ranking'
                 className='bg-highlight text-lg font-extrabold text-white rounded-full px-6 py-3 text-center cursor-pinter no-underline mt-12 inline-block'
             >
                 Try My College Ranking
@@ -55,7 +56,7 @@ export const HOME_CARDS: ICard[] = [
         reverse: true,
     },
     {
-        title: 'We help you plan your university application',
+        title: 'We help you plan your college applications',
         description: () => (
             <p className='font-light'>
                 No more confusion! We'll create a tailored application

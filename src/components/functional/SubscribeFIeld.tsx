@@ -1,3 +1,5 @@
+'use client'
+
 import { Fragment, ReactNode, useState } from 'react'
 
 export const SubscribeField = () => {

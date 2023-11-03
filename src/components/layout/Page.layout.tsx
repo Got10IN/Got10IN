@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { IComponent } from '../../interface/IComponent'
+import { IComponent } from '../../utils/types/IComponent'
 
 const Page = ({
     children,
