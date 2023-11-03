@@ -11,6 +11,7 @@ import Page from '../../components/layout/Page.layout'
 import { MENTOR_CARDS } from '../../data/mentor/FindMentor.data'
 import { MENTOR_CATEGORIES } from '../../data/mentor/MentorCategories'
 import DeptButton from './DeptButton.component'
+import { useReduxContext } from '../../utils/hooks/redux.hook'
 
 function MentorDetail() {
     const [searchMentor, setSearchMentor] = useState('')
@@ -21,6 +22,7 @@ function MentorDetail() {
     const [mentor, setMentor] = useState(MENTOR_CARDS[0])
 
     const { mentorId } = useParams()
+    const { mobile } = useReduxContext()
 
     useEffect(() => {
         setMentor(
@@ -44,7 +46,10 @@ function MentorDetail() {
             removeTopMargin
             banner={
                 <div className='flex w-full gap-4 items-center mb-8 bg-accent-light pt-10 pb-6 px-3/20'>
-                    <Parallax speed={5} className='max-w-[40%] sm:hidden'>
+                    <Parallax
+                        speed={mobile ? 0 : 5}
+                        className='max-w-[40%] sm:hidden'
+                    >
                         <img src={mentorpic} alt='' />
                     </Parallax>
 

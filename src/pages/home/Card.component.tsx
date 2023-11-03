@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Parallax } from 'react-scroll-parallax'
+import { useReduxContext } from '../../utils/hooks/redux.hook'
 
 export interface ICard {
     title: string
@@ -9,14 +10,22 @@ export interface ICard {
     reverse?: boolean
 }
 
-const Card = ({ title, description : Description, image, button: Button, reverse }: ICard) => {
+const Card = ({
+    title,
+    description: Description,
+    image,
+    button: Button,
+    reverse,
+}: ICard) => {
+    const { mobile } = useReduxContext()
+    
     return (
         <div
             className={`flex px-1/10 items-center pb-[12%] gap-8 ${
                 reverse ? 'flex-row-reverse' : 'flex-row'
             } sm:flex-col`}
         >
-            <Parallax speed={5} className='basis-1/2'>
+            <Parallax speed={mobile ? 0 : 5} className='basis-1/2'>
                 <img
                     src={image}
                     alt=''

@@ -4,12 +4,14 @@ import { Parallax } from 'react-scroll-parallax'
 import MyRankingDemo from '../../assets/myCollegeRanking/MyRanking.png'
 import Page from '../../components/layout/Page.layout'
 import { Button } from '../../components/buttons/Button'
+import { useAppSelector } from '../../utils/hooks/redux.hook'
 
 const MyCollegeRanking = () => {
+    const { mobile } = useAppSelector((state) => state.context)
     const navigate = useNavigate()
     return (
         <Page className='!flex-row'>
-            <Parallax speed={5} className='basis-1/2'>
+            <Parallax speed={mobile ? 0 : 5} className='basis-1/2'>
                 <img
                     src={MyRankingDemo}
                     alt=''

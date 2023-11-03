@@ -41,7 +41,7 @@ function FindMentor() {
         // removeTopMargin
         // banner={
         //     <div className='flex w-full gap-4 items-center mb-8 bg-accent-light pt-10 pb-6 px-3/20'>
-        //         <Parallax speed={5} className='max-w-[40%] sm:hidden'>
+        //         <Parallax speed={mobile ? 0 :5} className='max-w-[40%] sm:hidden'>
         //             <img src={mentorBanner} alt='' />
         //         </Parallax>
 

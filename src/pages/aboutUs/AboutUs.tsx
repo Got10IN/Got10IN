@@ -10,12 +10,15 @@ import RoadMapTitle from '../../assets/aboutUs/RoadmapTitle.png'
 import { Button } from '../../components/buttons/Button'
 import { SubscribeField } from '../../components/functional/SubscribeFIeld'
 import Page from '../../components/layout/Page.layout'
+import { useAppSelector } from '../../utils/hooks/redux.hook'
 
 function AboutUs() {
+    const { mobile } = useAppSelector((state) => state.context)
+
     return (
         <Page className='flex-col gap-12 items-start'>
             <div className='flex justify-between gap-1/10'>
-                <Parallax speed={-5} className='flex-1'>
+                <Parallax speed={mobile ? 0 : -5} className='flex-1'>
                     <img
                         src={LogoAboutUs}
                         alt=''

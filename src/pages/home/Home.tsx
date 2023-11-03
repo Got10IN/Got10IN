@@ -6,10 +6,13 @@ import { SubscribeField } from '../../components/functional/SubscribeFIeld'
 import { HOME_CARDS, taglines } from '../../data/home/Home.data'
 import Card from './Card.component'
 import { Dot, DotsContainer, SliderContainer } from './Slider.component'
+import { useReduxContext } from '../../utils/hooks/redux.hook'
 
 function Home() {
     const [currentSlide, setCurrentSlide] = useState(0)
     const totalSlides = 3
+
+    const { mobile } = useReduxContext()
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -53,7 +56,7 @@ function Home() {
                     </div>
                 </Parallax>
                 <div className='flex-1'>
-                    <Parallax speed={-10}>
+                    <Parallax speed={mobile ? 0 : -10}>
                         <img
                             src={LogoWithTagline}
                             alt=''
@@ -73,16 +76,18 @@ function Home() {
                     Explore our features
                 </p>
 
-                {HOME_CARDS.map(({ title, description, image, button, reverse }) => (
-                    <Card
-                        key={title}
-                        title={title}
-                        description={description}
-                        image={image}
-                        button={button}
-                        reverse={reverse}
-                    />
-                ))}
+                {HOME_CARDS.map(
+                    ({ title, description, image, button, reverse }) => (
+                        <Card
+                            key={title}
+                            title={title}
+                            description={description}
+                            image={image}
+                            button={button}
+                            reverse={reverse}
+                        />
+                    )
+                )}
 
                 {/* <p className='text-accent text-2xl font-black mx-1/10 mb-1/20'>
                     Hear from our students:
