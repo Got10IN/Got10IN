@@ -10,13 +10,13 @@ const MyCollegeRanking = () => {
     const { mobile } = useAppSelector((state) => state.context)
     const navigate = useNavigate()
     return (
-        <Page className='!flex-row'>
+        <Page className='!flex-row sm:!flex-col'>
             <Parallax speed={mobile ? 0 : 5} className='basis-1/2'>
                 <img
                     src={MyRankingDemo}
                     alt=''
                     className='pointer-events-none w-full max-w-lg'
-                    style={{ paddingRight: '100px' }}
+                    style={mobile ? {} : { paddingRight: '100px' }}
                 />
             </Parallax>
 

@@ -22,7 +22,7 @@ const Page = ({
             <div
                 className={`flex h-auto w-full ${
                     removeSideMargin ? '' : 'px-1/10'
-                } items-center flex-col sm:pt-60 ${className}`}
+                } items-center flex-col ${className}`}
             >
                 {children}
             </div>
