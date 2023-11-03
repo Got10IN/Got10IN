@@ -1,79 +1,98 @@
-import { useEffect, useState } from 'react'
-import { IoArrowDownCircle, IoOptions } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
-import { Parallax } from 'react-scroll-parallax'
-import mentorBanner from '../../assets/mentor/Mentor.png'
+import landing1 from '../../assets/home/Landing1.png'
+import landing2 from '../../assets/home/Landing2.png'
+import { WishlistButton } from '../../components/functional/WishlistButton'
 import Page from '../../components/layout/Page.layout'
-import { MENTOR_CARDS } from '../../data/mentor/FindMentor.data'
-import { MENTOR_CATEGORIES } from '../../data/mentor/MentorCategories'
-import DeptButton from './DeptButton.component'
-import MentorCard from './MentorCard.component'
-import { OverallDropDown } from './OverallDropDown.component'
+import Card from '../home/Card.component'
+import { Button } from '../../components/buttons/Button'
 
 function FindMentor() {
     const navigate = useNavigate()
 
-    // search-bar related props
-    const [query, setQuery] = useState('')
+    // // search-bar related props
+    // const [query, setQuery] = useState('')
 
-    // filter-bar related props
-    const [dropdownOpen, setDropdownOpen] = useState(false)
+    // // filter-bar related props
+    // const [dropdownOpen, setDropdownOpen] = useState(false)
 
     const routeChangeToBecomeAMentor = () => {
         navigate('/become-a-mentor')
     }
 
-    const handleDropDown = () => {
-        setDropdownOpen((state) => !state)
-    }
+    // const handleDropDown = () => {
+    //     setDropdownOpen((state) => !state)
+    // }
 
-    const [selectedCategory, setSelectedCategory] = useState('All')
-    const [categoriesExpanded, setCategoriesExpanded] = useState(false)
+    // const [selectedCategory, setSelectedCategory] = useState('All')
+    // const [categoriesExpanded, setCategoriesExpanded] = useState(false)
 
-    const [filteredMentors, setFilteredMentors] = useState(MENTOR_CARDS)
+    // const [filteredMentors, setFilteredMentors] = useState(MENTOR_CARDS)
 
-    useEffect(() => {
-        setFilteredMentors(
-            MENTOR_CARDS.filter((mentor) => {
-                return true
-            })
-        )
-    }, [query, selectedCategory])
+    // useEffect(() => {
+    //     setFilteredMentors(
+    //         MENTOR_CARDS.filter((mentor) => {
+    //             return true
+    //         })
+    //     )
+    // }, [query, selectedCategory])
 
     return (
         <Page
-            removeTopMargin
-            banner={
-                <div className='flex w-full gap-4 items-center mb-8 bg-accent-light pt-10 pb-6 px-3/20'>
-                    <Parallax speed={5} className='max-w-[40%] sm:hidden'>
-                        <img src={mentorBanner} alt='' />
-                    </Parallax>
+        // removeTopMargin
+        // banner={
+        //     <div className='flex w-full gap-4 items-center mb-8 bg-accent-light pt-10 pb-6 px-3/20'>
+        //         <Parallax speed={5} className='max-w-[40%] sm:hidden'>
+        //             <img src={mentorBanner} alt='' />
+        //         </Parallax>
 
-                    <div className='text-right sm:text-left items-end sm:items-start flex flex-col gap-8'>
-                        <p className='text-3xl font-bold text-white'>
-                            <span className='text-accent'>
-                                Become our mentor
-                            </span>
-                            , and step out of the frame of time-based salary.
-                        </p>
+        //         <div className='text-right sm:text-left items-end sm:items-start flex flex-col gap-8'>
+        //             <p className='text-3xl font-bold text-white'>
+        //                 <span className='text-accent'>
+        //                     Become our mentor
+        //                 </span>
+        //                 , and step out of the frame of time-based salary.
+        //             </p>
 
-                        <p className='text-white'>
-                            let us help you automate your consulting service and
-                            make your expertise able to help more students as
-                            long as gain unlimited benefits.
-                        </p>
+        //             <p className='text-white'>
+        //                 let us help you automate your consulting service and
+        //                 make your expertise able to help more students as
+        //                 long as gain unlimited benefits.
+        //             </p>
 
-                        <button
-                            onClick={routeChangeToBecomeAMentor}
-                            className='px-4 py-2 text-sm text-white font-medium bg-highlight rounded-full'
-                        >
-                            Become a mentor
-                        </button>
-                    </div>
-                </div>
-            }
+        //             <button
+        //                 onClick={routeChangeToBecomeAMentor}
+        //                 className='px-4 py-2 text-sm text-white font-medium bg-highlight rounded-full'
+        //             >
+        //                 Become a mentor
+        //             </button>
+        //         </div>
+        //     </div>
+        // }
         >
-            <div className='flex place-items-center gap-8 w-full mb-8 justify-center'>
+            <div>
+                <Card
+                    title='Become our mentor'
+                    description={() =>
+                        'Join our team of mentors to convert your experience and perspectives to help more students through our AI-empowered automated consulting service.'
+                    }
+                    image={landing1}
+                    button={() => (
+                        <Button className='mt-12'>Become a mentor</Button>
+                    )}
+                />
+            </div>
+            <div>
+                <Card
+                    title='Looking for a mentor?'
+                    description={() =>
+                        "Join our wishlist to be notified first thing when the feature starts beta-testing! In the meantime, check out our personalized college ranking feature if you haven't"
+                    }
+                    image={landing2}
+                    button={() => <WishlistButton className='mt-12' />}
+                    reverse
+                />
+            </div>
+            {/* <div className='flex place-items-center gap-8 w-full mb-8 justify-center'>
                 <button className='px-4 py-2 text-white font-medium bg-accent rounded-full'>
                     Match me a mentor
                 </button>
@@ -158,7 +177,7 @@ function FindMentor() {
                         Load more
                     </button>
                 </div>
-            </div>
+            </div> */}
         </Page>
     )
 }
