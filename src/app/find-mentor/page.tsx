@@ -6,7 +6,7 @@ import landing2 from '../../assets/home/Landing2.png'
 import { WishlistButton } from '../../components/functional/WishlistButton'
 import Page from '../../components/layout/Page.layout'
 import Card from '../../components/card/Card.component'
-import { Button } from '../../components/buttons/Button'
+import { Button } from '../../components/buttons/Button.component'
 
 function FindMentor() {
     const router = useRouter()

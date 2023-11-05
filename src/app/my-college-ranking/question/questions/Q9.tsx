@@ -1,11 +1,13 @@
+'use client'
+
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { Q7Options as initialOptions } from '../../../data/questionnaire/Questionnaire.data'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { updateQ7 } from '../../../utils/redux/questionnaire'
-import { FormTitle, MultiSelectGrid } from './components'
+import { Q9Options as initialOptions } from '../../../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../../../utils/hooks/redux.hook'
+import { updateQ9 } from '../../../../utils/redux/questionnaire'
+import { FormTitle, MultiSelectGrid } from '../components/components'
 
-const Q7 = () => {
+const Q9 = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
     const questionnaire = useAppSelector(
@@ -15,11 +17,11 @@ const Q7 = () => {
     const dispatch = useAppDispatch()
 
     useUpdateEffect(() => {
-        dispatch(updateQ7({ options: selectedOptions }))
+        dispatch(updateQ9({ options: selectedOptions }))
     }, [selectedOptions])
 
     useEffect(() => {
-        const options = questionnaire.q7.options
+        const options = questionnaire.q9.options
 
         setSelectedOptions(options)
     }, [])
@@ -27,7 +29,8 @@ const Q7 = () => {
     return (
         <Fragment>
             <FormTitle>
-                7. What type(s) of school do you prefer?
+                9. What is the GPA range that meets your expectations for the
+                school you wish to attend?
             </FormTitle>
             <MultiSelectGrid
                 initialOptions={initialOptions}
@@ -38,4 +41,4 @@ const Q7 = () => {
     )
 }
 
-export default Q7
+export default Q9

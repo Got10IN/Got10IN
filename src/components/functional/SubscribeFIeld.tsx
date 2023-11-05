@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, ReactNode, useState } from 'react'
+import { Fragment, useState } from 'react'
 
 export const SubscribeField = () => {
     const [email, setEmail] = useState('')

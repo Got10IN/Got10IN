@@ -1,10 +1,12 @@
+'use client'
+
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { Q10Factors as factors } from '../../../data/questionnaire/Questionnaire.data'
-import { IQTendency } from '../../../utils/types/IQuestionnaire'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { updateQ10 } from '../../../utils/redux/questionnaire'
-import { FormSubtitle, FormTitle, TendencySlider } from './components'
+import { Q10Factors as factors } from '../../../../data/questionnaire/Questionnaire.data'
+import { IQTendency } from '../../../../utils/types/IQuestionnaire'
+import { useAppDispatch, useAppSelector } from '../../../../utils/hooks/redux.hook'
+import { updateQ10 } from '../../../../utils/redux/questionnaire'
+import { FormSubtitle, FormTitle, TendencySlider } from '../components/components'
 
 const Q10 = () => {
     const [tendencyValues, setTendencyValues] = useState<IQTendency[]>([

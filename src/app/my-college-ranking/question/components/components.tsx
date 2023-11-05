@@ -8,8 +8,8 @@ import {
 } from 'react'
 import { HiMiniChevronUpDown } from 'react-icons/hi2'
 import { IoClose } from 'react-icons/io5'
-import { IComponent } from '../../../utils/types/IComponent'
-import './Q-form-control.css'
+import { IComponent } from '../../../../utils/types/IComponent'
+import '../styles/Q-form-control.css'
 
 export const FormTitle = ({ children, className }: IComponent) => (
     <p className={'text-text-dark font-bold mb-4 ' + className}>{children}</p>
@@ -41,7 +41,7 @@ export const MultiSelectDropdownField = ({
                 return option.toLowerCase().includes(query.toLowerCase())
             })
         )
-    }, [query])
+    }, [initialOptions, query])
     return (
         <Combobox
             value={selectedOptions}

@@ -1,9 +1,18 @@
+'use client'
+
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { Q3Options as initialOptions } from '../../../data/questionnaire/Questionnaire.data'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { updateQ3 } from '../../../utils/redux/questionnaire'
-import { FormSubtitle, FormTitle, MultiSelectDropdownField } from './components'
+import { Q3Options as initialOptions } from '../../../../data/questionnaire/Questionnaire.data'
+import {
+    useAppDispatch,
+    useAppSelector,
+} from '../../../../utils/hooks/redux.hook'
+import { updateQ3 } from '../../../../utils/redux/questionnaire'
+import {
+    FormSubtitle,
+    FormTitle,
+    MultiSelectDropdownField,
+} from '../components/components'
 
 const Q3 = () => {
     const [selectedOptions1, setSelectedOptions1] = useState<string[]>([])
@@ -21,9 +30,7 @@ const Q3 = () => {
         setSelectedOptions2(updatedOptions)
     }
 
-    const questionnaire = useAppSelector(
-        (state) => state.questionnaire.value
-    )
+    const questionnaire = useAppSelector((state) => state.questionnaire.value)
 
     const dispatch = useAppDispatch()
 
@@ -52,8 +59,8 @@ const Q3 = () => {
                 3. Tell us a bit about your weather preference
             </FormTitle>
 
-            <div className='relative z-50'>
-                <FormSubtitle className='mt-4'>I am looking for:</FormSubtitle>
+            <div className="relative z-50">
+                <FormSubtitle className="mt-4">I am looking for:</FormSubtitle>
                 <MultiSelectDropdownField
                     initialOptions={initialOptions}
                     selectedOptions={selectedOptions1}
@@ -61,8 +68,8 @@ const Q3 = () => {
                     removeOptionHandler={handleRemoveOption1}
                 />
             </div>
-            <div className='relative z-10'>
-                <FormSubtitle className='mt-4'>
+            <div className="relative z-10">
+                <FormSubtitle className="mt-4">
                     Weathers I'd want to avoid:
                 </FormSubtitle>
                 <MultiSelectDropdownField

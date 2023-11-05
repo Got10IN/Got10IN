@@ -1,8 +1,10 @@
+'use client'
+
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { updateQ6 } from '../../../utils/redux/questionnaire'
-import { FormTitle, TendencySlider } from './components'
+import { useAppDispatch, useAppSelector } from '../../../../utils/hooks/redux.hook'
+import { updateQ6 } from '../../../../utils/redux/questionnaire'
+import { FormTitle, TendencySlider } from '../components/components'
 
 const Q6 = () => {
     const [tendencyValue, setTendencyValue] = useState(50) // 初始值为50

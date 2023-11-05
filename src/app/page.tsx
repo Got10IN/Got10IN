@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Parallax } from 'react-scroll-parallax'
 import LogoWithTagline from '../assets/home/LogoWithTagline.png'
 import Rocket from '../assets/home/Rocket.png'
-import { SubscribeField } from '../components/functional/SubscribeFIeld'
+import { SubscribeField } from '../components/functional/SubscribeField'
 import { HOME_CARDS, taglines } from '../data/home/Home.data'
 import Card from '../components/card/Card.component'
 import {

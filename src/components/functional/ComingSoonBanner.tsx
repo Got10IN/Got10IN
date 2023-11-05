@@ -1,4 +1,4 @@
-import { Button } from '../buttons/Button'
+import { Button } from '../buttons/Button.component'
 import comingSoon from '../../assets/components/ComingSoon.png'
 import Image from 'next/image'
 

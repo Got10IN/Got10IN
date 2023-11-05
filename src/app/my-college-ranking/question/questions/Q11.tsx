@@ -1,9 +1,11 @@
+'use client'
+
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { Q11Options as initialOptions } from '../../../data/questionnaire/Questionnaire.data'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { updateQ11 } from '../../../utils/redux/questionnaire'
-import { FormTitle, MultiSelectGrid, SingleSelectGrid } from './components'
+import { Q11Options as initialOptions } from '../../../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../../../utils/hooks/redux.hook'
+import { updateQ11 } from '../../../../utils/redux/questionnaire'
+import { FormTitle, MultiSelectGrid, SingleSelectGrid } from '../components/components'
 
 const Q11 = () => {
     const [selectedOption, setSelectedOption] = useState<string>('')

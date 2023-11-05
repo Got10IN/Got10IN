@@ -1,9 +1,11 @@
+'use client'
+
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { Q4Options as initialOptions } from '../../../data/questionnaire/Questionnaire.data'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { updateQ4 } from '../../../utils/redux/questionnaire'
-import { FormSubtitle, FormTitle, MultiSelectGrid } from './components'
+import { Q4Options as initialOptions } from '../../../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../../../utils/hooks/redux.hook'
+import { updateQ4 } from '../../../../utils/redux/questionnaire' 
+import { FormSubtitle, FormTitle, MultiSelectGrid } from '../components/components'
 
 const Q4 = () => {
     const [selectedOptions1, setSelectedOptions1] = useState<string[]>([])

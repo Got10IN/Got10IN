@@ -1,9 +1,11 @@
+'use client'
+
 import { Fragment, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
-import { Q2Options as mbtiOptions } from '../../../data/questionnaire/Questionnaire.data'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
-import { updateQ2 } from '../../../utils/redux/questionnaire'
-import { FormTitle } from './components'
+import { Q2Options as mbtiOptions } from '../../../../data/questionnaire/Questionnaire.data'
+import { useAppDispatch, useAppSelector } from '../../../../utils/hooks/redux.hook'
+import { updateQ2 } from '../../../../utils/redux/questionnaire'
+import { FormTitle } from '../components/components'
 
 const Q2 = () => {
     const [selectedMBTI, setSelectedMBTI] = useState('')
