@@ -1,4 +1,4 @@
-
+'use client'
 
 import type { FC } from 'react'
 import { Parallax } from '../../utils/modules/react-scroll-parallax'
