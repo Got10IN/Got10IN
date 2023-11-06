@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { EVENTS } from '../../analytics/events'
+import createVercelAnalyticsEvent from '../../analytics/track'
 import { OpenAIAPIKey } from '../../constants/api'
 
 export type PBaseRequest = {
@@ -38,5 +40,9 @@ export default async function BaseRequest({
         })
         .catch((error: Error) => {
             console.log(error.stack)
+            createVercelAnalyticsEvent(EVENTS.OPENAI_BASE_REQUEST_ERROR, {
+                message: error.message,
+                stack: error.stack ? error.stack : '',
+            })
         })
 }

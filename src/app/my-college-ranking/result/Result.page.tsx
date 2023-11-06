@@ -13,11 +13,13 @@ import {
     DiscordInvitation,
     LinkedInLink,
     WishListForm,
-    XLink
+    XLink,
 } from '../../../utils/constants/links'
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks/redux.hook'
 import { updateState } from '../../../utils/redux/collegeRanking'
 import { resetAll } from '../../../utils/redux/questionnaire'
+import createVercelAnalyticsEvent from '../../../utils/analytics/track'
+import { EVENTS } from '../../../utils/analytics/events'
 
 const Result = () => {
     const rankings = useAppSelector((state) => state.collegeRanking.value)
@@ -29,7 +31,7 @@ const Result = () => {
     useEffect(() => {
         try {
             const raw = localStorage.getItem('rankings')
-            console.log(raw)
+
             if (raw) {
                 const data = JSON.parse(raw)
 
@@ -41,13 +43,21 @@ const Result = () => {
             } else if (rankings.length === 0) {
                 router.push('/my-college-ranking')
             }
-        } catch (e) {
-            if (e instanceof TypeError) {
+        } catch (error) {
+            if (error instanceof TypeError) {
                 try {
                     localStorage.removeItem('rankings')
                 } catch {}
             } else {
-                console.log('unknown error occurred')
+                if (error instanceof Error) {
+                    createVercelAnalyticsEvent(
+                        EVENTS.LOCAL_STORAGE_RESULT_ERROR,
+                        {
+                            message: error.message,
+                            stack: error.stack ? error.stack : '',
+                        }
+                    )
+                }
             }
         }
     }, [dispatch, rankings.length, router])
@@ -162,6 +172,7 @@ const Result = () => {
                         className="underline text-highlight"
                         onClick={() => {
                             dispatch(resetAll())
+                            createVercelAnalyticsEvent(EVENTS.REDO_TEST)
                             router.push('/my-college-ranking')
                         }}
                     >

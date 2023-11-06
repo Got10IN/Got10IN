@@ -1,8 +1,10 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
+import { useEffectOnce } from 'usehooks-ts'
 import {
     useAppDispatch,
     useAppSelector,
@@ -11,8 +13,8 @@ import { updateState } from '../../../../utils/redux/collegeRanking'
 import { resetQuestion } from '../../../../utils/redux/questionnaire'
 import RankingRequest from '../../../../utils/requests/openai/MyCollegeRanking/RankingRequest'
 import { ICollegeRanking } from '../../../../utils/types/ICollegeRanking'
-import dynamic from 'next/dynamic'
-import { useEffectOnce } from 'usehooks-ts'
+import createVercelAnalyticsEvent from '../../../../utils/analytics/track'
+import { EVENTS } from '../../../../utils/analytics/events'
 
 const Questionnaire = () => {
     const [currQuestion, setCurrQuestion] = useState(1)
@@ -78,9 +80,16 @@ const Questionnaire = () => {
 
         request().catch(() => {
             request(0.3).catch(() => {
-                request(0.6).catch(() => {
+                request(0.6).catch((error: Error) => {
                     console.log(
                         'reqest failed after three tries. if you are here, we apologize. please feel free to reach out to us for support.'
+                    )
+                    createVercelAnalyticsEvent(
+                        EVENTS.RANKING_REQUEST_FAILED_AFTER_ATTEMPTS,
+                        {
+                            message: error.message,
+                            stack: error.stack ? error.stack : '',
+                        }
                     )
                 })
             })

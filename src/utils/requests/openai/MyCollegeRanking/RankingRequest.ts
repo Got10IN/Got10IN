@@ -1,3 +1,5 @@
+import { EVENTS } from '../../../analytics/events'
+import createVercelAnalyticsEvent from '../../../analytics/track'
 import { ICollegeRanking } from '../../../types/ICollegeRanking'
 import { IQuestionnaire } from '../../../types/IQuestionnaire'
 import BaseRequest, { PBaseRequest } from '../BaseRequest'
@@ -47,6 +49,10 @@ export default async function RankingRequest(
         })
         .catch((error: Error) => {
             console.log(error.stack)
+            createVercelAnalyticsEvent(EVENTS.OPENAI_RANKING_REQUEST_ERROR, {
+                message: error.message,
+                stack: error.stack ? error.stack : '',
+            })
             return [] as ICollegeRanking
         })
 }
