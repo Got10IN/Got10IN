@@ -7,15 +7,12 @@ import type { NextAuthOptions } from 'next-auth'
 import { getServerSession } from 'next-auth'
 
 import Discord from 'next-auth/providers/discord'
-import GitHub from 'next-auth/providers/github'
 import Google from 'next-auth/providers/google'
 import LinkedIn from 'next-auth/providers/linkedin'
 
 // Read more at: https://next-auth.js.org/getting-started/typescript#module-augmentation
 declare module 'next-auth/jwt' {
-    interface JWT {
-        userRole?: 'admin'
-    }
+    interface JWT {}
 }
 
 export const options: NextAuthOptions = {
