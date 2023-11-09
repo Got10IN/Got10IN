@@ -37,7 +37,7 @@ export const SortByDropDown = ()=>{
             <ul className=" z-10 w-full bg-white rounded divide-y divide-gray-100 shadow ">
                 <li>
                 
-                    <a href="#" className="flex py-2 px-4 text-sm hover:bg-gray-100">
+                    <a href="/" className="flex py-2 px-4 text-sm hover:bg-gray-100">
                         New
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
@@ -49,7 +49,7 @@ export const SortByDropDown = ()=>{
                         </svg>
 
                     </a>
-                    <a href="#" className="flex py-2 px-4 text-sm hover:bg-gray-100">
+                    <a href="/" className="flex py-2 px-4 text-sm hover:bg-gray-100">
                         Years of Experience
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
@@ -60,7 +60,7 @@ export const SortByDropDown = ()=>{
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
                         </svg>
                     </a>
-                    <a href="#" className="flex py-2 px-4 text-sm hover:bg-gray-100">
+                    <a href="/" className="flex py-2 px-4 text-sm hover:bg-gray-100">
                         AI Char Price
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
@@ -71,7 +71,7 @@ export const SortByDropDown = ()=>{
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
                         </svg>
                     </a>
-                    <a href="#" className="flex py-2 px-4 text-sm hover:bg-gray-100">
+                    <a href="/" className="flex py-2 px-4 text-sm hover:bg-gray-100">
                         1 on 1 Mentor Price
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
@@ -82,7 +82,7 @@ export const SortByDropDown = ()=>{
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
                         </svg>
                     </a>
-                    <a href="#" className="flex py-2 px-4 text-sm hover:bg-gray-100">
+                    <a href="/" className="flex py-2 px-4 text-sm hover:bg-gray-100">
                         Top Rated
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
