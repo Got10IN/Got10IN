@@ -40,13 +40,13 @@ export const MentorTypeDropDown = () => {
                 <ul className=" z-10 w-full bg-white rounded divide-y divide-gray-100 shadow ">
                     <li>
                         <a
-                            href="#"
+                            href="/"
                             className="flex py-2 px-4 text-sm hover:bg-gray-100"
                         >
                             Pro
                         </a>
                         <a
-                            href="#"
+                            href="/"
                             className="flex py-2 px-4 text-sm hover:bg-gray-100"
                         >
                             Peer
