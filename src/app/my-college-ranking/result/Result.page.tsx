@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FaDiscord, FaLinkedin, FaSquareXTwitter } from 'react-icons/fa6'
 
 import Logo from '../../../assets/myCollegeRanking/result/Logo.svg'
@@ -20,6 +20,7 @@ import { updateState } from '../../../utils/redux/collegeRanking'
 import { resetAll } from '../../../utils/redux/questionnaire'
 import createVercelAnalyticsEvent from '../../../utils/analytics/track'
 import { EVENTS } from '../../../utils/analytics/events'
+import TagsRequest from '../../../utils/requests/openai/Tags/TagsRequest'
 
 const Result = () => {
     const rankings = useAppSelector((state) => state.collegeRanking.value)
@@ -62,6 +63,15 @@ const Result = () => {
         }
     }, [dispatch, rankings.length, router])
 
+    const questionnaire = useAppSelector((state) => state.questionnaire)
+    const [tags, setTags] = useState(['#loading'])
+
+    useEffect(() => {
+        TagsRequest(questionnaire.value).then((data) => {
+            setTags(data)
+        })
+    }, [questionnaire.value])
+
     return (
         <div className="bg-white mt-40 sm:mt-0 w-full px-36 py-12 sm:px-8 relative">
             <div className="flex flex-row justify-between gap-12 sm:flex-wrap">
@@ -79,22 +89,11 @@ const Result = () => {
                         </span>
                         , here are the Top 10 colleges tailored just for you!
                     </p>
-                    {/* <p className='font-medium sm:hidden'>
-                        *
-                        <span
-                            className='text-highlight underline cursor-pointer'
-                            onClick={() => {
-                                router.push('/login-signup')
-                            }}
-                        >
-                            Signup or Login
-                        </span>{' '}
-                        to unlock your top 10 to 30!
-                    </p> */}
+                    <p className="text-accent-dark font-medium">{tags[0]}</p>
                     <Image
                         src={Arrow}
                         alt=""
-                        className="absolute right-0 -bottom-20 sm:top-16"
+                        className="absolute right-0 -bottom-20 sm:top-20"
                     />
                 </div>
             </div>
