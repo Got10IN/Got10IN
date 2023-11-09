@@ -1,4 +1,4 @@
-import { track } from '@vercel/analytics/*'
+import { track } from '@vercel/analytics'
 import { EVENTS } from './events'
 
 const createVercelAnalyticsEvent = (
@@ -23,6 +23,9 @@ const createVercelAnalyticsEvent = (
             break
         case EVENTS.LOCAL_STORAGE_RESULT_ERROR:
             track('Failed to retrive local stroage for results')
+            break
+        case EVENTS.EMAIL_SUBSCRIPTION_ERROR:
+            track('Email subscription failed', message)
             break
         default:
             break
