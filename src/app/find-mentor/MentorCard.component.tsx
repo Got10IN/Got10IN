@@ -1,7 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
-export interface IMentorCard {
+export interface MentorCardType {
     id: string
     daysJoined: number
     name: string
@@ -34,7 +36,7 @@ const MentorCard = ({
     oneOnonePrice,
     totalHour,
     mentorPic,
-}: IMentorCard) => {
+}: MentorCardType) => {
     return (
         <div className="basis-1/2 h-fit bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl space-x-8">
             <div className="lg:flex md:flex sm:flex">

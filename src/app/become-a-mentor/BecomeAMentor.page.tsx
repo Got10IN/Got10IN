@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import ComingSoon from '../../assets/aboutUs/ComingSoon.png'
 import { Button } from '../../components/buttons/Button.component'

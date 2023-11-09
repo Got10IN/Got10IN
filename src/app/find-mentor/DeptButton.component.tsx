@@ -1,3 +1,5 @@
+'use client'
+
 import { IComponent } from '../../utils/types/IComponent'
 
 const DeptButton = ({

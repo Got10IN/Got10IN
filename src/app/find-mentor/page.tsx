@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import landing1 from '../../assets/home/Landing1.png'
 import landing2 from '../../assets/home/Landing2.png'
 import { WishlistButton } from '../../components/functional/WishlistButton'
@@ -9,7 +8,7 @@ import Card from '../../components/card/Card.component'
 import { Button } from '../../components/buttons/Button.component'
 
 function FindMentor() {
-    const router = useRouter()
+    // const router = useRouter()
 
     // // search-bar related props
     // const [query, setQuery] = useState('')
@@ -17,9 +16,9 @@ function FindMentor() {
     // // filter-bar related props
     // const [dropdownOpen, setDropdownOpen] = useState(false)
 
-    const routeChangeToBecomeAMentor = () => {
-        router.push('/become-a-mentor')
-    }
+    // const routeChangeToBecomeAMentor = () => {
+    //     router.push('/become-a-mentor')
+    // }
 
     // const handleDropDown = () => {
     //     setDropdownOpen((state) => !state)

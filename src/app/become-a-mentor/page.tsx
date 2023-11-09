@@ -1,1 +1,1 @@
-export {default} from './BecomeAMentor.page'
+export { default } from './BecomeAMentor.page'
