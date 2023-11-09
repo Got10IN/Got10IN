@@ -34,15 +34,13 @@ export const metadata: Metadata = {
     },
     description: 'AI empowered college application assistant',
     icons: {
-        icon: './_meta/favicon.ico',
-        shortcut: './_meta/logo64.png',
-        apple: './_meta/apple-icon.png',
+        icon: '/favicon.ico',
+        shortcut: '/logo64.png',
+        apple: '/apple-icon.png',
     },
-    robots: './robots.txt',
-    manifest: './_meta/manifest.json',
 }
 
-const RootLayout = ({ children }: IComponent) => {
+export default function RootLayout({ children }: IComponent) {
     return (
         <html
             className={`${inter.variable} ${roboto.variable} ${poppins.variable}`}
@@ -56,5 +54,3 @@ const RootLayout = ({ children }: IComponent) => {
         </html>
     )
 }
-
-export default RootLayout
