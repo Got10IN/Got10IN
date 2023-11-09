@@ -1,4 +1,4 @@
-export interface PPrompt {
+export type PromptProps = {
     fieldsOfInterest: string
     mbti: string
     weather: string
@@ -26,7 +26,7 @@ export const generatePrompt = ({
     otherFactors,
     rankingFor,
     importantFactors,
-}: PPrompt) => {
+}: PromptProps) => {
     return `Generate the top 10 US college ranking based on the following preferences of a student.
     Rules:
     Don't respond with anything else but the actual school name(Don't say anything else).

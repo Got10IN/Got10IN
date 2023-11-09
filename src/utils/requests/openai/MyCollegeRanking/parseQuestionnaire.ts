@@ -1,7 +1,7 @@
-import { IQuestionnaire } from '../../types/IQuestionnaire'
-import { PPrompt } from './generatePrompt'
+import type { IQuestionnaire } from '../../../types/IQuestionnaire'
+import { PromptProps } from './generatePrompt'
 
-export const parseQuesionnaire = (quesionnaire: IQuestionnaire): PPrompt => {
+export const parseQuesionnaire = (quesionnaire: IQuestionnaire): PromptProps => {
     const { q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11 } = quesionnaire
     const fieldsOfInterest = q1.options.join(', ')
 
