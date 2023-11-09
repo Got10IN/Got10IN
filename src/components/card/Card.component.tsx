@@ -5,7 +5,7 @@ import { Parallax } from '../../utils/modules/react-scroll-parallax'
 import { useReduxContext } from '../../utils/hooks/redux.hook'
 import Image, { StaticImageData } from 'next/image'
 
-export interface ICard {
+export interface CardType {
     title: string
     description: FC
     image: string | StaticImageData
@@ -19,7 +19,7 @@ const Card = ({
     image,
     button: Button,
     reverse,
-}: ICard) => {
+}: CardType) => {
     const { mobile } = useReduxContext()
     
     return (
