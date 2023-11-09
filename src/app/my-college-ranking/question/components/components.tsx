@@ -48,17 +48,17 @@ export const MultiSelectDropdownField = ({
             onChange={(v) => setSelectedOptions(v)}
             multiple
         >
-            <div className='relative'>
+            <div className="relative">
                 {selectedOptions.length > 0 && (
-                    <ul className='flex flex-wrap gap-4 mb-4 whitespace-nowrap'>
+                    <ul className="flex flex-wrap gap-4 mb-4 whitespace-nowrap">
                         {selectedOptions.map((option, index) => (
                             <li
                                 key={index}
-                                className='flex items-center gap-2 justify-center align-middle bg-accent text-white text-sm font-black rounded-full px-4 py-2'
+                                className="flex items-center gap-2 justify-center align-middle bg-accent text-white text-sm font-black rounded-full px-4 py-2"
                             >
                                 <span>{option}</span>
                                 <IoClose
-                                    className='text-white cursor-pointer font-black scale-125'
+                                    className="text-white cursor-pointer font-black scale-125"
                                     onClick={() => {
                                         removeOptionHandler(index)
                                     }}
@@ -67,34 +67,34 @@ export const MultiSelectDropdownField = ({
                         ))}
                     </ul>
                 )}
-                <div className='relative'>
+                <div className="relative">
                     <Combobox.Input
-                        className='rounded-lg w-full h-10 border-text border-[1px] border-solid px-3 py-2'
+                        className="rounded-lg w-full h-10 border-text border-[1px] border-solid px-3 py-2"
                         onChange={(e) => {
                             setQuery(e.target.value)
                         }}
-                        placeholder='Start typing to search'
+                        placeholder="Start typing to search"
                     />{' '}
-                    <Combobox.Button className='absolute inset-y-0 right-0 flex items-center pr-2'>
+                    <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
                         <HiMiniChevronUpDown
-                            className='h-5 w-5 text-gray-400'
-                            aria-hidden='true'
+                            className="h-5 w-5 text-gray-400"
+                            aria-hidden="true"
                         />
                     </Combobox.Button>
                 </div>
 
                 <Transition
-                    enter='transition duration-100 ease-out'
-                    enterFrom='transform scale-95 opacity-0'
-                    enterTo='transform scale-100 opacity-100'
-                    leave='transition duration-75 ease-out'
-                    leaveFrom='transform scale-100 opacity-100'
-                    leaveTo='transform scale-95 opacity-0'
+                    enter="transition duration-100 ease-out"
+                    enterFrom="transform scale-95 opacity-0"
+                    enterTo="transform scale-100 opacity-100"
+                    leave="transition duration-75 ease-out"
+                    leaveFrom="transform scale-100 opacity-100"
+                    leaveTo="transform scale-95 opacity-0"
                     afterLeave={() => setQuery('')}
                 >
-                    <Combobox.Options className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+                    <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                         {filteredOptions.length === 0 && query !== '' ? (
-                            <div className='ml-8 relative cursor-default select-none py-2 text-gray-700'>
+                            <div className="ml-8 relative cursor-default select-none py-2 text-gray-700">
                                 Nothing found.
                             </div>
                         ) : (
@@ -109,7 +109,7 @@ export const MultiSelectDropdownField = ({
                                                 option,
                                             ])
                                         }}
-                                        className='ml-8 relative cursor-default select-none py-2 text-gray-900'
+                                        className="ml-8 relative cursor-default select-none py-2 text-gray-900"
                                     >
                                         {option}
                                     </Combobox.Option>
@@ -142,11 +142,12 @@ export const MultiSelectGrid = ({
         }
     }
     return (
-        <ul className='flex flex-row flex-wrap gap-4 items-center'>
+        <ul className="flex flex-row flex-wrap gap-4 items-center">
             {initialOptions.map((option) => {
                 const selected = selectedOptions.includes(option)
                 return (
                     <div
+                        key={option}
                         className={`${
                             selected
                                 ? 'bg-accent-dark text-white'
@@ -172,11 +173,12 @@ export const SingleSelectGrid = ({
     setSelectedOption: Dispatch<SetStateAction<string>>
 }) => {
     return (
-        <ul className='flex flex-row flex-wrap gap-4 items-center'>
+        <ul className="flex flex-row flex-wrap gap-4 items-center">
             {initialOptions.map((option) => {
                 const selected = selectedOption === option
                 return (
                     <div
+                        key={option}
                         className={`${
                             selected
                                 ? 'bg-accent-dark text-white'
@@ -215,26 +217,26 @@ export function TendencySlider({
 
     return (
         <div
-            className='flex items-center justify-between w-full mx-auto'
+            className="flex items-center justify-between w-full mx-auto"
             style={{ paddingTop: '2%' }}
         >
             {labelLeading && (
-                <div className='text-sm text-text-88 text-center'>
+                <div className="text-sm text-text-88 text-center">
                     {labelLeading}
                 </div>
             )}
             <input
-                type='range'
-                min='0'
-                max='100'
+                type="range"
+                min="0"
+                max="100"
                 value={sliderValue}
                 onChange={handleSliderChange}
-                step='10'
-                className='Q-form-control grow'
+                step="10"
+                className="Q-form-control grow"
                 style={{ width: `${width}%` }}
             />
             {labelTrailing && (
-                <div className='text-sm text-text-88 text-center'>
+                <div className="text-sm text-text-88 text-center">
                     {labelTrailing}
                 </div>
             )}
