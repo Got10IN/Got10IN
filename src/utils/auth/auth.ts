@@ -1,3 +1,4 @@
+import { MongoDBAdapter } from '@next-auth/mongodb-adapter'
 import type {
     GetServerSidePropsContext,
     NextApiRequest,
@@ -9,6 +10,7 @@ import { getServerSession } from 'next-auth'
 import Discord from 'next-auth/providers/discord'
 import Google from 'next-auth/providers/google'
 import LinkedIn from 'next-auth/providers/linkedin'
+import clientPromise from '../mongodb/mongodb'
 
 // Read more at: https://next-auth.js.org/getting-started/typescript#module-augmentation
 declare module 'next-auth/jwt' {
@@ -16,8 +18,9 @@ declare module 'next-auth/jwt' {
 }
 
 export const options: NextAuthOptions = {
+    adapter: MongoDBAdapter(clientPromise),
     theme: {
-        logo: 'https://next-auth.js.org/img/logo/logo-sm.png',
+        logo: 'https://www.got10in.com/static/media/logo.cc9c7d238386c8539ffe.png',
     },
     providers: [
         Discord({
