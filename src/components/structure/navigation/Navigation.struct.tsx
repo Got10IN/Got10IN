@@ -1,11 +1,13 @@
+'use client'
+
 import { useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+import { IComponent } from '../../../utils/types/IComponent'
 import { useAppDispatch } from '../../../utils/hooks/redux.hook'
 import { updateMobile } from '../../../utils/redux/context'
 import Footer from './Footer'
 import Header from './Header'
 
-const Navigation = () => {
+const Navigation = ({ children }: IComponent) => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -24,9 +26,9 @@ const Navigation = () => {
         return window.removeEventListener('resize', onResizeHandler)
     }, [dispatch])
     return (
-        <main className='flex flex-col items-center'>
+        <main className="flex flex-col items-center">
             <Header />
-            <Outlet />
+            {children}
             <Footer />
         </main>
     )

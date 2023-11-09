@@ -1,10 +1,11 @@
-import { Button } from '../buttons/Button'
+import { Button } from '../buttons/Button.component'
 import comingSoon from '../../assets/components/ComingSoon.png'
+import Image from 'next/image'
 
 const ComingSoonBanner = () => {
     return (
         <div className='relative w-full pb-1/20'>
-            <img
+            <Image
                 src={comingSoon}
                 alt='Stay tuned, lots of amazing features are coming soon'
                 className='max-w-full pointer-events-none'

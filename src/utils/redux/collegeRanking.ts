@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ICollegeRanking } from '../../interface/ICollegeRanking'
+import { ICollegeRanking } from '../types/ICollegeRanking'
 
 export interface CollegeRankingState {
     value: ICollegeRanking

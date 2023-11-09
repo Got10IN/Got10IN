@@ -5,8 +5,8 @@ import {
     IQSingleSelect,
     IQTendency,
     IQuestionnaire,
-} from '../../interface/IQuestionnaire'
-import { CQuestionnaire } from '../../class/Questionnaire.class'
+} from '../types/IQuestionnaire'
+import { CQuestionnaire } from '../class/Questionnaire.class'
 
 export interface QuestionnaireState {
     value: IQuestionnaire

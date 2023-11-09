@@ -1,3 +1,4 @@
+import { MentorCardType } from '../../app/find-mentor/MentorCard.component'
 import mentor1pic from '../../assets/mentor/mentor1.png'
 import mentor2pic from '../../assets/mentor/mentor2.png'
 import mentor3pic from '../../assets/mentor/mentor3.png'
@@ -6,9 +7,8 @@ import mentor5pic from '../../assets/mentor/mentor5.png'
 import mentor6pic from '../../assets/mentor/mentor6.png'
 import mentor7pic from '../../assets/mentor/mentor7.png'
 import mentor8pic from '../../assets/mentor/mentor8.png'
-import { IMentorCard } from '../../pages/findMentor/MentorCard.component'
 
-export const MENTOR_CARDS: IMentorCard[] = [
+export const MENTOR_CARDS: MentorCardType[] = [
     {
         id: '1',
         daysJoined: 120,
