@@ -1,5 +1,3 @@
-'use client'
-
 import { MentorTypeDropDown } from './MentorTypeDropDown.component'
 import { ServiceTypeDropDown } from './ServiceTypeDropDown.component'
 import { SortByDropDown } from './SortByDropDown.component'
