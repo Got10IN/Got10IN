@@ -3,7 +3,7 @@ import { EVENTS } from './events'
 
 const createVercelAnalyticsEvent = (
     eventType: EVENTS,
-    message?: { message: string; stack: string }
+    message?: { message: string; stack?: string }
 ) => {
     switch (eventType) {
         case EVENTS.OPENAI_BASE_REQUEST_ERROR:
