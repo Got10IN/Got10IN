@@ -6,7 +6,7 @@ import { IComponent } from '../../../utils/types/IComponent'
 import dynamic from 'next/dynamic'
 
 const ParallaxProvider = dynamic(
-    () => import('../../../utils/modules/react-scroll-parallax'),
+    () => import('../../../utils/modules/react-scroll-parallax.d'),
     { ssr: false }
 )
 

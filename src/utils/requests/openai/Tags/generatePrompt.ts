@@ -1,4 +1,4 @@
-import { PromptProps } from '../MyCollegeRanking/generatePrompt'
+import { PromptProps } from '../../../types/server/OpenAI.props'
 
 export const generatePrompt = ({
     fieldsOfInterest,
