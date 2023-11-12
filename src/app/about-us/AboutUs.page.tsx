@@ -12,7 +12,7 @@ import RoadMapTitle from '../../assets/aboutUs/RoadmapTitle.png'
 import { Button } from '../../components/buttons/Button.component'
 import { SubscribeField } from '../../components/functional/SubscribeField'
 import Page from '../../components/layout/Page.layout'
-import { Parallax } from '../../utils/modules/react-scroll-parallax'
+import { Parallax } from '../../utils/modules/react-scroll-parallax.d'
 import { useAppSelector } from '../../utils/hooks/redux.hook'
 
 function AboutUs() {

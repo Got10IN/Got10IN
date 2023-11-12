@@ -2,7 +2,7 @@
 
 import { BiSolidChevronRight } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
-import { Parallax } from '../../utils/modules/react-scroll-parallax'
+import { Parallax } from '../../utils/modules/react-scroll-parallax.d'
 import MyRankingDemo from '../../assets/myCollegeRanking/MyRanking.png'
 import { Button } from '../../components/buttons/Button.component'
 import Page from '../../components/layout/Page.layout'

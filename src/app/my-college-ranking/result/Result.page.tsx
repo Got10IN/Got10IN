@@ -1,7 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { FaDiscord, FaLinkedin, FaSquareXTwitter } from 'react-icons/fa6'
+import {
+    FaDice,
+    FaDiscord,
+    FaLinkedin,
+    FaSquareXTwitter,
+} from 'react-icons/fa6'
 
 import Logo from '../../../assets/myCollegeRanking/result/Logo.svg'
 import Arrow from '../../../assets/myCollegeRanking/result/arrow.svg'
@@ -67,10 +72,12 @@ const Result = () => {
     const [tags, setTags] = useState(['#loading'])
 
     useEffect(() => {
-        TagsRequest(questionnaire.value).then((data) => {
-            setTags(data)
-        })
-    }, [questionnaire.value])
+        if (tags.length <= 1) {
+            TagsRequest(questionnaire.value).then((data) => {
+                setTags(data)
+            })
+        }
+    }, [questionnaire.value, tags])
 
     return (
         <div className="bg-white mt-40 sm:mt-0 w-full px-36 py-12 sm:px-8 relative">
@@ -89,7 +96,15 @@ const Result = () => {
                         </span>
                         , here are the Top 10 colleges tailored just for you!
                     </p>
-                    <p className="text-accent-dark font-medium">{tags[0]}</p>
+                    <p className="text-accent-dark font-medium">
+                        {tags[0]}{' '}
+                        <FaDice
+                            className="inline"
+                            onClick={() => {
+                                setTags((tags) => tags.splice(1))
+                            }}
+                        />
+                    </p>
                     <Image
                         src={Arrow}
                         alt=""
